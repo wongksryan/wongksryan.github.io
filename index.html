@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ryan Wong's Site</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#3B2E7D',      // Deep Indigo
+              secondary: '#FF6B6B',    // Soft Coral
+              neutralLight: '#F8F8F8', // Off-White
+              neutralDark: '#2B2B2B',  // Charcoal Gray
+              accent: '#4ADE80',       // Mint Green
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-neutralLight font-sans text-neutralDark">
+
+  <!-- Header / Navigation -->
+  <header class="bg-neutralLight shadow p-6 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-primary">Ryan Wong's Engineering Portfolio</h1>
+    <nav class="space-x-4">
+      <a href="#projects" class="text-secondary hover:underline">Projects</a>
+      <a href="#about" class="text-secondary hover:underline">About</a>
+      <a href="#contact" class="text-secondary hover:underline">Contact</a>
+      <a href="#resume" class="text-secondary hover:underline">Resume</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="text-center py-20 bg-primary">
+    <h2 class="text-4xl md:text-5xl font-bold mb-4 text-neutralLight">Hi, I'm Ryan Wong</h2>
+    <p class="text-lg md:text-xl text-neutralLight mb-6">A Mechanical Engineering student at the University of Waterloo</p>
+  </section>
+
+ <!-- Projects Section -->
+<section id="projects" class="py-16 px-6 md:px-16">
+  <h3 class="text-3xl font-bold text-primary mb-8 text-center">Projects</h3>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+    <!-- Project Card Template -->
+    <a href="drone.html" class="group block bg-neutralLight rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-[0_0_25px_#3B2E7D]">
+      <img src="images/index/dronepreview.png" alt="Drone Preview" class="w-full h-48 object-cover mb-4 transition-transform group-hover:scale-105">
+      <div class="p-4">
+        <h4 class="text-xl font-semibold mb-2 text-primary">FPV UAV Test Platforms</h4>
+        <p class="text-neutralDark mb-2">Various UAV's optimized for efficient flights at medium-to-high cruise speeds.</p>
+        <p class="text-secondary font-semibold italic">Click to explore this project →</p>
+      </div>
+    </a>
+
+    <a href="vaccum.html" class="group block bg-neutralLight rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-[0_0_25px_#3B2E7D]">
+      <img src="images/index/swerve.png" alt="Swerve Drive Preview" class="w-full h-48 object-cover mb-4 transition-transform group-hover:scale-105">
+      <div class="p-4">
+        <h4 class="text-xl font-semibold mb-2 text-primary">Swerve Vacuum Robot</h4>
+        <p class="text-neutralDark mb-2">Autonomous custom robot built for agile, omnidirectional navigation, alongside floor cleaning.</p>
+        <p class="text-secondary font-semibold italic">Click to explore this project →</p>
+      </div>
+    </a>
+
+    <a href="exo.html" class="group block bg-neutralLight rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-[0_0_25px_#3B2E7D]">
+      <img src="images/index/exo.png" alt="Project 3" class="w-full h-48 object-cover mb-4 transition-transform group-hover:scale-105">
+      <div class="p-4">
+        <h4 class="text-xl font-semibold mb-2 text-primary">Soft Exoskeleton</h4>
+        <p class="text-neutralDark mb-2">Designed as part of my job as Mechanical Lead at Uwaterloo Biotron.</p>
+        <p class="text-secondary font-semibold italic">Click to explore this project →</p>
+      </div>
+    </a>
+
+    <a href="planebrain.html" class="group block bg-neutralLight rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-[0_0_25px_#3B2E7D]">
+      <img src="images/index/planebrain.png" alt="Project 4" class="w-full h-48 object-cover mb-4 transition-transform group-hover:scale-105">
+      <div class="p-4">
+        <h4 class="text-xl font-semibold mb-2 text-primary">Planebrain</h4>
+        <p class="text-neutralDark mb-2">ESP32 & Raspberry PI powered all-in-one flight computer autonomy and telemetry platform.</p>
+        <p class="text-secondary font-semibold italic">Click to explore this project →</p>
+      </div>
+    </a>
+
+    <a href="VEX.html" class="group block bg-neutralLight rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-[0_0_25px_#3B2E7D]">
+      <img src="images/index/vex.png" alt="Project 5" class="w-full h-48 object-cover mb-4 transition-transform group-hover:scale-105">
+      <div class="p-4">
+        <h4 class="text-xl font-semibold mb-2 text-primary">VEX Robotics</h4>
+        <p class="text-neutralDark mb-2">Various robots I built as Founder and Captain over my three seasons.</p>
+        <p class="text-secondary font-semibold italic">Click to explore this project →</p>
+      </div>
+    </a>
+
+    <a href="launcher.html" class="group block bg-neutralLight rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-[0_0_25px_#3B2E7D]">
+      <img src="images/index/launcher.png" alt="Project 6" class="w-full h-48 object-cover mb-4 transition-transform group-hover:scale-105">
+      <div class="p-4">
+        <h4 class="text-xl font-semibold mb-2 text-primary">Pneumatic launchers</h4>
+        <p class="text-neutralDark mb-2">Optimizing boba and putty projectile launching speeds for fun.</p>
+        <p class="text-secondary font-semibold italic">Click to explore this project →</p>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+
+<!-- About Section -->
+<section id="about" class="py-16 px-6 md:px-16 bg-neutralDark">
+  <h3 class="text-3xl font-bold text-neutralLight mb-6 text-center">About Me</h3>
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-8">
+
+    <!-- Square profile image with hover glow -->
+    <div class="flex-shrink-0 w-full md:w-1/2">
+      <img src="images/profile.jpg" alt="Ryan Wong"
+           class="w-full h-full object-cover border-4 border-primary shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_20px_#3B2E7D]">
+    </div>
+
+    <!-- Text content -->
+    <div class="text-neutralLight text-center md:text-left md:w-1/2 text-lg md:text-xl">
+      insert text here. This is where you can write about your background, experience, and what drives you as an engineer.
+    </div>
+
+  </div>
+</section>
+
+<!-- Resume Section -->
+<section id="resume" class="py-16 px-6 md:px-16 bg-neutralLight">
+  <h3 class="text-3xl font-bold text-primary mb-6 text-center">Resume</h3>
+
+  <div class="max-w-5xl mx-auto bg-white rounded-lg shadow-lg p-4">
+    
+    <!-- PDF Viewer -->
+    <div class="w-full h-[600px] border border-gray-200 rounded overflow-hidden">
+      <iframe 
+        src="resume.pdf"
+        class="w-full h-full"
+        title="Ryan Wong Resume">
+      </iframe>
+    </div>
+
+    <!-- Download Button -->
+    <div class="text-center mt-6">
+      <a href="resume.pdf" download
+         class="inline-block bg-secondary text-neutralLight px-6 py-3 rounded-lg font-semibold
+                hover:bg-accent hover:scale-105 transition transform shadow-md">
+        Download Resume
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- Contact Section -->
+<section id="contact" class="py-16 px-6 md:px-16 text-center bg-neutralLight">
+  <h3 class="text-3xl font-bold text-neutralDark mb-6">Contact Me</h3>
+  <p class="text-neutralDark mb-6">You can reach me via email or LinkedIn:</p>
+  <div class="space-x-4 flex flex-wrap justify-center gap-4">
+    
+    <!-- Regular Email -->
+    <a href="mailto:wongksryan@gmail.com" class="bg-[#FF5E5E] text-neutralLight px-4 py-2 rounded hover:bg-[#FF3B3B] transition">
+      Email
+    </a>
+    
+    <!-- University Email -->
+    <a href="mailto:rkswong@uwaterloo.ca" class="bg-[#FACC15] text-neutralDark px-4 py-2 rounded hover:bg-[#EAB308] transition">
+      University Email
+    </a>
+    
+    <!-- GitHub -->
+    <a href="#" class="bg-neutralDark text-neutralLight px-4 py-2 rounded hover:bg-primary transition">
+      GitHub
+    </a>
+    
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/in/ryan-kai-sum-wong-80b8332b2/" target="_blank" class="bg-[#0A66C2] text-neutralLight px-4 py-2 rounded hover:bg-[#004182] transition">
+      LinkedIn
+    </a>
+
+  </div>
+</section>
+
+
+  <!-- Footer -->
+  <footer class="bg-neutralLight text-center p-4 mt-8 text-neutralDark">
+    © 2026 Ryan Kai Sum Wong. All rights reserved.
+  </footer>
+
+</body>
+</html>

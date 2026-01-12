@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pneumatic Launchers</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3B2E7D',
+            secondary: '#FF6B6B',
+            neutralLight: '#F8F8F8',
+            neutralDark: '#2B2B2B',
+            accent: '#4ADE80',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-neutralLight text-neutralDark font-sans">
+
+<header class="bg-white shadow p-6">
+  <div class="flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-primary">Pneumatic Launcher Projects</h1>
+    <a href="index.html"
+       class="bg-secondary text-neutralLight px-6 py-3 rounded-lg font-semibold
+              hover:bg-accent hover:scale-105 transition transform shadow-md">
+      ← Home
+    </a>
+  </div>
+   <p class="text-lg mt-7 max-w-5xl font-bold mx-auto text-neutralDark">
+    Scroll to the bottom for launch videos(Legal disclaimer - launches were in Hong Kong under legal conditions)
+</header>
+
+<main class="max-w-7xl mx-auto px-6 py-12 space-y-20">
+
+  <!-- Section 1: Boba launcher-->
+  <section class="py-12 bg-neutralLight border-b-4 border-neutralDark rounded-lg shadow-md">
+
+    <h2 class="text-3xl font-semibold text-primary text-center mb-10">
+      Boba Launcher — Version 2 (Theoretical Design)
+    </h2>
+
+    <!-- Subsection: CAD -->
+    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-primary">
+      <div class="md:flex md:items-center md:gap-16">
+        <div class="md:w-2/5">
+          <img src="images/launcher/boba_cad.png" class="rounded-lg shadow-lg">
+        </div>
+        <div class="md:w-3/5">
+          <h3 class="text-xl font-semibold mb-2 text-primary">CAD Design</h3>
+          <p>
+            Detailed CAD design exploring pressure chamber geometry, sealing mechanisms, and projectile guidance.
+            Designed purely as a theoretical exercise due to the legal constraints of Canada.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subsection: ANSYS -->
+    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-secondary">
+      <div class="md:flex md:items-center md:gap-16 md:flex-row-reverse">
+        <div class="md:w-2/5">
+          <img src="images/launcher/boba_ansys.png" class="rounded-lg shadow-lg">
+        </div>
+        <div class="md:w-3/5">
+          <h3 class="text-xl font-semibold mb-2 text-secondary">ANSYS Simulation</h3>
+          <p>
+            Structural and pressure simulations performed in ANSYS to validate chamber integrity and stress concentrations
+            under theoretical operating pressures.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Photos -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+      <img src="images/launcher/boba_model1.png" class="rounded-lg shadow-lg">
+      <img src="images/launcher/boba_model2.png" class="rounded-lg shadow-lg">
+      <img src="images/launcher/boba_model3.png" class="rounded-lg shadow-lg">
+    </div>
+
+  </section>
+
+ 
+  <!-- Section 2: Putty launcher -->
+  <section class="py-12 bg-neutralLight border-b-4 border-neutralDark rounded-lg shadow-md">
+
+    <h2 class="text-3xl font-semibold text-primary text-center mb-10">
+      Putty Launcher — Version 1
+    </h2>
+
+    <!-- Adiabatic Math -->
+    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-primary">
+      <div class="md:flex md:items-center md:gap-16">
+        <div class="md:w-2/5">
+          <img src="images/launcher/math.png" class="rounded-lg shadow-lg">
+        </div>
+        <div class="md:w-3/5">
+          <h3 class="text-xl font-semibold mb-2 text-primary">Adiabatic Calculations</h3>
+          <p>
+            Derived closed-form energy and pressure relationships using adiabatic expansion models to predict muzzle velocity
+            and chamber efficiency, then validated calculations using an experimental setup.
+          </p>
+
+          <a href="reports/launcher_report.pdf"
+             class="inline-block mt-4 bg-secondary text-neutralLight px-5 py-2 rounded-lg font-semibold
+                    hover:bg-accent transition shadow">
+            View Full Report (PDF)
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAD and Simulation -->
+    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-secondary">
+      <div class="md:flex md:items-center md:gap-16 md:flex-row-reverse">
+        <div class="md:w-2/5">
+          <img src="images/launcher/putty_cad.png" class="rounded-lg shadow-lg">
+        </div>
+        <div class="md:w-3/5">
+          <h3 class="text-xl font-semibold mb-2 text-secondary">CAD + Simulation</h3>
+          <p>
+            Modeled full assembly and validated mechanical integrity under operating loads. Iterated on barrel geometry
+            and chamber size to improve consistency and reliability.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Showcase -->
+    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-accent">
+      <div class="md:flex md:items-center md:gap-16">
+        <div class="md:w-2/5">
+          <img src="images/launcher/putty_final.png" class="rounded-lg shadow-lg">
+        </div>
+        <div class="md:w-3/5">
+          <h3 class="text-xl font-semibold mb-2 text-accent">Final Product Showcase</h3>
+          <p>
+            Fully functional launcher capable of repeatable launches of 15 gram putty slugs at 50m/s muzzle velocity given a maximum pressure of 50psi. Optimized valve timing, pressure control,
+            and projectile-tube fitting for reliable operation; launches were done on secured private property in Hong Kong as to alleviate legal concerns.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Videos -->
+    <h3 class="text-xl font-semibold text-primary mb-4 text-center">
+      Launch Demonstrations
+    </h3>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 justify-items-center">
+      <video controls class="rounded-lg shadow-lg">
+        <source src="videos/launcher/launch1.mp4" type="video/mp4">
+      </video>
+
+      <video controls class="rounded-lg shadow-lg">
+        <source src="videos/launcher/launch2.mp4" type="video/mp4">
+      </video>
+
+      <video controls class="rounded-lg shadow-lg">
+        <source src="videos/launcher/launch3.mp4" type="video/mp4">
+      </video>
+    </div>
+
+  </section>
+
+</main>
+</body>
+</html>

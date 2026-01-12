@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soft Exoskeleton Project</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3B2E7D',
+            secondary: '#FF6B6B',
+            neutralLight: '#F8F8F8',
+            neutralDark: '#2B2B2B',
+            accent: '#4ADE80',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-neutralLight text-neutralDark font-sans">
+
+<header class="bg-white shadow p-6">
+  <div class="flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-primary">Soft Exoskeleton Project</h1>
+    <a href="index.html"
+       class="bg-secondary text-neutralLight px-6 py-3 rounded-lg font-semibold
+              hover:bg-accent hover:scale-105 transition transform shadow-md">
+      ← Home
+    </a>
+  </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-6 py-12 space-y-20">
+
+
+  <!-- SECTION 1: CAD & ANALYSIS -->
+  <section class="py-12 bg-neutralLight border-b-4 border-neutralDark rounded-lg shadow-md">
+    <h2 class="text-3xl font-semibold text-primary text-center mb-10">
+      CAD & Analysis
+    </h2>
+
+    <!-- Planning -->
+    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-primary">
+      <div class="md:flex md:items-center md:gap-16">
+        <div class="md:w-2/5">
+          <img src="images/exo/planning.png" class="rounded-lg shadow-lg">
+        </div>
+        <div class="md:w-3/5">
+          <h3 class="text-xl font-semibold mb-2 text-primary">Planning & Measurements</h3>
+          <p>
+            Defined biomechanical constraints, collected anthropometric measurements, and mapped
+            mechanical interfaces to ensure ergonomic fit and functional load paths.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAD V1 -->
+    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-secondary">
+      <div class="md:flex md:items-center md:gap-16 md:flex-row-reverse">
+        <div class="md:w-2/5">
+          <img src="images/exo/cad_v1.png" class="rounded-lg shadow-lg">
+        </div>
+        <div class="md:w-3/5">
+          <h3 class="text-xl font-semibold mb-2 text-secondary">CAD Version 1</h3>
+          <p>
+            Initial CAD model focused on structural feasibility, mounting interfaces, and component packaging.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Analysis -->
+    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-accent">
+      <div class="md:flex md:items-center md:gap-16">
+        <div class="md:w-2/5">
+          <img src="images/exo/analysis.png" class="rounded-lg shadow-lg">
+        </div>
+        <div class="md:w-3/5">
+          <h3 class="text-xl font-semibold mb-2 text-accent">ANSYS & SolidWorks FEA</h3>
+          <p>
+            Performed structural simulations to validate load paths and identify stress concentrations,
+            guiding material selection and geometry refinement.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAD V2 -->
+    <div class="bg-neutralLight p-6 rounded-lg shadow-md border-l-4 border-primary">
+      <div class="md:flex md:items-center md:gap-16 md:flex-row-reverse">
+        <div class="md:w-2/5">
+          <img src="images/exo/cad_v2.png" class="rounded-lg shadow-lg">
+        </div>
+        <div class="md:w-3/5">
+          <h3 class="text-xl font-semibold mb-2 text-primary">CAD Version 2 (Post-Review)</h3>
+          <p>
+            Revised design incorporating peer review feedback, improving structural efficiency,
+            manufacturability, and assembly accessibility.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: MANUFACTURING -->
+  <section class="py-12 bg-neutralLight border-b-4 border-neutralDark rounded-lg shadow-md">
+    <h2 class="text-3xl font-semibold text-primary text-center mb-10">
+      Manufacturing
+    </h2>
+
+    <!-- CNC -->
+    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-primary">
+      <div class="md:flex md:items-center md:gap-16">
+        <div class="md:w-2/5">
+          <img src="images/exo/cnc.png" class="rounded-lg shadow-lg">
+        </div>
+        <div class="md:w-3/5">
+          <h3 class="text-xl font-semibold mb-2 text-primary">CNC Machining</h3>
+          <p>Machined structural components with tight tolerances for consistent assembly and performance.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lathe -->
+    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-secondary">
+      <div class="md:flex md:items-center md:gap-16 md:flex-row-reverse">
+        <div class="md:w-2/5">
+          <img src="images/exo/lathe.png" class="rounded-lg shadow-lg">
+        </div>
+        <div class="md:w-3/5">
+          <h3 class="text-xl font-semibold mb-2 text-secondary">Lathe Work</h3>
+          <p>Produced cylindrical components such as spacers, shafts, and bushings for precision fits.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Milling -->
+    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-accent">
+      <div class="md:flex md:items-center md:gap-16">
+        <div class="md:w-2/5">
+          <img src="images/exo/mill.png" class="rounded-lg shadow-lg">
+        </div>
+        <div class="md:w-3/5">
+          <h3 class="text-xl font-semibold mb-2 text-accent">Manual Milling</h3>
+          <p>Fabricated custom brackets and interfaces through iterative manual machining.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Finalization -->
+    <div class="bg-neutralLight p-6 rounded-lg shadow-md border-l-4 border-primary">
+      <div class="md:flex md:items-center md:gap-16 md:flex-row-reverse">
+        <div class="md:w-2/5">
+          <img src="images/exo/final.png" class="rounded-lg shadow-lg">
+        </div>
+        <div class="md:w-3/5">
+          <h3 class="text-xl font-semibold mb-2 text-primary">Final Assembly</h3>
+          <p>Integrated subsystems, verified fitment, and validated final structure readiness.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: MANAGEMENT -->
+  <section class="py-12 bg-neutralLight border-b-4 border-neutralDark rounded-lg shadow-md">
+    <h2 class="text-3xl font-semibold text-primary text-center mb-10">
+      Leadership & Management
+    </h2>
+
+    <!-- Manufacturing + CAD management -->
+    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-primary">
+      <div class="md:flex md:items-center md:gap-16">
+        <div class="md:w-2/5">
+          <img src="images/exo/management1.png" class="rounded-lg shadow-lg">
+        </div>
+        <div class="md:w-3/5">
+          <h3 class="text-xl font-semibold mb-2 text-primary">Manufacturing & CAD Oversight</h3>
+          <p>
+            Coordinated CAD standards, reviewed designs, and supervised fabrication workflows across subteams.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Team management -->
+    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-secondary">
+      <div class="md:flex md:items-center md:gap-16 md:flex-row-reverse">
+        <div class="md:w-2/5">
+          <img src="images/exo/management2.png" class="rounded-lg shadow-lg">
+        </div>
+        <div class="md:w-3/5">
+          <h3 class="text-xl font-semibold mb-2 text-secondary">Team Leadership</h3>
+          <p>
+            Led interdisciplinary team coordination, milestone planning, and technical mentorship.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Team Photos -->
+    <h3 class="text-xl font-semibold text-primary mb-4 text-center">Team Highlights</h3>
+
+    <div class="grid grid-cols-3 gap-6 items-center">
+      <img src="images/exo/team_small_left.png" class="rounded-lg shadow-lg">
+      <img src="images/exo/team_big.png" class="rounded-lg shadow-lg scale-105">
+      <img src="images/exo/team_small_right.png" class="rounded-lg shadow-lg">
+    </div>
+  </section>
+
+</main>
+</body>
+</html>

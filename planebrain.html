@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PlaneBrain Avionics System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3B2E7D',
+            secondary: '#FF6B6B',
+            neutralLight: '#F8F8F8',
+            neutralDark: '#2B2B2B',
+            accent: '#4ADE80',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-neutralLight text-neutralDark font-sans">
+
+<header class="bg-white shadow p-6">
+  <div class="flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-primary">PlaneBrain Avionics System</h1>
+    <a href="index.html"
+       class="bg-secondary text-neutralLight px-6 py-3 rounded-lg font-semibold
+              hover:bg-accent hover:scale-105 transition transform shadow-md">
+      ← Home
+    </a>
+  </div>
+   <p class="text-lg text-center max-w-5xl mx-auto text-neutralDark">
+    A side project for ensuring fixed-wing aerodynamic stability that eventually evolved into an actual project.
+  </p>
+</header>
+
+<main class="max-w-7xl mx-auto px-6 py-12 space-y-20">
+
+ 
+  <!-- SECTION 1: ELECTRONICS -->
+  <section class="py-7 bg-neutralLight border-b-4 border-neutralDark rounded-lg shadow-md">
+    <h2 class="text-3xl font-semibold text-primary text-center mb-10">
+      Electronics
+    </h2>
+
+    <!-- KiCad -->
+    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-primary">
+      <div class="md:flex md:items-center md:gap-16">
+        <div class="md:w-2/5">
+          <img src="images/planebrain/kicad.png" class="rounded-lg shadow-lg">
+        </div>
+        <div class="md:w-3/5">
+          <h3 class="text-xl font-semibold mb-2 text-primary">Schematic & PCB Design (KiCad)</h3>
+          <p>
+            Designed the avionics system schematic and PCB layout in KiCad, focusing on signal integrity,
+            power regulation, sensor integration, and modular expandability.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Assembly -->
+    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-secondary">
+      <div class="md:flex md:items-center md:gap-16 md:flex-row-reverse">
+        <div class="md:w-2/5">
+          <img src="images/planebrain/assembly.png" class="rounded-lg shadow-lg">
+        </div>
+        <div class="md:w-3/5">
+          <h3 class="text-xl font-semibold mb-2 text-secondary">Assembly & Testing</h3>
+          <p>
+            Hand-assembled prototype boards and validated functionality through multimeter probing,
+            oscilloscope checks, and subsystem-level testing of sensors and communication buses.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Build -->
+    <div class="bg-neutralLight p-6 rounded-lg shadow-md border-l-4 border-accent">
+      <div class="md:flex md:items-center md:gap-16">
+        <div class="md:w-2/5">
+          <img src="images/planebrain/build.png" class="rounded-lg shadow-lg">
+        </div>
+        <div class="md:w-3/5">
+          <h3 class="text-xl font-semibold mb-2 text-accent">Physical Build</h3>
+          <p>
+            Integrated the avionics system into a compact housing, routing wiring for robustness
+            and ensuring vibration resistance suitable for airborne platforms.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SECTION 2: SOFTWARE -->
+  <section class="py-12 bg-neutralLight border-b-4 border-neutralDark rounded-lg shadow-md">
+    <h2 class="text-3xl font-semibold text-primary text-center mb-10">
+      Software
+    </h2>
+
+    <!-- Attitude Hold -->
+    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-primary">
+      <div class="md:flex md:items-center md:gap-16">
+        <div class="md:w-2/5">
+          <img src="images/planebrain/attitude_hold.png" class="rounded-lg shadow-lg">
+        </div>
+        <div class="md:w-3/5">
+          <h3 class="text-xl font-semibold mb-2 text-primary">Basic Attitude Hold Algorithm</h3>
+          <p>
+            Developed a stabilization algorithm for a flying-wing UAV to counter Dutch roll,
+            using IMU feedback and closed-loop control to improve directional and roll stability.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flight Controller -->
+    <div class="bg-neutralLight p-6 rounded-lg shadow-md border-l-4 border-secondary">
+      <div class="md:flex md:items-center md:gap-16 md:flex-row-reverse">
+        <div class="md:w-2/5">
+          <img src="images/planebrain/flight_controller.png" class="rounded-lg shadow-lg">
+        </div>
+        <div class="md:w-3/5">
+          <h3 class="text-xl font-semibold mb-2 text-secondary">In-Progress Flight Controller</h3>
+          <p>
+            Currently developing a full-featured flight control system including sensor fusion,
+            state estimation, control loops, and telemetry handling for autonomous operation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>
