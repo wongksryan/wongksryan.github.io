@@ -10,20 +10,19 @@
       theme: {
         extend: {
           colors: {
-            primary: '#3B2E7D',      // Deep Indigo
-            secondary: '#FF6B6B',    // Soft Coral
-            neutralLight: '#F8F8F8', // Off-White
-            neutralDark: '#2B2B2B',  // Charcoal Gray
-            accent: '#4ADE80',       // Mint Green
+            primary: '#3B2E7D',
+            secondary: '#FF6B6B',
+            neutralLight: '#F8F8F8',
+            neutralDark: '#2B2B2B',
+            accent: '#4ADE80',
           }
         }
       }
     }
   </script>
 </head>
-<body class="bg-neutralLight text-neutralDark font-sans">
+<body class="bg-neutralLight text-neutralDark font-sans text-xl">
 
-<!-- Header -->
 <header class="bg-white shadow p-6">
   <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
     <h1 class="text-3xl font-bold text-primary text-center md:text-left mb-2 md:mb-0">
@@ -39,41 +38,42 @@
   </div>
   <p class="text-lg text-center max-w-2xl mx-auto text-neutralDark">
     Showcasing UAV platforms I designed and developed, including flying-wing and fixed-wing systems,
-    optimized for stability, efficiency, and autonomous control.
+    optimized for stability, efficiency, and onboard autonomy experiments.
   </p>
 </header>
 
 <main class="max-w-7xl mx-auto px-6 py-12 space-y-20">
 
-  <!-- Section 1: Flying Wing -->
+  <!-- Section 1 -->
   <section class="py-12 bg-neutralLight border-b-4 border-neutralDark rounded-lg shadow-md">
     <h2 class="text-3xl font-semibold mb-8 text-center text-primary border-b-2 border-neutralDark pb-4">
       Flying Wing (Dec 2025 – Present)
     </h2>
 
-    <!-- Preliminary Design -->
     <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-primary">
-      <div class="md:flex md:items-center md:gap-10 md:flex-row-reverse">
+      <div class="md:flex md:items-top md:gap-10 md:flex-row-reverse">
         <div class="md:w-3/5">
           <h3 class="text-xl font-semibold mb-2 text-primary">Preliminary Design</h3>
           <p>
-            Conceptualized a 1 kg flying-wing UAV with stability-focused geometry optimized for cruising at 30+ km/h.
-            Incorporated MH60 root airfoil with PW51 wingtips, V-tail, and dihedral for strong aerodynamic stability.
+            Fully 3D-printed 1 kg flying-wing UAV with geometry optimized for efficient cruising at 30+ km/h. 
+            Performed a set of batch Reynolds number sweeps in XFLR5 for various airfoils used in flying wings. A range of Re = 2,000–3,000,000 was used. This is admittedly a much wider range than neccessary for RC aircraft; which usually fly in the regime of Re = 50,000-500,000, but I wanted to have as much data as possible just in case. A setup involving a MH60 root airfoil with PW51 wingtips was chosen based on resulting data. 
+            3° of wingtip washout was incorporated to reduce tip stall risk and improve dynamic stability across the 90 cm wingspan. 
+            aAV-tail configuration was adopted to reduce parasitic drag while maintaining control authority.
           </p>
         </div>
         <div class="md:w-2/5 mt-6 md:mt-0">
-          <img src="images/flyingwing_prelim.jpg" alt="Flying Wing Preliminary Design" class="rounded-lg shadow-lg">
+          <img class="h-96 w-96" src="images/drone/flyingwing_prelim.png" alt="Flying Wing Preliminary Design" class="rounded-lg shadow-lg">
         </div>
       </div>
     </div>
 
-    <!-- CAD -->
     <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-secondary">
-      <div class="md:flex md:items-center md:gap-10">
+      <div class="md:flex md:items-top md:gap-10">
         <div class="md:w-3/5">
           <h3 class="text-xl font-semibold mb-2 text-secondary">CAD</h3>
           <p>
-            Detailed CAD modeling in SolidWorks, integrating structural and avionics design with modular mounts for future FPV and payloads.
+            Designed the full airframe and internal layout in SolidWorks, including modular avionics mounting, serviceable wiring routes, a ram-air duct for ESC cooling and structural features for future payload expansion. 
+            For structural purposes and ease of assembly, I used 20mm diameter carbon fibre tubes to string all the 3d-printed sections together. In terms of material properties, LW-PLA was used for most structural components with targeted PETG reinforcement near thermally sensitive areas such as the ESC mount. Additional print trials were done to figure out filament shrinkage as to keep all fits and tolerances appropriate. For example, a press fit was needed for the ducted fan mounting as to keep it mounted as securely as possible.
           </p>
         </div>
         <div class="md:w-2/5 mt-6 md:mt-0">
@@ -82,13 +82,15 @@
       </div>
     </div>
 
-    <!-- Analysis -->
     <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-accent">
-      <div class="md:flex md:items-center md:gap-10 md:flex-row-reverse">
+      <div class="md:flex md:items-top md:gap-10 md:flex-row-reverse">
         <div class="md:w-3/5">
           <h3 class="text-xl font-semibold mb-2 text-accent">Analysis</h3>
           <p>
-            Aerodynamic and stability analysis using XFLR5 and ANSYS, tuning washout, sweep, and dihedral to achieve optimal longitudinal and lateral damping.
+            Conducted aerodynamic stability analysis in XFLR5, tuning washout, sweep, and dihedral to achieve strong modal behavior (short-period ζ = 0.372, phugoid ζ = 0.231). 
+            Evaluated lateral dynamics, balancing roll subsidence, spiral divergence, and Dutch roll tradeoffs. 
+            Used ANSYS for comparative drag studies and structural validation. Structural optimization using LW-PLA reduced overall mass by 48%, while PETG reinforcement reduced ESC thermal warping by 78%. 
+            A rudimentary ESP32-based flight controller using IMU angular-rate feedback provides attitude stabilization and a platform for future autonomy work.
           </p>
         </div>
         <div class="md:w-2/5 mt-6 md:mt-0">
@@ -97,7 +99,6 @@
       </div>
     </div>
 
-    <!-- Final Product Images -->
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
       <img src="images/drone/flyingwing_final1.png" alt="Flying Wing Final 1" class="rounded-lg shadow-lg">
       <img src="images/drone/flyingwing_final2.png" alt="Flying Wing Final 2" class="rounded-lg shadow-lg">
@@ -105,19 +106,20 @@
     </div>
   </section>
 
-  <!-- Section 2: Fixed-Wing Long-Range Platform V2 -->
+  <!-- Section 2 -->
   <section class="py-12 bg-neutralLight border-b-4 border-neutralDark rounded-lg shadow-md">
     <h2 class="text-3xl font-semibold mb-8 text-center text-primary border-b-2 border-neutralDark pb-4">
       Fixed-Wing Long-Range Platform V2 (Oct 2024 – Jan 2025)
     </h2>
 
-    <!-- Preliminary Design -->
     <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-primary">
-      <div class="md:flex md:items-center md:gap-10 md:flex-row-reverse">
+      <div class="md:flex md:items-top md:gap-10 md:flex-row-reverse">
         <div class="md:w-3/5">
           <h3 class="text-xl font-semibold mb-2 text-primary">Preliminary Design</h3>
           <p>
-            Conceptualized a long-range fixed-wing UAV, designed for extended endurance. Airfoils were validated experimentally by using a homebuilt wind tunnel setup, shown on the right.
+            Designed as a long-endurance fixed-wing V-tail platform using conventional RC design principles. 
+            Without access to CFD tools at the time, I built a small laminar-flow wind tunnel to collect comparative airfoil data and generate basic polars for lift versus angle of attack and airspeed. 
+            Simplified analysis assumed laminar, inviscid flow to make the problem tractable given my experience at the time.
           </p>
         </div>
         <div class="md:w-2/5 mt-6 md:mt-0">
@@ -126,13 +128,13 @@
       </div>
     </div>
 
-    <!-- CAD -->
     <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-secondary">
-      <div class="md:flex md:items-center md:gap-10 md:flex-row-reverse">
+      <div class="md:flex md:items-top md:gap-10 md:flex-row-reverse">
         <div class="md:w-3/5">
           <h3 class="text-xl font-semibold mb-2 text-secondary">CAD</h3>
           <p>
-            3D CAD modeling focused on structural layout and integration of avionics and payload, though the design could not be flown without a license.
+            Modeled structural layout and avionics integration in CAD, focusing on manufacturability using laser-cut balsa ribs, carbon-fiber spars, and selective 3D-printed PLA and LW-PLA components. 
+            LW-PLA was used sparingly due to cost and time constraints. The platform included onboard FPV, low-resolution infrared sensing for urban heat mapping experiments, and distributed flight-control logic using Arduino Uno/Nano devices in a simple master–slave architecture.
           </p>
         </div>
         <div class="md:w-2/5 mt-6 md:mt-0">
@@ -141,62 +143,57 @@
       </div>
     </div>
 
-<!-- Final Product Images -->
-<div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+      <div class="flex flex-col gap-4">
+        <img src="images/drone/v2_final1.png" alt="Fixed-Wing V2 Final 1" class="rounded-lg shadow-lg">
+        <img src="images/drone/v2_final4.png" alt="Fixed-Wing V2 Final 4" class="rounded-lg shadow-lg">
+      </div>
+      <img src="images/drone/v2_final2.png" alt="Fixed-Wing V2 Final 2" class="rounded-lg shadow-lg">
+      <img src="images/drone/v2_final3.png" alt="Fixed-Wing V2 Final 3" class="rounded-lg shadow-lg">
+    </div>
+  </section>
 
-  <!-- Column with image 1 on top of image 4 -->
-  <div class="flex flex-col gap-4">
-    <img src="images/drone/v2_final1.png" alt="Fixed-Wing V2 Final 1" class="rounded-lg shadow-lg">
-    <img src="images/drone/v2_final4.png" alt="Fixed-Wing V2 Final 4" class="rounded-lg shadow-lg">
-  </div>
-
-  <!-- Normal images -->
-  <img src="images/drone/v2_final2.png" alt="Fixed-Wing V2 Final 2" class="rounded-lg shadow-lg">
-  <img src="images/drone/v2_final3.png" alt="Fixed-Wing V2 Final 3" class="rounded-lg shadow-lg">
-
-</div>
-
-  <!-- Section 3: Fixed-Wing Long-Range Platform V1 -->
+  <!-- Section 3 -->
   <section class="py-12 bg-neutralLight border-b-4 border-neutralDark rounded-lg shadow-md">
     <h2 class="text-3xl font-semibold mb-8 text-center text-primary border-b-2 border-neutralDark pb-4">
       Fixed-Wing Long-Range Platform V1 (Nov 2023 – Feb 2024)
     </h2>
 
-    <!-- Preliminary Design -->
     <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-primary">
-      <div class="md:flex md:items-center md:gap-10 md:flex-row-reverse">
+      <div class="md:flex md:items-top md:gap-10 md:flex-row-reverse">
         <div class="md:w-3/5">
           <h3 class="text-xl font-semibold mb-2 text-primary">Preliminary Design</h3>
           <p>
-            Initial fixed-wing concept with aerodynamic optimization for endurance, balancing wing area, airfoil selection, and tail configuration.
+            First complete fixed-wing UAV built entirely from balsa wood before I had access to a 3D printer. 
+            Designed using standard RC aircraft heuristics for stability, control authority, and endurance. 
+            The aircraft was configured for FPV flight using a lightweight analog camera system and long-range radio transmission.
           </p>
         </div>
         <div class="md:w-2/5 mt-6 md:mt-0">
-          <img src="images/fw_v1_prelim.jpg" alt="Fixed-Wing V1 Preliminary Design" class="rounded-lg shadow-lg">
+          <img src="images/drone/v1_prelim.png" alt="Fixed-Wing V1 Preliminary Design" class="rounded-lg shadow-lg">
         </div>
       </div>
     </div>
 
-    <!-- CAD -->
     <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-secondary">
-      <div class="md:flex md:items-center md:gap-10 md:flex-row-reverse">
+      <div class="md:flex md:items-top md:gap-10 md:flex-row-reverse">
         <div class="md:w-3/5">
           <h3 class="text-xl font-semibold mb-2 text-secondary">CAD</h3>
           <p>
-            CAD modeling of structural components and avionics layout, refining weight distribution and stability features for long-range flight.
+            Basic CAD used primarily for visualization and dimensional planning rather than full structural optimization. 
+            Electronics were minimal and focused on achieving reliable video transmission. A 512 MHz radio system was selected due to operation in dense urban environments (Hong Kong), where signal obstruction and multipath interference were significant constraints.
           </p>
         </div>
         <div class="md:w-2/5 mt-6 md:mt-0">
-          <img src="images/fw_v1_cad.jpg" alt="Fixed-Wing V1 CAD" class="rounded-lg shadow-lg">
+          <img src="images/drone/v1_cad.png" alt="Fixed-Wing V1 CAD" class="rounded-lg shadow-lg">
         </div>
       </div>
     </div>
 
-    <!-- Final Product Images -->
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-      <img src="images/fw_v1_final1.jpg" alt="Fixed-Wing V1 Final 1" class="rounded-lg shadow-lg">
-      <img src="images/fw_v1_final2.jpg" alt="Fixed-Wing V1 Final 2" class="rounded-lg shadow-lg">
-      <img src="images/fw_v1_final3.jpg" alt="Fixed-Wing V1 Final 3" class="rounded-lg shadow-lg">
+      <img src="images/drone/v1_final1.png" alt="Fixed-Wing V1 Final 1" class="rounded-lg shadow-lg">
+      <img src="images/drone/v1_final2.png" alt="Fixed-Wing V1 Final 2" class="rounded-lg shadow-lg">
+      <img src="images/drone/v1_final3.png" alt="Fixed-Wing V1 Final 3" class="rounded-lg shadow-lg">
     </div>
   </section>
 

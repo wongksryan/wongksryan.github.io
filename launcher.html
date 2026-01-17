@@ -22,7 +22,7 @@
   </script>
 </head>
 
-<body class="bg-neutralLight text-neutralDark font-sans">
+<body class="bg-neutralLight text-neutralDark font-sans text-xl">
 
 <header class="bg-white shadow p-6">
   <div class="flex justify-between items-center">
@@ -34,7 +34,7 @@
     </a>
   </div>
    <p class="text-lg mt-7 max-w-5xl font-bold mx-auto text-neutralDark">
-    Scroll to the bottom for launch videos(Legal disclaimer - launches were in Hong Kong under legal conditions)
+    Scroll to the bottom for launch videos. All demonstrations were conducted in Hong Kong under legally permitted conditions.
 </header>
 
 <main class="max-w-7xl mx-auto px-6 py-12 space-y-20">
@@ -55,8 +55,9 @@
         <div class="md:w-3/5">
           <h3 class="text-xl font-semibold mb-2 text-primary">CAD Design</h3>
           <p>
-            Detailed CAD design exploring pressure chamber geometry, sealing mechanisms, and projectile guidance.
-            Designed purely as a theoretical exercise due to the legal constraints of Canada.
+            Developed a detailed SolidWorks model exploring pressure chamber geometry, sealing strategies, and projectile guidance under a formal design constraint: a maximum operating pressure of 70 psi while achieving a theoretical launch velocity of at least 50 m/s without structural or projectile failure.
+            <br><br>
+            As an additional self-imposed challenge, the design was constrained to use only real off-the-shelf, pressure-rated PVC standards and fittings (with appropriate margins of safety) and commercially available solenoid valves, rather than custom-manufactured components. This constraint strongly influenced geometry, layout, and structural decisions. The project remains a theoretical design and was not physically constructed.
           </p>
         </div>
       </div>
@@ -71,8 +72,9 @@
         <div class="md:w-3/5">
           <h3 class="text-xl font-semibold mb-2 text-secondary">ANSYS Simulation</h3>
           <p>
-            Structural and pressure simulations performed in ANSYS to validate chamber integrity and stress concentrations
-            under theoretical operating pressures.
+            Structural integrity was evaluated using static load analysis in ANSYS Mechanical to verify stress distributions and deformation under theoretical internal pressure loads. Internal flow behavior and pressure equalization were studied using ANSYS Fluent to estimate theoretical performance and velocity trends.
+            <br><br>
+            These simulations were used as comparative design tools rather than predictive guarantees, with emphasis on understanding system behavior and tradeoffs rather than optimizing for construction.
           </p>
         </div>
       </div>
@@ -104,8 +106,9 @@
         <div class="md:w-3/5">
           <h3 class="text-xl font-semibold mb-2 text-primary">Adiabatic Calculations</h3>
           <p>
-            Derived closed-form energy and pressure relationships using adiabatic expansion models to predict muzzle velocity
-            and chamber efficiency, then validated calculations using an experimental setup.
+            This project was developed under the constraint of launching a 15 g putty projectile at approximately 40–50 m/s using a maximum operating pressure of 50 psi. Design decisions were guided by component datasheets and material limits to ensure all components remained within their rated operating conditions.
+            <br><br>
+            Theoretical performance modeling was based on adiabatic expansion of a diatomic gas, justified by experimental pressure measurements indicating characteristic expansion times on the order of 75–150 ms. This assumption allowed closed-form energy and pressure relationships to be derived without requiring calculus-based numerical methods, which was appropriate to my mathematical background at the time.
           </p>
 
           <a href="reports/launcher_report.pdf"
@@ -126,8 +129,7 @@
         <div class="md:w-3/5">
           <h3 class="text-xl font-semibold mb-2 text-secondary">CAD + Simulation</h3>
           <p>
-            Modeled full assembly and validated mechanical integrity under operating loads. Iterated on barrel geometry
-            and chamber size to improve consistency and reliability.
+            Modeled the full assembly in CAD and performed basic validation of mechanical loading assumptions. Iterated on barrel geometry, chamber volume, and layout to improve consistency and repeatability given the material constraints of readily available components in Hong Kong.
           </p>
         </div>
       </div>
@@ -142,8 +144,7 @@
         <div class="md:w-3/5">
           <h3 class="text-xl font-semibold mb-2 text-accent">Final Product Showcase</h3>
           <p>
-            Fully functional launcher capable of repeatable launches of 15 gram putty slugs at 50m/s muzzle velocity given a maximum pressure of 50psi. Optimized valve timing, pressure control,
-            and projectile-tube fitting for reliable operation; launches were done on secured private property in Hong Kong as to alleviate legal concerns.
+            The final system demonstrated consistent performance across repeated tests. Design iteration focused on improving valve response consistency, sealing reliability, and projectile–barrel interface behavior. Testing was conducted on secured private property in Hong Kong in accordance with local legal constraints.
           </p>
         </div>
       </div>
