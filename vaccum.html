@@ -22,7 +22,7 @@
   </script>
 </head>
 
-<body class="bg-neutralLight text-neutralDark font-sans">
+<body class="bg-neutralLight text-neutralDark font-sans text-xl">
 
 <header class="bg-white shadow p-6">
   <div class="flex justify-between items-center">
@@ -55,9 +55,8 @@
         <div class="md:w-3/5">
           <h3 class="text-xl font-semibold mb-2 text-primary">Frame CAD Design</h3>
           <p>
-            The swerve module frame was designed in SolidWorks with focus on stiffness, modularity, and compact packaging. 
-            Component placement allows future upgrades without sacrificing structural integrity, while mounting points simplify assembly and maintenance.
-          </p>
+            The swerve module frame was designed in SolidWorks around a custom drivetrain architecture incorporating bevel gears, spur gears, and belt drives to achieve a 5.07 m/s no-load speed. 
+            The design prioritizes stiffness, modularity, and compact packaging while preserving accessibility for future mechanical upgrades. Component placement was intentionally arranged to maintain structural integrity and to reserve dedicated space for electronics placement, cable routing, and system-level integration, simplifying assembly, maintenance, and future expansion.
         </div>
       </div>
     </div>
@@ -71,8 +70,8 @@
         <div class="md:w-3/5">
           <h3 class="text-xl font-semibold mb-2 text-secondary">Finite Element Analysis (FEA)</h3>
           <p>
-            FEA was used to validate load paths and ensure the frame could withstand operating forces and potential crash impacts to protect onboard electronics. 
-            SolidWorks FEA helped quickly identify major issues, while ANSYS provided higher-fidelity results once the design was refined for precise stress distribution.
+            FEA was used to validate load paths and ensure the frame could withstand operational forces while protecting onboard electronics under worst-case conditions.  
+            SolidWorks Simulation was used during early iterations to quickly identify major structural issues and CAD-level design flaws. Once the geometry was refined, higher-accuracy simulations were performed in ANSYS, including static and transient structural analyses, to evaluate precise stress distributions, inertia effects, and impact loading during potential crash scenarios. These results directly informed geometry changes and reinforced confidence in the final structural design.
           </p>
         </div>
       </div>
@@ -82,19 +81,19 @@
     <div class="bg-neutralLight p-6 rounded-lg shadow-md border-l-4 border-accent">
       <div class="md:flex md:items-top md:gap-16">
         <div class="md:w-2/5">
-          <img src="images/swerve_frame_final1.png" class="rounded-lg shadow-lg">
+          <img src="images/vaccum/swerve_frame_final1.png" class="rounded-lg shadow-lg">
         </div>
         <div class="md:w-3/5">
           <h3 class="text-xl font-semibold mb-2 text-accent">Completed Frame Assembly</h3>
           <p>
             The final frame integrates all modules with optimized stiffness and minimal weight. 
-            Design supports future upgrades and ensures protection of electronics during collisions or high-load maneuvers.
+            Design supports future upgrades and ensures protection of electronics during collisions or high-load maneuvers. More detail will be added once the vaccum modules and electrical support modules are finished and installed. For now, the image on the left displays the finished chassis itself.
           </p>
         </div>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6">
-        <img src="images/swerve_frame_final2.png" class="rounded-lg shadow-lg">
-        <img src="images/swerve_frame_final3.png" class="rounded-lg shadow-lg">
+        <img src="images/vaccum/swerve_frame_final2.png" class="rounded-lg shadow-lg">
+        <img src="images/vaccum/swerve_frame_final3.png" class="rounded-lg shadow-lg">
       </div>
     </div>
   </section>
@@ -114,7 +113,7 @@
         <div class="md:w-3/5">
           <h3 class="text-xl font-semibold mb-2 text-primary">Electronics</h3>
           <p>
-            Designed modular power distribution and control electronics in KiCad, including motor drivers, sensors, and microcontrollers. 
+            Designed modular and control electronics in KiCad, including motor drivers, sensors, and microcontrollers. 
             Wiring layout supports easy upgrades and ensures reliability for high-speed omnidirectional motion.
           </p>
         </div>

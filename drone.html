@@ -89,7 +89,7 @@
           <p>
             Conducted aerodynamic stability analysis in XFLR5, tuning washout, sweep, and dihedral to achieve strong modal behavior (short-period ζ = 0.372, phugoid ζ = 0.231). 
             Evaluated lateral dynamics, balancing roll subsidence, spiral divergence, and Dutch roll tradeoffs. 
-            Used ANSYS for comparative drag studies and structural validation. Structural optimization using LW-PLA reduced overall mass by 48%, while PETG reinforcement reduced ESC thermal warping by 78%. 
+            Used ANSYS for comparative drag studies(using Spalart-Allmaras due to the laminar-turbulent transition regime of the drone between Re = 10^5 and 10^6) and structural validation. Structural optimization using LW-PLA reduced overall mass by 48%, while PETG reinforcement reduced ESC thermal warping by 78%. 
             A rudimentary ESP32-based flight controller using IMU angular-rate feedback provides attitude stabilization and a platform for future autonomy work.
           </p>
         </div>
