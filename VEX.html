@@ -3,201 +3,288 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VEX Robotics</title>
+  <title>VEX Robotics - Ryan Wong</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
+          fontFamily: {
+            'display': ['Syne', 'sans-serif'],
+            'body': ['Inter', 'sans-serif'],
+          },
           colors: {
-            primary: '#3B2E7D',
-            secondary: '#FF6B6B',
-            neutralLight: '#F8F8F8',
-            neutralDark: '#2B2B2B',
-            accent: '#4ADE80',
+            primary: '#0F172A',      // Deep navy
+            accent: '#EF4444',       // Red
+            secondary: '#FCA5A5',    // Light red
+            muted: '#94A3B8',        // Muted slate
+            light: '#F1F5F9',        // Near white
+            success: '#10B981',      // Emerald
+          },
+          backgroundImage: {
+            'gradient-hero': 'linear-gradient(135deg, #7F1D1D 0%, #DC2626 100%)',
+            'gradient-accent': 'linear-gradient(135deg, #EF4444 0%, #FCA5A5 100%)',
           }
         }
       }
     }
   </script>
+  <style>
+    * {
+      scroll-behavior: smooth;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Syne', sans-serif;
+      letter-spacing: -0.02em;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .animate-fade-in-up {
+      animation: fadeInUp 0.6s ease-out;
+    }
+  </style>
 </head>
 
-<body class="bg-neutralLight text-neutralDark font-sans text-2xl">
+<body class="bg-light text-primary font-body">
 
-<header class="bg-white shadow p-6">
-  <div class="flex justify-between items-center">
-    <h1 class="text-3xl font-bold text-primary">VEX Robotics</h1>
-    <a href="index.html"
-       class="bg-secondary text-neutralLight px-6 py-3 rounded-lg font-semibold
-              hover:bg-accent hover:scale-105 transition transform shadow-md">
-      ← Home
-    </a>
+<!-- Header / Navigation -->
+<header class="sticky top-0 z-50 bg-light/95 backdrop-blur-sm border-b border-gray-200">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="index.html" class="font-display font-bold text-2xl text-primary">Home</a>
   </div>
 </header>
 
-<main class="max-w-7xl mx-auto px-6 py-12 space-y-20">
+<!-- Hero Section -->
+<section class="relative overflow-hidden bg-gradient-hero py-20 md:py-28">
+  <div class="absolute inset-0 opacity-20">
+    <div class="absolute top-10 right-10 w-72 h-72 bg-accent rounded-full blur-3xl"></div>
+    <div class="absolute bottom-10 left-10 w-72 h-72 bg-secondary rounded-full blur-3xl"></div>
+  </div>
+  
+  <div class="relative max-w-6xl mx-auto px-6 text-center">
+    <div class="animate-fade-in-up">
+      <p class="text-secondary font-medium text-sm md:text-base mb-3 tracking-widest uppercase">Featured Project</p>
+      <h1 class="font-display text-4xl md:text-6xl font-bold text-light mb-4 leading-tight">
+        VEX Robotics
+      </h1>
+      <p class="text-light/80 text-lg md:text-xl max-w-3xl mx-auto">
+        Three competitive seasons as Captain and Coach, leading teams to design and build high-performance robots for competition.
+      </p>
+    </div>
+  </div>
+</section>
 
+<!-- Main Content -->
+<main class="max-w-5xl mx-auto px-6 py-16 space-y-20">
 
-  <!-- SECTION 1: PUSH BACK -->
-  <section class="py-12 bg-neutralLight border-b-4 border-neutralDark rounded-lg shadow-md">
-    <h2 class="text-3xl font-semibold text-primary text-center mb-10">
-      Push Back (2025–2026) — Coach
-    </h2>
+  <!-- Push Back Season -->
+  <section>
+    <div class="mb-12">
+      <p class="text-accent font-medium text-sm uppercase tracking-widest mb-2">2025–2026</p>
+      <h2 class="font-display text-4xl font-bold text-primary mb-4">Push Back — Coach</h2>
+      <div class="h-1 w-20 bg-gradient-accent rounded-full"></div>
+    </div>
 
-    <!-- Robot Prototype -->
-    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-primary">
-      <div class="md:flex md:items-top md:gap-16">
-        <div class="md:w-2/5">
-          <img src="images/vex/pb_prototype.png" class="rounded-lg shadow-lg">
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+        <div class="h-80 md:h-auto overflow-hidden bg-gray-100">
+          <img src="images/vex/pb_prototype.png" alt="Push Back Robot" class="w-full h-full object-cover">
         </div>
-        <div class="md:w-3/5">
-          <h3 class="text-xl font-semibold mb-2 text-primary">Robot Prototype</h3>
-          <p>
-            Built primarily over the summer after finishing the International Baccalaureate, this prototype focused heavily on weight minimization and efficient motor allocation. The unusual roller layout enabled ball output from five separate ports while using only 22W of motor power for scoring, allowing 66W to be dedicated to the drivetrain for maximum speed and torque performance. This was my final major build contribution before transitioning fully from captain to coach.
+        <div class="p-8 md:p-10 flex flex-col justify-center">
+          <h3 class="font-display text-2xl font-bold text-primary mb-4">Robot Prototype</h3>
+          <p class="text-muted text-lg leading-relaxed mb-4">
+            Built over the summer after the IB, this prototype focused heavily on <span class="font-semibold text-primary">weight minimization</span> and efficient motor allocation. The unusual roller layout enabled ball output from five separate ports while using only 22W of motor power for scoring, allowing 66W to be dedicated to the drivetrain.
+          </p>
+          <p class="text-muted text-lg leading-relaxed">
+            This was my final major build contribution before transitioning fully from captain to coach role.
           </p>
         </div>
       </div>
     </div>
 
-    <!-- Notebooking -->
-    <div class="bg-neutralLight p-6 rounded-lg shadow-md border-l-4 border-secondary">
-      <h3 class="text-xl font-semibold mb-2 text-secondary">Notebooks, Design Reviews & Mentorship</h3>
-      <p>
-        Led documentation and team organization across a roughly 280 page engineering notebook covering topics such as ANSYS simulations, path optimization using Bezier splines, pressure leakage calculations for live match strategy, and more. I designed the overall structure, maintained budget tracking and Gantt charts, and handled much of the administrative workload. The full notebook is not shared publicly to avoid leaking team methods and competitive strategies.
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg hover:shadow-xl transition-shadow mt-8 p-8 md:p-10">
+      <h3 class="font-display text-2xl font-bold text-primary mb-4">Notebooks, Design Reviews & Mentorship</h3>
+      <p class="text-muted text-lg leading-relaxed">
+        Led documentation and team organization across a roughly <span class="font-semibold text-primary">280 page engineering notebook</span> covering ANSYS simulations, path optimization using Bezier splines, pressure leakage calculations for live match strategy, and more. I designed the overall structure, maintained budget tracking and Gantt charts, and handled administrative workload. The full notebook is not shared publicly to avoid leaking team methods and competitive strategies.
       </p>
     </div>
   </section>
 
+  <!-- High Stakes Season -->
+  <section>
+    <div class="mb-12">
+      <p class="text-accent font-medium text-sm uppercase tracking-widest mb-2">2024–2025</p>
+      <h2 class="font-display text-4xl font-bold text-primary mb-4">High Stakes — Captain</h2>
+      <div class="h-1 w-20 bg-gradient-accent rounded-full"></div>
+    </div>
 
-  <!-- SECTION 2: HIGH STAKES -->
-  <section class="py-12 bg-neutralLight border-b-4 border-neutralDark rounded-lg shadow-md">
-    <h2 class="text-3xl font-semibold text-primary text-center mb-10">
-      High Stakes (2024–2025) — Captain
-    </h2>
-
-    <!-- Robot V1 -->
-    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-primary">
-      <div class="md:flex md:items-top md:gap-16">
-        <div class="md:w-2/5">
-          <img src="images/vex/hs_v1.png" class="rounded-lg shadow-lg">
+    <!-- V1 -->
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+        <div class="h-80 md:h-auto overflow-hidden bg-gray-100">
+          <img src="images/vex/hs_v1.png" alt="High Stakes V1" class="w-full h-full object-cover">
         </div>
-        <div class="md:w-3/5">
-          <h3 class="text-xl font-semibold mb-2 text-primary">Robot V1 - Prototype</h3>
-          <p>
-            Learning from the previous season, we upgraded to a six motor drivetrain instead of four, increased gearbox RPM from 200 to 600, and reduced wheel size. This more than doubled our speed while increasing torque by roughly 1.7 times. We also focused heavily on improving structural efficiency to save weight. The robot was ultimately left unfinished due to team restructuring and the need to support two new teams.
+        <div class="p-8 md:p-10 flex flex-col justify-center">
+          <h3 class="font-display text-2xl font-bold text-primary mb-4">Robot V1 — Prototype</h3>
+          <p class="text-muted text-lg leading-relaxed">
+            Learning from the previous season, we upgraded to a <span class="font-semibold text-primary">six motor drivetrain</span> instead of four, increased gearbox RPM from 200 to 600, and reduced wheel size. This more than doubled speed while increasing torque by roughly 1.7 times. We focused heavily on improving structural efficiency to save weight. The robot was ultimately left unfinished due to team restructuring.
           </p>
         </div>
       </div>
     </div>
 
-    <!-- Robot V2 -->
-    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-secondary">
-      <div class="md:flex md:items-top md:gap-16 md:flex-row-reverse">
-        <div class="md:w-2/5">
-          <img src="images/vex/hs_v2.png" class="rounded-lg shadow-lg">
+    <!-- V2 -->
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+        <div class="h-80 md:h-auto overflow-hidden bg-gray-100 order-2 md:order-1">
+          <img src="images/vex/hs_v2.png" alt="High Stakes V2" class="w-full h-full object-cover">
         </div>
-        <div class="md:w-3/5">
-          <h3 class="text-xl font-semibold mb-2 text-secondary">Robot V2 - Hong Kong Tech Open</h3>
-          <p>
-            After completing team restructuring, we pivoted strategy to align more closely with emerging game metas. This robot was one of the first designs our team was genuinely satisfied with in terms of performance. We also ran static FEA in Fusion 360 for the first time due to extensive use of polycarbonate in the structure. This robot won the Design Award at Hong Kong Finals and qualified us for VEX Worlds.
+        <div class="p-8 md:p-10 flex flex-col justify-center order-1 md:order-2">
+          <h3 class="font-display text-2xl font-bold text-primary mb-4">Robot V2 — Hong Kong Tech Open</h3>
+          <p class="text-muted text-lg leading-relaxed mb-4">
+            After team restructuring, we pivoted strategy to align with emerging game metas. This was one of the first designs we were genuinely satisfied with in terms of performance. We also ran <span class="font-semibold text-primary">static FEA in Fusion 360</span> for the first time due to extensive polycarbonate use.
+          </p>
+          <div class="inline-block bg-success/10 border border-success/30 px-4 py-2 rounded-lg mt-2">
+            <p class="text-success font-semibold">🏆 Design Award at Hong Kong Finals</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- V3 -->
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+        <div class="h-80 md:h-auto overflow-hidden bg-gray-100">
+          <img src="images/vex/hs_v3.png" alt="High Stakes V3" class="w-full h-full object-cover">
+        </div>
+        <div class="p-8 md:p-10 flex flex-col justify-center">
+          <h3 class="font-display text-2xl font-bold text-primary mb-4">Robot V3 — VEX Worlds</h3>
+          <p class="text-muted text-lg leading-relaxed">
+            A full redesign addressing major weaknesses from the previous robot. We tested extensively, including pneumatic leakage checks and friction optimization on intake rollers. Additional FEA was conducted, and many aluminium components were replaced with <span class="font-semibold text-primary">laser cut Delrin or polycarbonate</span> to reduce weight. The final robot weighed roughly 62% of our previous Worlds robot while achieving significantly higher reliability.
           </p>
         </div>
       </div>
     </div>
 
-    <!-- Robot V3 -->
-    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-secondary">
-      <div class="md:flex md:items-top md:gap-16">
-        <div class="md:w-2/5">
-          <img src="images/vex/hs_v3.png" class="rounded-lg shadow-lg">
-        </div>
-        <div class="md:w-3/5">
-          <h3 class="text-xl font-semibold mb-2 text-primary">Robot V3 - VEX Worlds</h3>
-          <p>
-            A full redesign addressing major weaknesses in the previous robot. We tested extensively, including pneumatic leakage checks and friction optimization on intake rollers. More FEA was conducted, and many aluminium components were replaced with laser cut Delrin or polycarbonate to reduce weight. The final robot weighed roughly 62 percent of our previous Worlds robot while achieving significantly higher reliability.
-          </p>
-        </div>
+    <!-- Team Photos -->
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg p-8 md:p-10">
+      <h3 class="font-display text-2xl font-bold text-primary mb-6">Season Highlights</h3>
+      <p class="text-muted text-lg mb-6">School events, Hong Kong Tech Open, and VEX Worlds</p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <img src="images/vex/hs_team1.png" alt="Team 1" class="rounded-lg shadow-md h-48 object-cover w-full hover:shadow-lg transition-shadow">
+        <img src="images/vex/hs_team2.png" alt="Team 2" class="rounded-lg shadow-md h-48 object-cover w-full hover:shadow-lg transition-shadow">
+        <img src="images/vex/hs_team3.png" alt="Team 3" class="rounded-lg shadow-md h-48 object-cover w-full hover:shadow-lg transition-shadow">
+        <img src="images/vex/hs_team4.png" alt="Team 4" class="rounded-lg shadow-md h-48 object-cover w-full hover:shadow-lg transition-shadow">
       </div>
-    </div>
-
-
-    <!-- Photos -->
-    <p class="text-center text-neutralDark mb-4">
-      Season highlights with the team, including events at school, Hong Kong Tech Open, and VEX Worlds.
-    </p>
-
-    <div class="grid grid-cols-1 sm:grid-cols-4 gap-6">
-      <img src="images/vex/hs_team1.png" class="rounded-lg shadow-lg">
-      <img src="images/vex/hs_team2.png" class="rounded-lg shadow-lg">
-      <img src="images/vex/hs_team3.png" class="rounded-lg shadow-lg">
-      <img src="images/vex/hs_team4.png" class="rounded-lg shadow-lg">
     </div>
   </section>
 
-  <!-- SECTION 3: Over Under -->
-  <section class="py-12 bg-neutralLight border-b-4 border-neutralDark rounded-lg shadow-md">
-    <h2 class="text-3xl font-semibold text-primary text-center mb-10">
-      Over Under (2023–2024) — Captain
-    </h2>
+  <!-- Over Under Season -->
+  <section>
+    <div class="mb-12">
+      <p class="text-accent font-medium text-sm uppercase tracking-widest mb-2">2023–2024</p>
+      <h2 class="font-display text-4xl font-bold text-primary mb-4">Over Under — Captain</h2>
+      <div class="h-1 w-20 bg-gradient-accent rounded-full"></div>
+    </div>
 
-    <!-- Robot V1 -->
-    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-primary">
-      <div class="md:flex md:items-top md:gap-16 md:flex-row-reverse">
-        <div class="md:w-2/5">
-          <img src="images/vex/ou_v1.png" class="rounded-lg shadow-lg">
+    <!-- V1 -->
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+        <div class="h-80 md:h-auto overflow-hidden bg-gray-100 order-2 md:order-1">
+          <img src="images/vex/ou_v1.png" alt="Over Under V1" class="w-full h-full object-cover">
         </div>
-        <div class="md:w-3/5">
-          <h3 class="text-xl font-semibold mb-2 text-primary">Robot V1 - First Robot</h3>
-          <p>
-            Our first robot and our first experience with CAD. The design was intentionally built as flat as possible to crawl under the goal and descore. It featured two wide side panels and an extremely powerful central catapult, powerful enough to crack the ratchet gear twice. While the overall robot was not particularly competitive, it functioned and served as a critical learning platform for the team.
+        <div class="p-8 md:p-10 flex flex-col justify-center order-1 md:order-2">
+          <h3 class="font-display text-2xl font-bold text-primary mb-4">Robot V1 — First Robot</h3>
+          <p class="text-muted text-lg leading-relaxed">
+            Our first robot and our first experience with CAD. The design was intentionally built <span class="font-semibold text-primary">as flat as possible</span> to crawl under the goal and descore. It featured two wide side panels and an extremely powerful central catapult, powerful enough to crack the ratchet gear twice. While not competitive, it functioned as a critical learning platform for the team.
           </p>
         </div>
       </div>
     </div>
 
-    <!-- Robot V2 -->
-    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-secondary">
-      <div class="md:flex md:items-top md:gap-16">
-        <div class="md:w-2/5">
-          <img src="images/vex/ou_v2.png" class="rounded-lg shadow-lg">
+    <!-- V2 -->
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+        <div class="h-80 md:h-auto overflow-hidden bg-gray-100">
+          <img src="images/vex/ou_v2.png" alt="Over Under V2" class="w-full h-full object-cover">
         </div>
-        <div class="md:w-3/5">
-          <h3 class="text-xl font-semibold mb-2 text-secondary">Robot V2 - Hong Kong Tech Open</h3>
-          <p>
-            This robot won us the Excellence Award at Hong Kong Finals and qualified us for VEX Worlds. Its heavy and robust construction allowed us to block shots effectively, shove defenders aside, and even tip opposing robots that attempted to climb the center pole. The upgraded catapult could launch two balls per second, which required two teammates to train specifically on synchronized loading.
+        <div class="p-8 md:p-10 flex flex-col justify-center">
+          <h3 class="font-display text-2xl font-bold text-primary mb-4">Robot V2 — Hong Kong Tech Open</h3>
+          <p class="text-muted text-lg leading-relaxed mb-4">
+            Its heavy and robust construction allowed us to block shots effectively and shove defenders aside. The upgraded catapult could launch <span class="font-semibold text-primary">two balls per second</span>, which required two teammates to train specifically on synchronized loading.
+          </p>
+          <div class="inline-block bg-success/10 border border-success/30 px-4 py-2 rounded-lg mt-2">
+            <p class="text-success font-semibold">🏆 Excellence Award at Hong Kong Finals</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- V3 -->
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+        <div class="h-80 md:h-auto overflow-hidden bg-gray-100 order-2 md:order-1">
+          <img src="images/vex/ou_v3.png" alt="Over Under V3" class="w-full h-full object-cover">
+        </div>
+        <div class="p-8 md:p-10 flex flex-col justify-center order-1 md:order-2">
+          <h3 class="font-display text-2xl font-bold text-primary mb-4">Robot V3 — VEX Worlds</h3>
+          <p class="text-muted text-lg leading-relaxed">
+            A defense-focused robot featuring a <span class="font-semibold text-primary">foldout shield</span> that nearly tripled the robot's height once deployed. Additional folding flaps were added to improve maneuverability. Unfortunately, axle sag over time combined with rough airline handling caused severe drivetrain issues. The robot required three consecutive nights of repairs until 4am to remain functional during Worlds.
           </p>
         </div>
       </div>
     </div>
 
-    <!-- Robot V3 -->
-    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-primary">
-      <div class="md:flex md:items-top md:gap-16 md:flex-row-reverse">
-        <div class="md:w-2/5">
-          <img src="images/vex/ou_v3.png" class="rounded-lg shadow-lg">
-        </div>
-        <div class="md:w-3/5">
-          <h3 class="text-xl font-semibold mb-2 text-primary">Robot V3 - VEX Worlds Robot</h3>
-          <p>
-            A defense focused robot featuring a foldout shield that nearly tripled the robot’s height once deployed. The image shown was before we refined the design into a triple fold mechanism. Additional folding flaps were added to improve maneuverability. Unfortunately, axle sag over time(we did not know about aluminium creep properties) combined with rough airline handling caused severe drivetrain issues. The robot required three consecutive nights of repairs until 4am just to remain functional during Worlds(which is why I look a bit gaunt in the Worlds photos).
-          </p>
-        </div>
+    <!-- Team Photos -->
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg p-8 md:p-10">
+      <h3 class="font-display text-2xl font-bold text-primary mb-6">Season Highlights</h3>
+      <p class="text-muted text-lg mb-6">School events, Hong Kong Tech Open, and VEX Worlds</p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <img src="images/vex/ou_team1.png" alt="Team 1" class="rounded-lg shadow-md h-48 object-cover w-full hover:shadow-lg transition-shadow">
+        <img src="images/vex/ou_team2.png" alt="Team 2" class="rounded-lg shadow-md h-48 object-cover w-full hover:shadow-lg transition-shadow">
+        <img src="images/vex/ou_team3.png" alt="Team 3" class="rounded-lg shadow-md h-48 object-cover w-full hover:shadow-lg transition-shadow">
+        <img src="images/vex/ou_team4.png" alt="Team 4" class="rounded-lg shadow-md h-48 object-cover w-full hover:shadow-lg transition-shadow">
       </div>
     </div>
+  </section>
 
-    <!-- Photos -->
-    <p class="text-center text-neutralDark mb-4">
-      Season highlights with the team, including events at school, Hong Kong Tech Open, and VEX Worlds.
-    </p>
-
-    <div class="grid grid-cols-1 sm:grid-cols-4 gap-6">
-      <img src="images/vex/ou_team1.png" class="rounded-lg shadow-lg">
-      <img src="images/vex/ou_team2.png" class="rounded-lg shadow-lg">
-      <img src="images/vex/ou_team3.png" class="rounded-lg shadow-lg">
-      <img src="images/vex/ou_team4.png" class="rounded-lg shadow-lg">
+  <!-- Achievements Summary -->
+  <section class="bg-gradient-hero text-light rounded-2xl p-12 md:p-16">
+    <h2 class="font-display text-3xl font-bold mb-12 text-center">Three Seasons of Excellence</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="text-center">
+        <p class="text-4xl font-bold text-accent mb-2">3</p>
+        <p class="text-light/80 text-lg">Competition Seasons</p>
+      </div>
+      <div class="text-center">
+        <p class="text-4xl font-bold text-accent mb-2">9</p>
+        <p class="text-light/80 text-lg">Robots Built & Iterated</p>
+      </div>
+      <div class="text-center">
+        <p class="text-4xl font-bold text-accent mb-2">2×</p>
+        <p class="text-light/80 text-lg">VEX Worlds Qualified</p>
+      </div>
     </div>
   </section>
 
 </main>
+
+<!-- Footer -->
+<footer class="bg-primary text-center py-8 px-6 border-t border-light/10 text-light/60 mt-20">
+  <p class="font-light">© 2026 Ryan Kai Sum Wong. All rights reserved.</p>
+</footer>
+
 </body>
 </html>

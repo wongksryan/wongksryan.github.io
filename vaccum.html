@@ -5,158 +5,229 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Swerve Drive Robotics Platform</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
+          fontFamily: {
+            'display': ['Syne', 'sans-serif'],
+            'body': ['Inter', 'sans-serif'],
+          },
           colors: {
-            primary: '#3B2E7D',
-            secondary: '#FF6B6B',
-            neutralLight: '#F8F8F8',
-            neutralDark: '#2B2B2B',
-            accent: '#4ADE80',
+            primary: '#0F172A',      // Deep navy
+            accent: '#10B981',       // Green
+            secondary: '#6EE7B7',    // Light green
+            muted: '#94A3B8',        // Muted slate
+            light: '#F1F5F9',        // Near white
+            success: '#10B981',      // Emerald
+          },
+          backgroundImage: {
+            'gradient-hero': 'linear-gradient(135deg, #064E3B 0%, #059669 100%)',
+            'gradient-accent': 'linear-gradient(135deg, #10B981 0%, #6EE7B7 100%)',
           }
         }
       }
     }
   </script>
+  <style>
+    * {
+      scroll-behavior: smooth;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Syne', sans-serif;
+      letter-spacing: -0.02em;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .animate-fade-in-up {
+      animation: fadeInUp 0.6s ease-out;
+    }
+  </style>
 </head>
 
-<body class="bg-neutralLight text-neutralDark font-sans text-xl">
+<body class="bg-light text-primary font-body">
 
-<header class="bg-white shadow p-6">
-  <div class="flex justify-between items-center">
-    <h1 class="text-3xl font-bold text-primary">Swerve Drive Robotics Platform</h1>
-    <a href="index.html"
-       class="bg-secondary text-neutralLight px-6 py-3 rounded-lg font-semibold
-              hover:bg-accent hover:scale-105 transition transform shadow-md">
-      ← Home
-    </a>
+<!-- Header / Navigation -->
+<header class="sticky top-0 z-50 bg-light/95 backdrop-blur-sm border-b border-gray-200">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="index.html" class="font-display font-bold text-2xl text-primary">Home</a>
   </div>
-  <p class="text-lg text-center max-w-5xl mx-auto text-neutralDark">
-    Modular swerve-drive robotics platform demonstrating mechanical design, structural analysis, and integrated hardware/software systems.
-  </p>
 </header>
 
-<main class="max-w-7xl mx-auto px-6 py-12 space-y-20">
+<!-- Hero Section -->
+<section class="relative overflow-hidden bg-gradient-hero py-20 md:py-28">
+  <div class="absolute inset-0 opacity-20">
+    <div class="absolute top-10 right-10 w-72 h-72 bg-accent rounded-full blur-3xl"></div>
+    <div class="absolute bottom-10 left-10 w-72 h-72 bg-secondary rounded-full blur-3xl"></div>
+  </div>
+  
+  <div class="relative max-w-6xl mx-auto px-6 text-center">
+    <div class="animate-fade-in-up">
+      <p class="text-secondary font-medium text-sm md:text-base mb-3 tracking-widest uppercase">Featured Project</p>
+      <h1 class="font-display text-4xl md:text-6xl font-bold text-light mb-4 leading-tight">
+        Swerve Drive Robotics Platform
+      </h1>
+      <p class="text-light/80 text-lg md:text-xl max-w-3xl mx-auto">
+        A modular autonomous platform demonstrating mechanical design, structural analysis, and integrated hardware/software systems for omnidirectional motion.
+      </p>
+    </div>
+  </div>
+</section>
 
-  <!-- SECTION 1: CAD -->
-  <section class="py-7 bg-neutralLight border-b-4 border-neutralDark rounded-lg shadow-md">
-    <h2 class="text-3xl font-semibold text-primary text-center mb-10">
-      CAD & Structural Analysis
-    </h2>
+<!-- Main Content -->
+<main class="max-w-5xl mx-auto px-6 py-16 space-y-20">
+
+  <!-- CAD & Structural Analysis Section -->
+  <section>
+    <div class="mb-12">
+      <p class="text-accent font-medium text-sm uppercase tracking-widest mb-2">Design Phase</p>
+      <h2 class="font-display text-4xl font-bold text-primary mb-4">CAD & Structural Analysis</h2>
+      <div class="h-1 w-20 bg-gradient-accent rounded-full"></div>
+    </div>
 
     <!-- Frame CAD -->
-    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-primary">
-      <div class="md:flex md:items-top md:gap-16">
-        <div class="md:w-2/5">
-          <img src="images/vaccum/swerve_frame_cad.png" class="rounded-lg shadow-lg">
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+        <div class="h-80 md:h-auto overflow-hidden bg-gray-100">
+          <img src="images/vaccum/swerve_frame_cad.png" alt="Frame CAD" class="w-full h-full object-cover">
         </div>
-        <div class="md:w-3/5">
-          <h3 class="text-xl font-semibold mb-2 text-primary">Frame CAD Design</h3>
-          <p>
-            The swerve module frame was designed in SolidWorks around a custom drivetrain architecture incorporating bevel gears, spur gears, and belt drives to achieve a 5.07 m/s no-load speed. 
-            The design prioritizes stiffness, modularity, and compact packaging while preserving accessibility for future mechanical upgrades. Component placement was intentionally arranged to maintain structural integrity and to reserve dedicated space for electronics placement, cable routing, and system-level integration, simplifying assembly, maintenance, and future expansion.
-        </div>
-      </div>
-    </div>
-
-    <!-- FEA & ANSYS -->
-    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-secondary">
-      <div class="md:flex md:items-top md:gap-16 md:flex-row-reverse">
-        <div class="md:w-2/5">
-          <img src="images/vaccum/swerve_analysis.png" class="rounded-lg shadow-lg">
-        </div>
-        <div class="md:w-3/5">
-          <h3 class="text-xl font-semibold mb-2 text-secondary">Finite Element Analysis (FEA)</h3>
-          <p>
-            FEA was used to validate load paths and ensure the frame could withstand operational forces while protecting onboard electronics under worst-case conditions.  
-            SolidWorks Simulation was used during early iterations to quickly identify major structural issues and CAD-level design flaws. Once the geometry was refined, higher-accuracy simulations were performed in ANSYS, including static and transient structural analyses, to evaluate precise stress distributions, inertia effects, and impact loading during potential crash scenarios. These results directly informed geometry changes and reinforced confidence in the final structural design.
+        <div class="p-8 md:p-10 flex flex-col justify-center">
+          <h3 class="font-display text-2xl font-bold text-primary mb-4">Frame CAD Design</h3>
+          <p class="text-muted text-lg leading-relaxed">
+            The swerve module frame was designed in SolidWorks around a custom drivetrain architecture incorporating bevel gears, spur gears, and belt drives to achieve a <span class="font-semibold text-primary">5.07 m/s</span> no-load speed. The design prioritizes stiffness, modularity, and compact packaging while preserving accessibility for future mechanical upgrades.
           </p>
         </div>
       </div>
     </div>
 
-    <!-- Finished Assembly -->
-    <div class="bg-neutralLight p-6 rounded-lg shadow-md border-l-4 border-accent">
-      <div class="md:flex md:items-top md:gap-16">
-        <div class="md:w-2/5">
-          <img src="images/vaccum/swerve_frame_final1.png" class="rounded-lg shadow-lg">
+    <!-- FEA Analysis -->
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+        <div class="h-80 md:h-auto overflow-hidden bg-gray-100 order-2 md:order-1">
+          <img src="images/vaccum/swerve_analysis.png" alt="FEA Analysis" class="w-full h-full object-cover">
         </div>
-        <div class="md:w-3/5">
-          <h3 class="text-xl font-semibold mb-2 text-accent">Completed Frame Assembly</h3>
-          <p>
-            The final frame integrates all modules with optimized stiffness and minimal weight. 
-            Design supports future upgrades and ensures protection of electronics during collisions or high-load maneuvers. More detail will be added once the vaccum modules and electrical support modules are finished and installed. For now, the image on the left displays the finished chassis itself.
+        <div class="p-8 md:p-10 flex flex-col justify-center order-1 md:order-2">
+          <h3 class="font-display text-2xl font-bold text-primary mb-4">Finite Element Analysis</h3>
+          <p class="text-muted text-lg leading-relaxed">
+            FEA was used to validate load paths and ensure the frame could withstand operational forces. SolidWorks Simulation identified major structural issues early, while higher-accuracy simulations in <span class="font-semibold text-primary">ANSYS</span> evaluated precise stress distributions and impact loading during crash scenarios.
           </p>
         </div>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6">
-        <img src="images/vaccum/swerve_frame_final2.png" class="rounded-lg shadow-lg">
-        <img src="images/vaccum/swerve_frame_final3.png" class="rounded-lg shadow-lg">
+    </div>
+
+    <!-- Final Assembly -->
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+      <div class="p-8 md:p-10">
+        <h3 class="font-display text-2xl font-bold text-primary mb-4">Completed Frame Assembly</h3>
+        <p class="text-muted text-lg leading-relaxed mb-8">
+          The final frame integrates all modules with optimized stiffness and minimal weight. Design supports future upgrades and ensures protection of electronics during collisions or high-load maneuvers.
+        </p>
+        
+        <div class="grid grid-cols-1 gap-6">
+          <img src="images/vaccum/swerve_frame_final1.png" alt="Assembly view 1" class="rounded-lg shadow-md h-96 object-cover w-full">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <img src="images/vaccum/swerve_frame_final2.png" alt="Assembly view 2" class="rounded-lg shadow-md h-64 object-cover w-full">
+            <img src="images/vaccum/swerve_frame_final3.png" alt="Assembly view 3" class="rounded-lg shadow-md h-64 object-cover w-full">
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- SECTION 2: Hardware & Software -->
-  <section class="py-12 bg-neutralLight border-b-4 border-neutralDark rounded-lg shadow-md">
-    <h2 class="text-3xl font-semibold text-primary text-center mb-10">
-      Hardware & Software
-    </h2>
+  <!-- Hardware & Software Section -->
+  <section>
+    <div class="mb-12">
+      <p class="text-accent font-medium text-sm uppercase tracking-widest mb-2">Implementation</p>
+      <h2 class="font-display text-4xl font-bold text-primary mb-4">Hardware & Software Integration</h2>
+      <div class="h-1 w-20 bg-gradient-accent rounded-full"></div>
+    </div>
 
     <!-- Electronics -->
-    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-primary">
-      <div class="md:flex md:items-top md:gap-16">
-        <div class="md:w-2/5">
-          <img src="images/swerve_electronics.jpg" class="rounded-lg shadow-lg">
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+        <div class="h-80 md:h-auto overflow-hidden bg-gray-100">
+          <img src="images/swerve_electronics.jpg" alt="Electronics" class="w-full h-full object-cover">
         </div>
-        <div class="md:w-3/5">
-          <h3 class="text-xl font-semibold mb-2 text-primary">Electronics</h3>
-          <p>
-            Designed modular and control electronics in KiCad, including motor drivers, sensors, and microcontrollers. 
-            Wiring layout supports easy upgrades and ensures reliability for high-speed omnidirectional motion.
+        <div class="p-8 md:p-10 flex flex-col justify-center">
+          <h3 class="font-display text-2xl font-bold text-primary mb-4">Electronics & Control</h3>
+          <p class="text-muted text-lg leading-relaxed">
+            Designed modular control electronics in <span class="font-semibold text-primary">KiCad</span>, including motor drivers, sensors, and microcontrollers. Wiring layout supports easy upgrades and ensures reliability for high-speed omnidirectional motion.
           </p>
         </div>
       </div>
     </div>
 
     <!-- ROS2 -->
-    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-secondary">
-      <div class="md:flex md:items-top md:gap-16 md:flex-row-reverse">
-        <div class="md:w-2/5">
-          <img src="images/swerve_ros2.jpg" class="rounded-lg shadow-lg">
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+        <div class="h-80 md:h-auto overflow-hidden bg-gray-100 order-2 md:order-1">
+          <img src="images/swerve_ros2.jpg" alt="ROS2 Architecture" class="w-full h-full object-cover">
         </div>
-        <div class="md:w-3/5">
-          <h3 class="text-xl font-semibold mb-2 text-secondary">ROS2 Control Architecture</h3>
-          <p>
-            Implemented high-level control on a Raspberry Pi using ROS2, handling motion profiling, swerve kinematics, and communication between subsystems. 
-            Low-level motor control ran on ESP32 to achieve stable omnidirectional motion at speeds up to 5 m/s while maintaining modularity.
+        <div class="p-8 md:p-10 flex flex-col justify-center order-1 md:order-2">
+          <h3 class="font-display text-2xl font-bold text-primary mb-4">ROS2 Control Architecture</h3>
+          <p class="text-muted text-lg leading-relaxed">
+            Implemented high-level control on a <span class="font-semibold text-primary">Raspberry Pi</span> using ROS2, handling motion profiling, swerve kinematics, and subsystem communication. Low-level motor control ran on <span class="font-semibold text-primary">ESP32</span> to achieve stable omnidirectional motion at speeds up to 5 m/s.
           </p>
         </div>
       </div>
     </div>
 
-    <!-- Final System -->
-    <div class="bg-neutralLight p-6 rounded-lg shadow-md border-l-4 border-accent">
-      <div class="md:flex md:items-top md:gap-16">
-        <div class="md:w-2/5">
-          <img src="images/swerve_final1.jpg" class="rounded-lg shadow-lg">
+    <!-- Integrated System -->
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+      <div class="p-8 md:p-10">
+        <h3 class="font-display text-2xl font-bold text-primary mb-4">Integrated System</h3>
+        <p class="text-muted text-lg leading-relaxed mb-8">
+          Final assembly combines all electronics, ROS2 software, and frame modules into a compact, high-speed, and robust swerve-drive platform ready for testing and further development.
+        </p>
+        
+        <div class="grid grid-cols-1 gap-6">
+          <img src="images/swerve_final1.jpg" alt="Final system 1" class="rounded-lg shadow-md h-96 object-cover w-full">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <img src="images/swerve_final2.jpg" alt="Final system 2" class="rounded-lg shadow-md h-64 object-cover w-full">
+            <img src="images/swerve_final3.jpg" alt="Final system 3" class="rounded-lg shadow-md h-64 object-cover w-full">
+          </div>
         </div>
-        <div class="md:w-3/5">
-          <h3 class="text-xl font-semibold mb-2 text-accent">Integrated System</h3>
-          <p>
-            Final assembly includes all electronics, ROS2 software, and frame modules, producing a compact, high-speed, and robust swerve-drive platform ready for testing and further development.
-          </p>
-        </div>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6">
-        <img src="images/swerve_final2.jpg" class="rounded-lg shadow-lg">
-        <img src="images/swerve_final3.jpg" class="rounded-lg shadow-lg">
       </div>
     </div>
+  </section>
 
+  <!-- Key Metrics -->
+  <section class="bg-gradient-hero text-light rounded-2xl p-12 md:p-16">
+    <h2 class="font-display text-3xl font-bold mb-12 text-center">Key Specifications</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="text-center">
+        <p class="text-4xl font-bold text-accent mb-2">5.07 m/s</p>
+        <p class="text-light/80">Max Speed (No-Load)</p>
+      </div>
+      <div class="text-center">
+        <p class="text-4xl font-bold text-accent mb-2">ROS2</p>
+        <p class="text-light/80">Control Framework</p>
+      </div>
+      <div class="text-center">
+        <p class="text-4xl font-bold text-accent mb-2">Modular</p>
+        <p class="text-light/80">Architecture Design</p>
+      </div>
+    </div>
   </section>
 
 </main>
+
+<!-- Footer -->
+<footer class="bg-primary text-center py-8 px-6 border-t border-light/10 text-light/60 mt-20">
+  <p class="font-light">© 2026 Ryan Kai Sum Wong. All rights reserved.</p>
+</footer>
+
 </body>
 </html>

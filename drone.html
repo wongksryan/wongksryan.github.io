@@ -5,198 +5,270 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Drone Projects</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
+          fontFamily: {
+            'display': ['Syne', 'sans-serif'],
+            'body': ['Inter', 'sans-serif'],
+          },
           colors: {
-            primary: '#3B2E7D',
-            secondary: '#FF6B6B',
-            neutralLight: '#F8F8F8',
-            neutralDark: '#2B2B2B',
-            accent: '#4ADE80',
+            primary: '#0F172A',
+            accent: '#3B82F6',       // Blue
+            secondary: '#60A5FA',    // Light blue
+            muted: '#94A3B8',
+            light: '#F1F5F9',
+            success: '#10B981',
+          },
+          backgroundImage: {
+            'gradient-hero': 'linear-gradient(135deg, #0F172A 0%, #1E293B 100%)',
+            'gradient-accent': 'linear-gradient(135deg, #3B82F6 0%, #60A5FA 100%)',
           }
         }
       }
     }
   </script>
+  <style>
+    * {
+      scroll-behavior: smooth;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Syne', sans-serif;
+      letter-spacing: -0.02em;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .animate-fade-in-up {
+      animation: fadeInUp 0.6s ease-out;
+    }
+  </style>
 </head>
-<body class="bg-neutralLight text-neutralDark font-sans text-xl">
 
-<header class="bg-white shadow p-6">
-  <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
-    <h1 class="text-3xl font-bold text-primary text-center md:text-left mb-2 md:mb-0">
-      Drone Projects
-    </h1>
-    <nav class="text-center md:text-right">
-     <a href="index.html"
-     class="inline-block bg-secondary text-neutralLight px-6 py-3 rounded-lg font-semibold
-            hover:bg-accent hover:scale-105 transition transform shadow-md">
-    ← Home
-     </a>
-    </nav>
+<body class="bg-light text-primary font-body">
+
+<!-- Header / Navigation -->
+<header class="sticky top-0 z-50 bg-light/95 backdrop-blur-sm border-b border-gray-200">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="index.html" class="font-display font-bold text-2xl text-primary">Home</a>
   </div>
-  <p class="text-lg text-center max-w-2xl mx-auto text-neutralDark">
-    Showcasing UAV platforms I designed and developed, including flying-wing and fixed-wing systems,
-    optimized for stability, efficiency, and onboard autonomy experiments.
-  </p>
 </header>
 
-<main class="max-w-7xl mx-auto px-6 py-12 space-y-20">
+<!-- Hero Section -->
+<section class="relative overflow-hidden bg-gradient-hero py-20 md:py-28">
+  <div class="absolute inset-0 opacity-20">
+    <div class="absolute top-10 right-10 w-72 h-72 bg-accent rounded-full blur-3xl"></div>
+    <div class="absolute bottom-10 left-10 w-72 h-72 bg-secondary rounded-full blur-3xl"></div>
+  </div>
+  
+  <div class="relative max-w-6xl mx-auto px-6 text-center">
+    <div class="animate-fade-in-up">
+      <p class="text-secondary font-medium text-sm md:text-base mb-3 tracking-widest uppercase">Featured Project</p>
+      <h1 class="font-display text-4xl md:text-6xl font-bold text-light mb-4 leading-tight">
+        UAV Platforms & Drone Projects
+      </h1>
+      <p class="text-light/80 text-lg md:text-xl max-w-3xl mx-auto">
+        Designing and developing fixed-wing and flying-wing UAVs optimized for stability, efficiency, and autonomous research.
+      </p>
+    </div>
+  </div>
+</section>
 
-  <!-- Section 1 -->
-  <section class="py-12 bg-neutralLight border-b-4 border-neutralDark rounded-lg shadow-md">
-    <h2 class="text-3xl font-semibold mb-8 text-center text-primary border-b-2 border-neutralDark pb-4">
-      Flying Wing (Dec 2025 – Present)
-    </h2>
+<!-- Main Content -->
+<main class="max-w-5xl mx-auto px-6 py-16 space-y-20">
 
-    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-primary">
-      <div class="md:flex md:items-top md:gap-10 md:flex-row-reverse">
-        <div class="md:w-3/5">
-          <h3 class="text-xl font-semibold mb-2 text-primary">Preliminary Design</h3>
-          <p>
-            Fully 3D-printed 1 kg flying-wing UAV with geometry optimized for efficient cruising at 30+ km/h. 
-            Performed a set of batch Reynolds number sweeps in XFLR5 for various airfoils used in flying wings. A range of Re = 2,000–3,000,000 was used. This is admittedly a much wider range than neccessary for RC aircraft; which usually fly in the regime of Re = 50,000-500,000, but I wanted to have as much data as possible just in case. A setup involving a MH60 root airfoil with PW51 wingtips was chosen based on resulting data. 
-            3° of wingtip washout was incorporated to reduce tip stall risk and improve dynamic stability across the 90 cm wingspan. 
-            aAV-tail configuration was adopted to reduce parasitic drag while maintaining control authority.
-          </p>
+  <!-- Flying Wing Section -->
+  <section>
+    <div class="mb-12">
+      <p class="text-accent font-medium text-sm uppercase tracking-widest mb-2">Current Project</p>
+      <h2 class="font-display text-4xl font-bold text-primary mb-4">Flying Wing (Dec 2025 – Present)</h2>
+      <div class="h-1 w-20 bg-gradient-accent rounded-full"></div>
+    </div>
+
+    <!-- Preliminary Design -->
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+        <div class="h-80 md:h-auto overflow-hidden bg-gray-100">
+          <img src="images/drone/flyingwing_prelim.png" alt="Flying Wing Preliminary" class="w-full h-full object-cover">
         </div>
-        <div class="md:w-2/5 mt-6 md:mt-0">
-          <img class="h-96 w-96" src="images/drone/flyingwing_prelim.png" alt="Flying Wing Preliminary Design" class="rounded-lg shadow-lg">
+        <div class="p-8 md:p-10 flex flex-col justify-center">
+          <h3 class="font-display text-2xl font-bold text-primary mb-4">Preliminary Design</h3>
+          <p class="text-muted text-lg leading-relaxed">
+            Fully 3D-printed <span class="font-semibold text-primary">1 kg flying-wing UAV</span> with geometry optimized for efficient cruising at 30+ km/h. Performed batch Reynolds number sweeps in <span class="font-semibold text-primary">XFLR5</span> for various flying wing airfoils across Re = 2,000–3,000,000.
+          </p>
+          <p class="text-muted text-lg leading-relaxed mt-4">
+            A MH60 root airfoil with PW51 wingtips was chosen based on resulting data, with <span class="font-semibold text-primary">3° of wingtip washout</span> incorporated to reduce tip stall risk and improve dynamic stability across the 90 cm wingspan.
+          </p>
         </div>
       </div>
     </div>
 
-    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-secondary">
-      <div class="md:flex md:items-top md:gap-10">
-        <div class="md:w-3/5">
-          <h3 class="text-xl font-semibold mb-2 text-secondary">CAD</h3>
-          <p>
-            Designed the full airframe and internal layout in SolidWorks, including modular avionics mounting, serviceable wiring routes, a ram-air duct for ESC cooling and structural features for future payload expansion. 
-            For structural purposes and ease of assembly, I used 20mm diameter carbon fibre tubes to string all the 3d-printed sections together. In terms of material properties, LW-PLA was used for most structural components with targeted PETG reinforcement near thermally sensitive areas such as the ESC mount. Additional print trials were done to figure out filament shrinkage as to keep all fits and tolerances appropriate. For example, a press fit was needed for the ducted fan mounting as to keep it mounted as securely as possible.
-          </p>
+    <!-- CAD -->
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+        <div class="h-80 md:h-auto overflow-hidden bg-gray-100 order-2 md:order-1">
+          <img src="images/drone/flyingwing_cad.png" alt="Flying Wing CAD" class="w-full h-full object-cover">
         </div>
-        <div class="md:w-2/5 mt-6 md:mt-0">
-          <img src="images/drone/flyingwing_cad.png" alt="Flying Wing CAD" class="rounded-lg shadow-lg">
+        <div class="p-8 md:p-10 flex flex-col justify-center order-1 md:order-2">
+          <h3 class="font-display text-2xl font-bold text-primary mb-4">CAD & Manufacturing</h3>
+          <p class="text-muted text-lg leading-relaxed">
+            Designed the full airframe and internal layout in <span class="font-semibold text-primary">SolidWorks</span>, including modular avionics mounting, serviceable wiring routes, and ram-air duct for ESC cooling. <span class="font-semibold text-primary">LW-PLA</span> was used for structural components with targeted <span class="font-semibold text-primary">PETG reinforcement</span> near thermally sensitive areas.
+          </p>
+          <p class="text-muted text-lg leading-relaxed mt-4">
+            20mm diameter carbon fiber tubes string all 3D-printed sections together for structural integrity. Extensive print trials characterized filament shrinkage to maintain tight tolerances.
+          </p>
         </div>
       </div>
     </div>
 
-    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-accent">
-      <div class="md:flex md:items-top md:gap-10 md:flex-row-reverse">
-        <div class="md:w-3/5">
-          <h3 class="text-xl font-semibold mb-2 text-accent">Analysis</h3>
-          <p>
-            Conducted aerodynamic stability analysis in XFLR5, tuning washout, sweep, and dihedral to achieve strong modal behavior (short-period ζ = 0.372, phugoid ζ = 0.231). 
-            Evaluated lateral dynamics, balancing roll subsidence, spiral divergence, and Dutch roll tradeoffs. 
-            Used ANSYS for comparative drag studies(using Spalart-Allmaras due to the laminar-turbulent transition regime of the drone between Re = 10^5 and 10^6) and structural validation. Structural optimization using LW-PLA reduced overall mass by 48%, while PETG reinforcement reduced ESC thermal warping by 78%. 
-            A rudimentary ESP32-based flight controller using IMU angular-rate feedback provides attitude stabilization and a platform for future autonomy work.
-          </p>
+    <!-- Analysis -->
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+        <div class="h-80 md:h-auto overflow-hidden bg-gray-100">
+          <img src="images/drone/flyingwing_analysis.jpg" alt="Flying Wing Analysis" class="w-full h-full object-cover">
         </div>
-        <div class="md:w-2/5 mt-6 md:mt-0">
-          <img src="images/drone/flyingwing_analysis.jpg" alt="Flying Wing Analysis" class="rounded-lg shadow-lg">
+        <div class="p-8 md:p-10 flex flex-col justify-center">
+          <h3 class="font-display text-2xl font-bold text-primary mb-4">Aerodynamic & Structural Analysis</h3>
+          <p class="text-muted text-lg leading-relaxed">
+            Conducted aerodynamic stability analysis in XFLR5, tuning washout, sweep, and dihedral to achieve strong modal behavior (short-period ζ = 0.372, phugoid ζ = 0.231). <span class="font-semibold text-primary">ANSYS</span> was used for drag studies and structural validation.
+          </p>
+          <p class="text-muted text-lg leading-relaxed mt-4">
+            Structural optimization using LW-PLA reduced overall mass by <span class="font-semibold text-primary">48%</span>, while PETG reinforcement reduced ESC thermal warping by <span class="font-semibold text-primary">78%</span>.
+          </p>
         </div>
       </div>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-      <img src="images/drone/flyingwing_final1.png" alt="Flying Wing Final 1" class="rounded-lg shadow-lg">
-      <img src="images/drone/flyingwing_final2.png" alt="Flying Wing Final 2" class="rounded-lg shadow-lg">
-      <img src="images/drone/flyingwing_final3.png" alt="Flying Wing Final 3" class="rounded-lg shadow-lg">
+    <!-- Gallery -->
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg p-8 md:p-10">
+      <h3 class="font-display text-2xl font-bold text-primary mb-8">Final Assembly</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <img src="images/drone/flyingwing_final1.png" alt="Final 1" class="rounded-lg shadow-md h-64 object-cover w-full hover:shadow-lg transition-shadow">
+        <img src="images/drone/flyingwing_final2.png" alt="Final 2" class="rounded-lg shadow-md h-64 object-cover w-full hover:shadow-lg transition-shadow">
+        <img src="images/drone/flyingwing_final3.png" alt="Final 3" class="rounded-lg shadow-md h-64 object-cover w-full hover:shadow-lg transition-shadow">
+      </div>
     </div>
   </section>
 
-  <!-- Section 2 -->
-  <section class="py-12 bg-neutralLight border-b-4 border-neutralDark rounded-lg shadow-md">
-    <h2 class="text-3xl font-semibold mb-8 text-center text-primary border-b-2 border-neutralDark pb-4">
-      Fixed-Wing Long-Range Platform V2 (Oct 2024 – Jan 2025)
-    </h2>
+  <!-- Fixed-Wing V2 Section -->
+  <section>
+    <div class="mb-12">
+      <p class="text-accent font-medium text-sm uppercase tracking-widest mb-2">2024–2025</p>
+      <h2 class="font-display text-4xl font-bold text-primary mb-4">Fixed-Wing Long-Range V2</h2>
+      <div class="h-1 w-20 bg-gradient-accent rounded-full"></div>
+    </div>
 
-    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-primary">
-      <div class="md:flex md:items-top md:gap-10 md:flex-row-reverse">
-        <div class="md:w-3/5">
-          <h3 class="text-xl font-semibold mb-2 text-primary">Preliminary Design</h3>
-          <p>
-            Designed as a long-endurance fixed-wing V-tail platform using conventional RC design principles. 
-            Without access to CFD tools at the time, I built a small laminar-flow wind tunnel to collect comparative airfoil data and generate basic polars for lift versus angle of attack and airspeed. 
-            Simplified analysis assumed laminar, inviscid flow to make the problem tractable given my experience at the time.
-          </p>
+    <!-- Preliminary Design -->
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+        <div class="h-80 md:h-auto overflow-hidden bg-gray-100">
+          <img src="images/drone/v2_windtunnel.png" alt="Wind Tunnel Testing" class="w-full h-full object-cover">
         </div>
-        <div class="md:w-2/5 mt-6 md:mt-0">
-          <img src="images/drone/v2_windtunnel.png" alt="Fixed-Wing V2 Preliminary Design using Wind Tunnel" class="rounded-lg shadow-lg">
+        <div class="p-8 md:p-10 flex flex-col justify-center">
+          <h3 class="font-display text-2xl font-bold text-primary mb-4">Preliminary Design</h3>
+          <p class="text-muted text-lg leading-relaxed">
+            Designed as a <span class="font-semibold text-primary">long-endurance fixed-wing V-tail platform</span> using conventional RC design principles. Without access to CFD tools at the time, I built a small <span class="font-semibold text-primary">laminar-flow wind tunnel</span> to collect comparative airfoil data and generate basic polars for lift versus angle of attack.
+          </p>
         </div>
       </div>
     </div>
 
-    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-secondary">
-      <div class="md:flex md:items-top md:gap-10 md:flex-row-reverse">
-        <div class="md:w-3/5">
-          <h3 class="text-xl font-semibold mb-2 text-secondary">CAD</h3>
-          <p>
-            Modeled structural layout and avionics integration in CAD, focusing on manufacturability using laser-cut balsa ribs, carbon-fiber spars, and selective 3D-printed PLA and LW-PLA components. 
-            LW-PLA was used sparingly due to cost and time constraints. The platform included onboard FPV, low-resolution infrared sensing for urban heat mapping experiments, and distributed flight-control logic using Arduino Uno/Nano devices in a simple master–slave architecture.
-          </p>
+    <!-- CAD -->
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+        <div class="h-80 md:h-auto overflow-hidden bg-gray-100 order-2 md:order-1">
+          <img src="images/drone/v2_cad.png" alt="V2 CAD" class="w-full h-full object-cover">
         </div>
-        <div class="md:w-2/5 mt-6 md:mt-0">
-          <img src="images/drone/v2_cad.png" alt="Fixed-Wing V2 CAD" class="rounded-lg shadow-lg">
+        <div class="p-8 md:p-10 flex flex-col justify-center order-1 md:order-2">
+          <h3 class="font-display text-2xl font-bold text-primary mb-4">CAD & Build</h3>
+          <p class="text-muted text-lg leading-relaxed">
+            Modeled structural layout and avionics integration using laser-cut balsa ribs, carbon-fiber spars, and selective 3D-printed components. Platform included <span class="font-semibold text-primary">onboard FPV</span>, low-resolution infrared sensing for urban heat mapping, and distributed flight-control logic using Arduino devices in a master–slave architecture.
+          </p>
         </div>
       </div>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
-      <div class="flex flex-col gap-4">
-        <img src="images/drone/v2_final1.png" alt="Fixed-Wing V2 Final 1" class="rounded-lg shadow-lg">
-        <img src="images/drone/v2_final4.png" alt="Fixed-Wing V2 Final 4" class="rounded-lg shadow-lg">
+    <!-- Gallery -->
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg p-8 md:p-10">
+      <h3 class="font-display text-2xl font-bold text-primary mb-8">Final Build</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="flex flex-col gap-6">
+          <img src="images/drone/v2_final1.png" alt="V2 Final 1" class="rounded-lg shadow-md h-64 object-cover w-full hover:shadow-lg transition-shadow">
+          <img src="images/drone/v2_final4.png" alt="V2 Final 4" class="rounded-lg shadow-md h-64 object-cover w-full hover:shadow-lg transition-shadow">
+        </div>
+        <img src="images/drone/v2_final2.png" alt="V2 Final 2" class="rounded-lg shadow-md h-auto object-cover w-full hover:shadow-lg transition-shadow">
+        <img src="images/drone/v2_final3.png" alt="V2 Final 3" class="rounded-lg shadow-md h-auto object-cover w-full hover:shadow-lg transition-shadow">
       </div>
-      <img src="images/drone/v2_final2.png" alt="Fixed-Wing V2 Final 2" class="rounded-lg shadow-lg">
-      <img src="images/drone/v2_final3.png" alt="Fixed-Wing V2 Final 3" class="rounded-lg shadow-lg">
     </div>
   </section>
 
-  <!-- Section 3 -->
-  <section class="py-12 bg-neutralLight border-b-4 border-neutralDark rounded-lg shadow-md">
-    <h2 class="text-3xl font-semibold mb-8 text-center text-primary border-b-2 border-neutralDark pb-4">
-      Fixed-Wing Long-Range Platform V1 (Nov 2023 – Feb 2024)
-    </h2>
+  <!-- Fixed-Wing V1 Section -->
+  <section>
+    <div class="mb-12">
+      <p class="text-accent font-medium text-sm uppercase tracking-widest mb-2">2023–2024</p>
+      <h2 class="font-display text-4xl font-bold text-primary mb-4">Fixed-Wing Long-Range V1</h2>
+      <div class="h-1 w-20 bg-gradient-accent rounded-full"></div>
+    </div>
 
-    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-primary">
-      <div class="md:flex md:items-top md:gap-10 md:flex-row-reverse">
-        <div class="md:w-3/5">
-          <h3 class="text-xl font-semibold mb-2 text-primary">Preliminary Design</h3>
-          <p>
-            First complete fixed-wing UAV built entirely from balsa wood before I had access to a 3D printer. 
-            Designed using standard RC aircraft heuristics for stability, control authority, and endurance. 
-            The aircraft was configured for FPV flight using a lightweight analog camera system and long-range radio transmission.
-          </p>
+    <!-- Preliminary Design -->
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+        <div class="h-80 md:h-auto overflow-hidden bg-gray-100">
+          <img src="images/drone/v1_prelim.png" alt="V1 Preliminary" class="w-full h-full object-cover">
         </div>
-        <div class="md:w-2/5 mt-6 md:mt-0">
-          <img src="images/drone/v1_prelim.png" alt="Fixed-Wing V1 Preliminary Design" class="rounded-lg shadow-lg">
+        <div class="p-8 md:p-10 flex flex-col justify-center">
+          <h3 class="font-display text-2xl font-bold text-primary mb-4">Preliminary Design</h3>
+          <p class="text-muted text-lg leading-relaxed">
+            First complete fixed-wing UAV built entirely from <span class="font-semibold text-primary">balsa wood</span> before access to a 3D printer. Designed using standard RC aircraft heuristics for stability, control authority, and endurance. Configured for <span class="font-semibold text-primary">FPV flight</span> using a lightweight analog camera system and long-range radio transmission.
+          </p>
         </div>
       </div>
     </div>
 
-    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-secondary">
-      <div class="md:flex md:items-top md:gap-10 md:flex-row-reverse">
-        <div class="md:w-3/5">
-          <h3 class="text-xl font-semibold mb-2 text-secondary">CAD</h3>
-          <p>
-            Basic CAD used primarily for visualization and dimensional planning rather than full structural optimization. 
-            Electronics were minimal and focused on achieving reliable video transmission. A 512 MHz radio system was selected due to operation in dense urban environments (Hong Kong), where signal obstruction and multipath interference were significant constraints.
-          </p>
+    <!-- CAD -->
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+        <div class="h-80 md:h-auto overflow-hidden bg-gray-100 order-2 md:order-1">
+          <img src="images/drone/v1_cad.png" alt="V1 CAD" class="w-full h-full object-cover">
         </div>
-        <div class="md:w-2/5 mt-6 md:mt-0">
-          <img src="images/drone/v1_cad.png" alt="Fixed-Wing V1 CAD" class="rounded-lg shadow-lg">
+        <div class="p-8 md:p-10 flex flex-col justify-center order-1 md:order-2">
+          <h3 class="font-display text-2xl font-bold text-primary mb-4">CAD & Electronics</h3>
+          <p class="text-muted text-lg leading-relaxed">
+            Basic CAD used primarily for visualization and dimensional planning rather than full structural optimization. Electronics focused on achieving reliable video transmission. A <span class="font-semibold text-primary">512 MHz radio system</span> was selected due to operation in dense urban Hong Kong, where signal obstruction and multipath interference were significant constraints.
+          </p>
         </div>
       </div>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-      <img src="images/drone/v1_final1.png" alt="Fixed-Wing V1 Final 1" class="rounded-lg shadow-lg">
-      <img src="images/drone/v1_final2.png" alt="Fixed-Wing V1 Final 2" class="rounded-lg shadow-lg">
-      <img src="images/drone/v1_final3.png" alt="Fixed-Wing V1 Final 3" class="rounded-lg shadow-lg">
+    <!-- Gallery -->
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg p-8 md:p-10">
+      <h3 class="font-display text-2xl font-bold text-primary mb-8">Final Build</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <img src="images/drone/v1_final1.png" alt="V1 Final 1" class="rounded-lg shadow-md h-64 object-cover w-full hover:shadow-lg transition-shadow">
+        <img src="images/drone/v1_final2.png" alt="V1 Final 2" class="rounded-lg shadow-md h-64 object-cover w-full hover:shadow-lg transition-shadow">
+        <img src="images/drone/v1_final3.png" alt="V1 Final 3" class="rounded-lg shadow-md h-64 object-cover w-full hover:shadow-lg transition-shadow">
+      </div>
     </div>
   </section>
 
 </main>
+
+<!-- Footer -->
+<footer class="bg-primary text-center py-8 px-6 border-t border-light/10 text-light/60 mt-20">
+  <p class="font-light">© 2026 Ryan Kai Sum Wong. All rights reserved.</p>
+</footer>
+
 </body>
 </html>

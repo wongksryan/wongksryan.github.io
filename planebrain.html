@@ -5,137 +5,208 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PlaneBrain Avionics System</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
+          fontFamily: {
+            'display': ['Syne', 'sans-serif'],
+            'body': ['Inter', 'sans-serif'],
+          },
           colors: {
-            primary: '#3B2E7D',
-            secondary: '#FF6B6B',
-            neutralLight: '#F8F8F8',
-            neutralDark: '#2B2B2B',
-            accent: '#4ADE80',
+            primary: '#0F172A',
+            accent: '#F97316',       // Orange
+            secondary: '#FDBA74',    // Light orange
+            muted: '#94A3B8',
+            light: '#F1F5F9',
+            success: '#10B981',
+          },
+          backgroundImage: {
+            'gradient-hero': 'linear-gradient(135deg, #7C2D12 0%, #EA580C 100%)',
+            'gradient-accent': 'linear-gradient(135deg, #F97316 0%, #FDBA74 100%)',
           }
         }
       }
     }
   </script>
+  <style>
+    * {
+      scroll-behavior: smooth;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Syne', sans-serif;
+      letter-spacing: -0.02em;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .animate-fade-in-up {
+      animation: fadeInUp 0.6s ease-out;
+    }
+  </style>
 </head>
 
-<body class="bg-neutralLight text-neutralDark font-sans">
+<body class="bg-light text-primary font-body">
 
-<header class="bg-white shadow p-6">
-  <div class="flex justify-between items-center">
-    <h1 class="text-3xl font-bold text-primary">PlaneBrain Avionics System</h1>
-    <a href="index.html"
-       class="bg-secondary text-neutralLight px-6 py-3 rounded-lg font-semibold
-              hover:bg-accent hover:scale-105 transition transform shadow-md">
-      ← Home
-    </a>
+<!-- Header / Navigation -->
+<header class="sticky top-0 z-50 bg-light/95 backdrop-blur-sm border-b border-gray-200">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="index.html" class="font-display font-bold text-2xl text-primary">Home</a>
   </div>
-   <p class="text-lg text-center max-w-5xl mx-auto text-neutralDark">
-    A side project for ensuring fixed-wing aerodynamic stability that eventually evolved into an actual project.
-  </p>
 </header>
 
-<main class="max-w-7xl mx-auto px-6 py-12 space-y-20">
+<!-- Hero Section -->
+<section class="relative overflow-hidden bg-gradient-hero py-20 md:py-28">
+  <div class="absolute inset-0 opacity-20">
+    <div class="absolute top-10 right-10 w-72 h-72 bg-accent rounded-full blur-3xl"></div>
+    <div class="absolute bottom-10 left-10 w-72 h-72 bg-secondary rounded-full blur-3xl"></div>
+  </div>
+  
+  <div class="relative max-w-6xl mx-auto px-6 text-center">
+    <div class="animate-fade-in-up">
+      <p class="text-secondary font-medium text-sm md:text-base mb-3 tracking-widest uppercase">Featured Project</p>
+      <h1 class="font-display text-4xl md:text-6xl font-bold text-light mb-4 leading-tight">
+        PlaneBrain Avionics System
+      </h1>
+      <p class="text-light/80 text-lg md:text-xl max-w-3xl mx-auto">
+        A modular flight control platform for fixed-wing UAVs, integrating sensors, electronics, and autonomous algorithms for stability and autonomy.
+      </p>
+    </div>
+  </div>
+</section>
 
- 
-  <!-- SECTION 1: ELECTRONICS -->
-  <section class="py-7 bg-neutralLight border-b-4 border-neutralDark rounded-lg shadow-md">
-    <h2 class="text-3xl font-semibold text-primary text-center mb-10">
-      Electronics
-    </h2>
+<!-- Main Content -->
+<main class="max-w-5xl mx-auto px-6 py-16 space-y-20">
+
+  <!-- Electronics Section -->
+  <section>
+    <div class="mb-12">
+      <p class="text-accent font-medium text-sm uppercase tracking-widest mb-2">Hardware Development</p>
+      <h2 class="font-display text-4xl font-bold text-primary mb-4">Electronics & PCB Design</h2>
+      <div class="h-1 w-20 bg-gradient-accent rounded-full"></div>
+    </div>
 
     <!-- KiCad -->
-    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-primary">
-      <div class="md:flex md:items-center md:gap-16">
-        <div class="md:w-2/5">
-          <img src="images/planebrain/kicad.png" class="rounded-lg shadow-lg">
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+        <div class="h-80 md:h-auto overflow-hidden bg-gray-100">
+          <img src="images/planebrain/kicad.png" alt="KiCad Schematic" class="w-full h-full object-cover">
         </div>
-        <div class="md:w-3/5">
-          <h3 class="text-xl font-semibold mb-2 text-primary">Schematic & PCB Design (KiCad)</h3>
-          <p>
-            Designed the avionics system schematic and PCB layout in KiCad, focusing on signal integrity,
-            power regulation, sensor integration, and modular expandability.
+        <div class="p-8 md:p-10 flex flex-col justify-center">
+          <h3 class="font-display text-2xl font-bold text-primary mb-4">Schematic & PCB Design</h3>
+          <p class="text-muted text-lg leading-relaxed">
+            Designed the avionics system schematic and PCB layout in <span class="font-semibold text-primary">KiCad</span>, focusing on signal integrity, power regulation, sensor integration, and modular expandability. The design emphasizes clean power distribution, proper impedance matching, and minimized noise coupling.
           </p>
         </div>
       </div>
     </div>
 
     <!-- Assembly -->
-    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-secondary">
-      <div class="md:flex md:items-center md:gap-16 md:flex-row-reverse">
-        <div class="md:w-2/5">
-          <img src="images/planebrain/assembly.png" class="rounded-lg shadow-lg">
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+        <div class="h-80 md:h-auto overflow-hidden bg-gray-100 order-2 md:order-1">
+          <img src="images/planebrain/assembly.png" alt="Assembly & Testing" class="w-full h-full object-cover">
         </div>
-        <div class="md:w-3/5">
-          <h3 class="text-xl font-semibold mb-2 text-secondary">Assembly & Testing</h3>
-          <p>
-            Hand-assembled prototype boards and validated functionality through multimeter probing,
-            oscilloscope checks, and subsystem-level testing of sensors and communication buses.
+        <div class="p-8 md:p-10 flex flex-col justify-center order-1 md:order-2">
+          <h3 class="font-display text-2xl font-bold text-primary mb-4">Assembly & Testing</h3>
+          <p class="text-muted text-lg leading-relaxed">
+            Hand-assembled prototype boards and validated functionality through multimeter probing, oscilloscope checks, and subsystem-level testing of sensors and communication buses. Each component was characterized before full system integration.
           </p>
         </div>
       </div>
     </div>
 
-    <!-- Build -->
-    <div class="bg-neutralLight p-6 rounded-lg shadow-md border-l-4 border-accent">
-      <div class="md:flex md:items-center md:gap-16">
-        <div class="md:w-2/5">
-          <img src="images/planebrain/build.png" class="rounded-lg shadow-lg">
+    <!-- Physical Build -->
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+        <div class="h-80 md:h-auto overflow-hidden bg-gray-100">
+          <img src="images/planebrain/build.png" alt="Physical Build" class="w-full h-full object-cover">
         </div>
-        <div class="md:w-3/5">
-          <h3 class="text-xl font-semibold mb-2 text-accent">Physical Build</h3>
-          <p>
-            Integrated the avionics system into a compact housing, routing wiring for robustness
-            and ensuring vibration resistance suitable for airborne platforms.
+        <div class="p-8 md:p-10 flex flex-col justify-center">
+          <h3 class="font-display text-2xl font-bold text-primary mb-4">Physical Build & Integration</h3>
+          <p class="text-muted text-lg leading-relaxed">
+            Integrated the avionics system into a compact housing, routing wiring for robustness and ensuring vibration resistance suitable for airborne platforms. Thermal management was carefully considered for operation in hot climates.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-
-  <!-- SECTION 2: SOFTWARE -->
-  <section class="py-12 bg-neutralLight border-b-4 border-neutralDark rounded-lg shadow-md">
-    <h2 class="text-3xl font-semibold text-primary text-center mb-10">
-      Software
-    </h2>
+  <!-- Software Section -->
+  <section>
+    <div class="mb-12">
+      <p class="text-accent font-medium text-sm uppercase tracking-widest mb-2">Software Development</p>
+      <h2 class="font-display text-4xl font-bold text-primary mb-4">Control Algorithms & Flight Software</h2>
+      <div class="h-1 w-20 bg-gradient-accent rounded-full"></div>
+    </div>
 
     <!-- Attitude Hold -->
-    <div class="bg-neutralLight p-6 rounded-lg shadow-md mb-8 border-l-4 border-primary">
-      <div class="md:flex md:items-center md:gap-16">
-        <div class="md:w-2/5">
-          <img src="images/planebrain/attitude_hold.png" class="rounded-lg shadow-lg">
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+        <div class="h-80 md:h-auto overflow-hidden bg-gray-100">
+          <img src="images/planebrain/attitude_hold.png" alt="Attitude Hold" class="w-full h-full object-cover">
         </div>
-        <div class="md:w-3/5">
-          <h3 class="text-xl font-semibold mb-2 text-primary">Basic Attitude Hold Algorithm</h3>
-          <p>
-            Developed a stabilization algorithm for a flying-wing UAV to counter Dutch roll,
-            using IMU feedback and closed-loop control to improve directional and roll stability.
+        <div class="p-8 md:p-10 flex flex-col justify-center">
+          <h3 class="font-display text-2xl font-bold text-primary mb-4">Basic Attitude Hold Algorithm</h3>
+          <p class="text-muted text-lg leading-relaxed">
+            Developed a stabilization algorithm for a flying-wing UAV to counter Dutch roll, using <span class="font-semibold text-primary">IMU feedback</span> and closed-loop control to improve directional and roll stability. The algorithm prioritizes robustness over computational complexity.
           </p>
         </div>
       </div>
     </div>
 
     <!-- Flight Controller -->
-    <div class="bg-neutralLight p-6 rounded-lg shadow-md border-l-4 border-secondary">
-      <div class="md:flex md:items-center md:gap-16 md:flex-row-reverse">
-        <div class="md:w-2/5">
-          <img src="images/planebrain/flight_controller.png" class="rounded-lg shadow-lg">
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+        <div class="h-80 md:h-auto overflow-hidden bg-gray-100 order-2 md:order-1">
+          <img src="images/planebrain/flight_controller.png" alt="Flight Controller" class="w-full h-full object-cover">
         </div>
-        <div class="md:w-3/5">
-          <h3 class="text-xl font-semibold mb-2 text-secondary">In-Progress Flight Controller</h3>
-          <p>
-            Currently developing a full-featured flight control system including sensor fusion,
-            state estimation, control loops, and telemetry handling for autonomous operation.
+        <div class="p-8 md:p-10 flex flex-col justify-center order-1 md:order-2">
+          <h3 class="font-display text-2xl font-bold text-primary mb-4">In-Progress Flight Controller</h3>
+          <p class="text-muted text-lg leading-relaxed">
+            Currently developing a full-featured flight control system including <span class="font-semibold text-primary">sensor fusion</span>, state estimation, control loops, and telemetry handling for autonomous operation. The system is designed to be modular and extensible for future improvements.
           </p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Key Specifications -->
+  <section class="bg-gradient-hero text-light rounded-2xl p-12 md:p-16">
+    <h2 class="font-display text-3xl font-bold mb-12 text-center">System Overview</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="text-center">
+        <p class="text-3xl font-bold text-secondary mb-2">Modular</p>
+        <p class="text-light/80">Expandable Architecture</p>
+      </div>
+      <div class="text-center">
+        <p class="text-3xl font-bold text-secondary mb-2">IMU-Based</p>
+        <p class="text-light/80">Sensor Fusion</p>
+      </div>
+      <div class="text-center">
+        <p class="text-3xl font-bold text-secondary mb-2">Real-Time</p>
+        <p class="text-light/80">Control Loops</p>
+      </div>
+    </div>
+  </section>
+
 </main>
+
+<!-- Footer -->
+<footer class="bg-primary text-center py-8 px-6 border-t border-light/10 text-light/60 mt-20">
+  <p class="font-light">© 2026 Ryan Kai Sum Wong. All rights reserved.</p>
+</footer>
+
 </body>
 </html>
