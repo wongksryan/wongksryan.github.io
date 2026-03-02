@@ -112,7 +112,7 @@
       </div>
     </div>
 
-    <!-- CAD V1 -->
+    <!-- Hip CAD V1 -->
     <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
         <div class="h-80 md:h-auto overflow-hidden bg-gray-100 order-2 md:order-1">
@@ -127,7 +127,7 @@
       </div>
     </div>
 
-    <!-- Analysis -->
+    <!-- Part Analysis and Refinement -->
     <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
         <div class="h-80 md:h-auto overflow-hidden bg-gray-100">
@@ -142,7 +142,7 @@
       </div>
     </div>
 
-    <!-- CAD V2 -->
+    <!-- Hip CAD V2 -->
     <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
         <div class="h-80 md:h-auto overflow-hidden bg-gray-100 order-2 md:order-1">
@@ -152,6 +152,38 @@
           <h3 class="font-display text-2xl font-bold text-primary mb-4">CAD Version 2 (Optimized)</h3>
           <p class="text-muted text-lg leading-relaxed">
             Heavily refined design with significant optimization to mass, structural efficiency, and load paths. Geometry was redesigned around real manufacturing constraints, resulting in a configuration that is now fully machinable while maintaining functional and ergonomic requirements.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hip CAD V3 -->
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+        <div class="h-80 md:h-auto overflow-hidden bg-gray-100 order-2 md:order-1">
+          <img src="images/exo/cad_v3.png" alt="CAD V3" class="w-full h-full object-cover">
+        </div>
+        <div class="p-8 md:p-10 flex flex-col justify-center order-1 md:order-2">
+          <h3 class="font-display text-2xl font-bold text-primary mb-4">CAD Version 3 (Design for Manufacturing)</h3>
+          <p class="text-muted text-lg leading-relaxed">
+            Finalized design with significant optimization toward minimizing manufacturing costs and time.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Full CAD(Hip + Leg) -->
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+        <div class="h-80 md:h-auto overflow-hidden bg-gray-100 order-2 md:order-1">
+          <img src="images/exo/cad_full.png" alt="Full CAD" class="w-full h-full object-cover">
+        </div>
+        <div class="p-8 md:p-10 flex flex-col justify-center order-1 md:order-2">
+          <h3 class="font-display text-2xl font-bold text-primary mb-4">Full CAD Model</h3>
+          <p class="text-muted text-lg leading-relaxed">
+            Finalized full body soft exo design; Carbon fibre rods to minimize leg weight(as the leg sees mostly bending forces rather than high compression), whereas the hip was made of aluminium as the hip sees a wide variety of forces and stresses. This model was used for safety simulations on ANSYS and also for software, by creating a URDF for Gazebo simulations and USD for Isaacsim.
           </p>
         </div>
       </div>
@@ -176,6 +208,21 @@
           <h3 class="font-display text-2xl font-bold text-primary mb-4">CNC Machining</h3>
           <p class="text-muted text-lg leading-relaxed">
             Manufacturing planning underway; components are being designed around achievable tolerances and practical fixturing constraints for precision fabrication.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Waterjet -->
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+        <div class="h-80 md:h-auto overflow-hidden bg-gray-100">
+          <img src="images/exo/waterjet.png" alt="Waterjet Cutting" class="w-full h-full object-cover">
+        </div>
+        <div class="p-8 md:p-10 flex flex-col justify-center">
+          <h3 class="font-display text-2xl font-bold text-primary mb-4">Waterjet Cutting</h3>
+          <p class="text-muted text-lg leading-relaxed">
+           Alternate version of the CNC'd cycloidal gearbox to be cut via waterjet; cost analysis has yet to be finalized for a decision but all blueprints and drawings have been created.
           </p>
         </div>
       </div>

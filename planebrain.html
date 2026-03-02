@@ -16,8 +16,8 @@
           },
           colors: {
             primary: '#0F172A',
-            accent: '#F97316',       // Orange
-            secondary: '#FDBA74',    // Light orange
+            accent: '#F97316',
+            secondary: '#FDBA74',
             muted: '#94A3B8',
             light: '#F1F5F9',
             success: '#10B981',
@@ -31,48 +31,32 @@
     }
   </script>
   <style>
-    * {
-      scroll-behavior: smooth;
-    }
-    
+    * { scroll-behavior: smooth; }
     h1, h2, h3, h4, h5, h6 {
       font-family: 'Syne', sans-serif;
       letter-spacing: -0.02em;
     }
-    
     @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    
-    .animate-fade-in-up {
-      animation: fadeInUp 0.6s ease-out;
-    }
+    .animate-fade-in-up { animation: fadeInUp 0.6s ease-out; }
   </style>
 </head>
 
 <body class="bg-light text-primary font-body">
 
-<!-- Header / Navigation -->
 <header class="sticky top-0 z-50 bg-light/95 backdrop-blur-sm border-b border-gray-200">
   <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
     <a href="index.html" class="font-display font-bold text-2xl text-primary">Home</a>
   </div>
 </header>
 
-<!-- Hero Section -->
 <section class="relative overflow-hidden bg-gradient-hero py-20 md:py-28">
   <div class="absolute inset-0 opacity-20">
     <div class="absolute top-10 right-10 w-72 h-72 bg-accent rounded-full blur-3xl"></div>
     <div class="absolute bottom-10 left-10 w-72 h-72 bg-secondary rounded-full blur-3xl"></div>
   </div>
-  
   <div class="relative max-w-6xl mx-auto px-6 text-center">
     <div class="animate-fade-in-up">
       <p class="text-secondary font-medium text-sm md:text-base mb-3 tracking-widest uppercase">Featured Project</p>
@@ -86,10 +70,8 @@
   </div>
 </section>
 
-<!-- Main Content -->
 <main class="max-w-5xl mx-auto px-6 py-16 space-y-20">
 
-  <!-- Electronics Section -->
   <section>
     <div class="mb-12">
       <p class="text-accent font-medium text-sm uppercase tracking-widest mb-2">Hardware Development</p>
@@ -97,53 +79,52 @@
       <div class="h-1 w-20 bg-gradient-accent rounded-full"></div>
     </div>
 
-    <!-- KiCad -->
+    <!-- Physical Build first — leads with the fact it flew -->
     <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
-        <div class="h-80 md:h-auto overflow-hidden bg-gray-100">
-          <img src="images/planebrain/kicad.png" alt="KiCad Schematic" class="w-full h-full object-cover">
-        </div>
-        <div class="p-8 md:p-10 flex flex-col justify-center">
-          <h3 class="font-display text-2xl font-bold text-primary mb-4">Schematic & PCB Design</h3>
-          <p class="text-muted text-lg leading-relaxed">
-            Designed the avionics system schematic and PCB layout in <span class="font-semibold text-primary">KiCad</span>, focusing on signal integrity, power regulation, sensor integration, and modular expandability. The design emphasizes clean power distribution, proper impedance matching, and minimized noise coupling.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Assembly -->
-    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
-        <div class="h-80 md:h-auto overflow-hidden bg-gray-100 order-2 md:order-1">
-          <img src="images/planebrain/assembly.png" alt="Assembly & Testing" class="w-full h-full object-cover">
-        </div>
-        <div class="p-8 md:p-10 flex flex-col justify-center order-1 md:order-2">
-          <h3 class="font-display text-2xl font-bold text-primary mb-4">Assembly & Testing</h3>
-          <p class="text-muted text-lg leading-relaxed">
-            Hand-assembled prototype boards and validated functionality through multimeter probing, oscilloscope checks, and subsystem-level testing of sensors and communication buses. Each component was characterized before full system integration.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Physical Build -->
-    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
         <div class="h-80 md:h-auto overflow-hidden bg-gray-100">
           <img src="images/planebrain/build.png" alt="Physical Build" class="w-full h-full object-cover">
         </div>
         <div class="p-8 md:p-10 flex flex-col justify-center">
-          <h3 class="font-display text-2xl font-bold text-primary mb-4">Physical Build & Integration</h3>
+          <h3 class="font-display text-2xl font-bold text-primary mb-4">Physical Build & First Flight</h3>
           <p class="text-muted text-lg leading-relaxed">
-            Integrated the avionics system into a compact housing, routing wiring for robustness and ensuring vibration resistance suitable for airborne platforms. Thermal management was carefully considered for operation in hot climates.
+            Built and integrated the avionics dev board stack onto a flying-wing airframe, routing wiring for robustness and ensuring vibration resistance suitable for airborne operation. The system successfully flew, validating both the hardware and control software end-to-end. Thermal management was considered throughout for operation in hot climates, such as that of Hong Kong.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Schematic — KiCad done, now moving to Altium for the PCB -->
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+        <div class="h-80 md:h-auto overflow-hidden bg-gray-100 order-2 md:order-1">
+          <img src="images/planebrain/kicad.png" alt="KiCad Schematic" class="w-full h-full object-cover">
+        </div>
+        <div class="p-8 md:p-10 flex flex-col justify-center order-1 md:order-2">
+          <h3 class="font-display text-2xl font-bold text-primary mb-4">Schematic & PCB Design</h3>
+          <p class="text-muted text-lg leading-relaxed">
+            Designed the avionics schematics in <span class="font-semibold text-primary">KiCad</span>, covering power regulation, sensor integration, and communication buses. Currently migrating to <span class="font-semibold text-primary">Altium Designer</span> to produce a custom PCB, consolidating the dev board stack into a single integrated design with a focus on signal integrity, clean power distribution, and minimized noise coupling.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Assembly & Testing -->
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+        <div class="h-80 md:h-auto overflow-hidden bg-gray-100">
+          <img src="images/planebrain/assembly.png" alt="Assembly & Testing" class="w-full h-full object-cover">
+        </div>
+        <div class="p-8 md:p-10 flex flex-col justify-center">
+          <h3 class="font-display text-2xl font-bold text-primary mb-4">Assembly & Testing</h3>
+          <p class="text-muted text-lg leading-relaxed">
+            Hand-assembled prototype boards and validated functionality through multimeter probing, oscilloscope checks, and subsystem-level testing of sensors and communication buses. Each component was characterized before full system integration and flight.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Software Section -->
   <section>
     <div class="mb-12">
       <p class="text-accent font-medium text-sm uppercase tracking-widest mb-2">Software Development</p>
@@ -151,7 +132,6 @@
       <div class="h-1 w-20 bg-gradient-accent rounded-full"></div>
     </div>
 
-    <!-- Attitude Hold -->
     <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
         <div class="h-80 md:h-auto overflow-hidden bg-gray-100">
@@ -160,13 +140,12 @@
         <div class="p-8 md:p-10 flex flex-col justify-center">
           <h3 class="font-display text-2xl font-bold text-primary mb-4">Basic Attitude Hold Algorithm</h3>
           <p class="text-muted text-lg leading-relaxed">
-            Developed a stabilization algorithm for a flying-wing UAV to counter Dutch roll, using <span class="font-semibold text-primary">IMU feedback</span> and closed-loop control to improve directional and roll stability. The algorithm prioritizes robustness over computational complexity.
+            Developed a stabilization algorithm for the flying-wing UAV to counter Dutch roll, using <span class="font-semibold text-primary">IMU feedback</span> and closed-loop control to improve directional and roll stability. The algorithm prioritizes robustness over computational complexity, and was validated in flight.
           </p>
         </div>
       </div>
     </div>
 
-    <!-- Flight Controller -->
     <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
         <div class="h-80 md:h-auto overflow-hidden bg-gray-100 order-2 md:order-1">
@@ -182,7 +161,6 @@
     </div>
   </section>
 
-  <!-- Key Specifications -->
   <section class="bg-gradient-hero text-light rounded-2xl p-12 md:p-16">
     <h2 class="font-display text-3xl font-bold mb-12 text-center">System Overview</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -203,7 +181,6 @@
 
 </main>
 
-<!-- Footer -->
 <footer class="bg-primary text-center py-8 px-6 border-t border-light/10 text-light/60 mt-20">
   <p class="font-light">© 2026 Ryan Kai Sum Wong. All rights reserved.</p>
 </footer>
