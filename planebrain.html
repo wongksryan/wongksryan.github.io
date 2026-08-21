@@ -274,6 +274,43 @@
     .sub:nth-child(even) .sub-text{ order:2; }
     .stats-grid{ grid-template-columns:1fr; gap:28px; }
   }
+
+  /* ---- lightbox ---- */
+  .gallery img, .sub-media img{ cursor:zoom-in; }
+
+  .lightbox{
+    position:fixed;
+    inset:0;
+    background:rgba(18,21,26,0.94);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:5vw;
+    z-index:200;
+    cursor:zoom-out;
+  }
+  .lightbox.active{ display:flex; }
+  .lightbox img{
+    max-width:100%;
+    max-height:100%;
+    object-fit:contain;
+    border:1px solid rgba(255,255,255,0.15);
+  }
+  .lightbox-close{
+    position:fixed;
+    top:24px;
+    right:32px;
+    font-family:var(--mono);
+    font-size:13px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--white);
+    background:transparent;
+    border:1px solid rgba(255,255,255,0.3);
+    padding:8px 14px;
+    cursor:pointer;
+  }
+  .lightbox-close:hover{ background:rgba(255,255,255,0.1); }
 </style>
 </head>
 <body>
@@ -316,9 +353,9 @@
         <div class="stats">
           <div class="stats-label">System overview</div>
           <div class="stats-grid">
-            <div class="stat"><p class="num">50Hz</p><p class="label">Servo control frequency(downsampled bc servos are analog)</p></div>
-            <div class="stat"><p class="num">IMU/Magnemometer</p><p class="label">Madgwick filter sensor fusion</p></div>
-            <div class="stat"><p class="num">1kHz</p><p class="label">ESP32 realtime control loop</p></div>
+            <div class="stat"><p class="num">Modular</p><p class="label">Expandable architecture</p></div>
+            <div class="stat"><p class="num">IMU-Based</p><p class="label">Sensor fusion</p></div>
+            <div class="stat"><p class="num">Real-Time</p><p class="label">Control loops</p></div>
           </div>
         </div>
 
@@ -376,5 +413,26 @@
     &copy; 2026 Ryan Kai Sum Wong. All rights reserved.
   </footer>
 
+
+  <script>
+    const lightbox = document.createElement("div");
+    lightbox.className = "lightbox";
+    lightbox.innerHTML = "<button class=\"lightbox-close\">Close &times;</button><img alt=\"\">";
+    document.body.appendChild(lightbox);
+    const lightboxImg = lightbox.querySelector("img");
+
+    document.querySelectorAll(".gallery img, .sub-media img").forEach(img => {
+      img.addEventListener("click", () => {
+        lightboxImg.src = img.currentSrc || img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add("active");
+      });
+    });
+
+    lightbox.addEventListener("click", () => lightbox.classList.remove("active"));
+    document.addEventListener("keydown", (e) => {
+      if(e.key === "Escape") lightbox.classList.remove("active");
+    });
+  </script>
 </body>
 </html>

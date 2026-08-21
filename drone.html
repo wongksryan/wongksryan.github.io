@@ -267,6 +267,43 @@
     .sub:nth-child(even) .sub-text{ order:2; }
     .stats-grid{ grid-template-columns:1fr; gap:28px; }
   }
+
+  /* ---- lightbox ---- */
+  .gallery img, .sub-media img{ cursor:zoom-in; }
+
+  .lightbox{
+    position:fixed;
+    inset:0;
+    background:rgba(18,21,26,0.94);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:5vw;
+    z-index:200;
+    cursor:zoom-out;
+  }
+  .lightbox.active{ display:flex; }
+  .lightbox img{
+    max-width:100%;
+    max-height:100%;
+    object-fit:contain;
+    border:1px solid rgba(255,255,255,0.15);
+  }
+  .lightbox-close{
+    position:fixed;
+    top:24px;
+    right:32px;
+    font-family:var(--mono);
+    font-size:13px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--white);
+    background:transparent;
+    border:1px solid rgba(255,255,255,0.3);
+    padding:8px 14px;
+    cursor:pointer;
+  }
+  .lightbox-close:hover{ background:rgba(255,255,255,0.1); }
 </style>
 </head>
 <body>
@@ -292,7 +329,7 @@
       <section class="project">
         <div class="eyebrow">Dec 2025 &mdash; Present</div>
         <h2>Flying Wing</h2>
-        <p class="blurb">1.5kg Speedbuild completed over Christmas, optimized for 30km/h+ flight using a 70mm ducted fan.</p>
+        <p class="blurb">Speedbuild completed over Christmas, optimized for 30km/h+ flight.</p>
 
         <div class="stats">
           <div class="stats-label">Key specifications</div>
@@ -303,7 +340,7 @@
           </div>
         </div>
 
-        <div class="gallery-label">Final Buildy</div>
+        <div class="gallery-label">Final assembly</div>
         <div class="gallery">
           <img src="images/drone/flyingwing_final1.png" alt="Flying wing final build 1">
           <img src="images/drone/flyingwing_final2.png" alt="Flying wing final build 2">
@@ -318,7 +355,7 @@
               <div class="sub-media"><img src="images/drone/flyingwing_prelim.png" alt="Flying wing preliminary design"></div>
               <div class="sub-text">
                 <h3>Preliminary Design</h3>
-                <p>Fully 3D-printed <strong>1.5 kg flying-wing UAV</strong> with geometry optimized for efficient cruising at 30+ km/h. Performed batch Reynolds number sweeps in <strong>XFLR5</strong> for various flying wing airfoils across Re = 2,000&ndash;3,000,000.</p>
+                <p>Fully 3D-printed <strong>1 kg flying-wing UAV</strong> with geometry optimized for efficient cruising at 30+ km/h. Performed batch Reynolds number sweeps in <strong>XFLR5</strong> for various flying wing airfoils across Re = 2,000&ndash;3,000,000.</p>
                 <p>A MH60 root airfoil with PW51 wingtips was chosen based on resulting data, with <strong>3&deg; of wingtip washout</strong> incorporated to reduce tip stall risk and improve dynamic stability across the 90 cm wingspan.</p>
               </div>
             </div>
@@ -349,7 +386,7 @@
       <section class="project">
         <div class="eyebrow">2024 &mdash; 2025</div>
         <h2>Fixed-Wing Long-Range (V2)</h2>
-        <p class="blurb">3D-printed / lasercut wood hybrid propeller-powered drone optimized for long-range performance with winglets.</p>
+        <p class="blurb">3D-printed / lasercut wood hybrid drone optimized for long-range performance while having a wingspan under 1.5m.</p>
 
         <div class="stats">
           <div class="stats-label">Key specifications</div>
@@ -445,5 +482,26 @@
     &copy; 2026 Ryan Kai Sum Wong. All rights reserved.
   </footer>
 
+
+  <script>
+    const lightbox = document.createElement("div");
+    lightbox.className = "lightbox";
+    lightbox.innerHTML = "<button class=\"lightbox-close\">Close &times;</button><img alt=\"\">";
+    document.body.appendChild(lightbox);
+    const lightboxImg = lightbox.querySelector("img");
+
+    document.querySelectorAll(".gallery img, .sub-media img").forEach(img => {
+      img.addEventListener("click", () => {
+        lightboxImg.src = img.currentSrc || img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add("active");
+      });
+    });
+
+    lightbox.addEventListener("click", () => lightbox.classList.remove("active"));
+    document.addEventListener("keydown", (e) => {
+      if(e.key === "Escape") lightbox.classList.remove("active");
+    });
+  </script>
 </body>
 </html>
