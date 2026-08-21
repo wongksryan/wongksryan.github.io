@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Ryan Wong</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12151A;
+    --white:#FFFFFF;
+    --steel:#EDEFEF;
+    --steel-dark:#E1E4E3;
+    --line:#D5D8D7;
+    --blue:#163F5A;
+    --blue-light:#4C93B8;
+    --yellow:#E3A73B;
+    --muted:#6E7274;
+    --display:'Space Grotesk', sans-serif;
+    --body:'IBM Plex Sans', sans-serif;
+    --mono:'IBM Plex Mono', monospace;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{ font-family:var(--body); line-height:1.5; color:var(--ink); background:var(--white); }
+  a{ color:inherit; }
+  img{ display:block; }
+
+  .wrap{ max-width:1160px; margin:0 auto; padding:0 32px; }
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{ content:""; width:18px; height:1px; display:inline-block; }
+
+  /* ============ NAV ============ */
+  .nav{
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:var(--white);
+    border-bottom:1px solid var(--line);
+  }
+  .nav .wrap{
+    padding:16px 32px;
+    display:flex;
+    align-items:center;
+  }
+  .nav a{
+    font-family:var(--mono);
+    font-size:13px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    text-decoration:none;
+    color:var(--ink);
+  }
+  .nav a:hover{ color:var(--blue); }
+
+  /* ============ HERO — photo backed ============ */
+  .hero{
+    position:relative;
+    min-height:64vh;
+    display:flex;
+    align-items:flex-end;
+    color:var(--white);
+    background:
+      linear-gradient(180deg, rgba(18,21,26,0.25) 0%, rgba(18,21,26,0.92) 100%),
+      var(--ink) url('images/aboutme/banner.jpeg') center/cover no-repeat;
+  }
+
+  .hero-inner{ padding:64px 0 64px 0; width:100%; }
+  .hero .eyebrow{ color:var(--yellow); }
+  .hero .eyebrow::before{ background:var(--yellow); }
+
+  .hero h1{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:clamp(44px, 8vw, 88px);
+    letter-spacing:-0.01em;
+    line-height:0.98;
+    margin-top:16px;
+    text-transform:uppercase;
+  }
+
+  .hero .role{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:clamp(18px, 2vw, 24px);
+    color:var(--blue-light);
+    margin-top:10px;
+  }
+
+  /* ============ BIO — blue block ============ */
+  .bio{ background:var(--blue); color:var(--white); padding:72px 0; }
+
+  .bio .eyebrow{ color:var(--yellow); }
+  .bio .eyebrow::before{ background:var(--yellow); }
+
+  .bio h2{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:clamp(28px,4vw,38px);
+    text-transform:uppercase;
+    margin-top:10px;
+  }
+
+  .grid2{
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:44px;
+    align-items:start;
+    margin-top:32px;
+  }
+
+  .bio-text p{
+    font-size:16px;
+    max-width:520px;
+    color:#DDE4E9;
+    margin-bottom:16px;
+  }
+
+  .bio-text ul{
+    list-style:none;
+    margin:20px 0 20px 0;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+
+  .bio-text li{
+    font-family:var(--mono);
+    font-size:15px;
+    color:var(--white);
+    padding-left:20px;
+    position:relative;
+  }
+  .bio-text li::before{
+    content:"—";
+    position:absolute;
+    left:0;
+    color:var(--yellow);
+  }
+
+  .seal-link{
+    display:block;
+    border:1px solid rgba(255,255,255,0.2);
+    text-decoration:none;
+    overflow:hidden;
+  }
+  .seal-link img{
+    width:100%;
+    aspect-ratio:4/5;
+    object-fit:cover;
+    transition:transform .3s ease;
+  }
+  .seal-link:hover img{ transform:scale(1.03); }
+  .seal-caption{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:#B9CBD4;
+    text-align:center;
+    padding:10px 0;
+    background:rgba(255,255,255,0.05);
+  }
+
+  .foot-block{
+    border-top:1px solid rgba(255,255,255,0.14);
+    padding:18px 0 0 0;
+    margin-top:56px;
+    display:flex;
+    justify-content:space-between;
+    font-family:var(--mono);
+    font-size:11px;
+    color:#9BB4C1;
+  }
+
+  @media (max-width: 720px){
+    .grid2{ grid-template-columns:1fr; }
+    .foot-block{ flex-direction:column; gap:6px; }
+  }
+</style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="wrap">
+      <a href="index.html">&larr; Home</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div class="eyebrow">Mechanical Engineering — University of Waterloo</div>
+      <h1>About Me</h1>
+      <div class="role">trivia &amp; my fav animal</div>
+    </div>
+  </section>
+
+  <section class="bio">
+    <div class="wrap">
+      <div class="eyebrow">A little more</div>
+      <h2>Who I Am</h2>
+
+      <div class="grid2">
+        <div class="bio-text">
+          <p>Hey, I'm Ryan, and I study mechanical engineering at Waterloo (as you might know already). I'm a big fan of:</p>
+          <ul>
+            <li>Building random things</li>
+            <li>Hiking or kayaking out to the middle of nowhere</li>
+            <li>Urban environments</li>
+            <li>Cooking on a budget</li>
+            <li>Seals (the animal)</li>
+          </ul>
+          <p>Seals are super cute by the way, top tier animal!!!</p>
+        </div>
+
+        <a href="https://sarahyoo.vercel.app" class="seal-link" target="_blank" rel="noopener">
+          <img src="images/aboutme/seal.png" alt="Seal">
+          <div class="seal-caption">!!!!!</div>
+        </a>
+      </div>
+
+      <div class="foot-block">
+        <span>Ryan — Mechanical Engineering, University of Waterloo</span>
+        <span>Rev. 2026</span>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

@@ -1,189 +1,380 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PlaneBrain Avionics System</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            'display': ['Syne', 'sans-serif'],
-            'body': ['Inter', 'sans-serif'],
-          },
-          colors: {
-            primary: '#0F172A',
-            accent: '#F97316',
-            secondary: '#FDBA74',
-            muted: '#94A3B8',
-            light: '#F1F5F9',
-            success: '#10B981',
-          },
-          backgroundImage: {
-            'gradient-hero': 'linear-gradient(135deg, #7C2D12 0%, #EA580C 100%)',
-            'gradient-accent': 'linear-gradient(135deg, #F97316 0%, #FDBA74 100%)',
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    * { scroll-behavior: smooth; }
-    h1, h2, h3, h4, h5, h6 {
-      font-family: 'Syne', sans-serif;
-      letter-spacing: -0.02em;
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .animate-fade-in-up { animation: fadeInUp 0.6s ease-out; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PlaneBrain — Ryan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12151A;
+    --white:#FFFFFF;
+    --steel:#EDEFEF;
+    --steel-dark:#E1E4E3;
+    --line:#D5D8D7;
+    --blue:#163F5A;
+    --blue-light:#4C93B8;
+    --yellow:#E3A73B;
+    --muted:#6E7274;
+    --display:'Space Grotesk', sans-serif;
+    --body:'IBM Plex Sans', sans-serif;
+    --mono:'IBM Plex Mono', monospace;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{ font-family:var(--body); line-height:1.5; color:var(--ink); background:var(--white); }
+  a{ color:inherit; }
+  img{ display:block; }
+
+  .wrap{ max-width:1160px; margin:0 auto; padding:0 32px; }
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{ content:""; width:18px; height:1px; display:inline-block; }
+
+  /* ============ NAV ============ */
+  .nav{
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:var(--white);
+    border-bottom:1px solid var(--line);
+  }
+  .nav .wrap{
+    padding:18px 32px;
+    display:flex;
+    align-items:center;
+  }
+  .nav a{
+    font-family:var(--mono);
+    font-size:13px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    text-decoration:none;
+    color:var(--ink);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .nav a:hover{ color:var(--blue); }
+
+  /* ============ HERO — dark block ============ */
+  .hero{ background:var(--ink); color:var(--white); }
+  .hero-inner{ padding:80px 0 64px 0; }
+  .hero .eyebrow{ color:var(--yellow); }
+  .hero .eyebrow::before{ background:var(--yellow); }
+
+  .hero h1{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:clamp(38px, 6vw, 64px);
+    letter-spacing:-0.01em;
+    line-height:1.02;
+    margin-top:16px;
+    text-transform:uppercase;
+    max-width:760px;
+  }
+
+  .hero .sub{
+    font-size:17px;
+    max-width:600px;
+    margin-top:20px;
+    color:#DDE0DE;
+  }
+
+  /* ============ PROJECT SECTIONS ============ */
+  .project{
+    padding:72px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .project:last-of-type{ border-bottom:none; }
+
+  .project .eyebrow{ color:var(--blue); }
+  .project .eyebrow::before{ background:var(--blue); }
+
+  .project h2{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:clamp(26px,3.6vw,36px);
+    margin-top:10px;
+    text-transform:uppercase;
+  }
+
+  .blurb{
+    font-size:16px;
+    max-width:600px;
+    margin-top:18px;
+    color:#3E4243;
+    border-left:3px solid var(--yellow);
+    padding-left:16px;
+  }
+
+  /* ---- key specifications ---- */
+  .stats{
+    background:var(--ink);
+    color:var(--white);
+    margin-top:32px;
+    padding:40px 32px;
+  }
+  .stats-label{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--yellow);
+    text-align:center;
+    margin-bottom:28px;
+  }
+  .stats-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+  }
+  .stat{ text-align:center; }
+  .stat .num{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:clamp(26px, 4vw, 36px);
+    color:var(--yellow);
+    line-height:1;
+  }
+  .stat .label{
+    font-family:var(--mono);
+    font-size:12px;
+    color:#B9BDBE;
+    margin-top:10px;
+  }
+
+  /* ---- gallery (moved to top) ---- */
+  .gallery-label{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-top:36px;
+    margin-bottom:14px;
+  }
+
+  .gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));
+    gap:14px;
+  }
+  .gallery img{
+    width:100%;
+    aspect-ratio:4/3;
+    object-fit:cover;
+    border:1px solid var(--line);
+    border-top:3px solid var(--yellow);
+  }
+
+  /* ---- further details disclosure ---- */
+  .further-details{
+    margin-top:28px;
+    border:1px solid var(--line);
+  }
+
+  .further-details summary{
+    list-style:none;
+    cursor:pointer;
+    padding:16px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    font-family:var(--mono);
+    font-size:13px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--ink);
+    background:var(--steel);
+  }
+  .further-details summary::-webkit-details-marker{ display:none; }
+
+  .further-details summary .toggle-icon{
+    font-family:var(--display);
+    font-size:18px;
+    line-height:1;
+    color:var(--blue);
+    transition:transform .25s ease;
+  }
+  .further-details[open] summary .toggle-icon{ transform:rotate(45deg); }
+
+  .further-details[open] summary{ border-bottom:1px solid var(--line); }
+
+  .sub-list{ padding:8px 0; }
+
+  .sub{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0;
+    border-bottom:1px solid var(--line);
+  }
+  .sub:last-child{ border-bottom:none; }
+
+  .sub-media{
+    aspect-ratio:4/3;
+    overflow:hidden;
+    background:var(--steel-dark);
+  }
+  .sub-media img{ width:100%; height:100%; object-fit:cover; }
+
+  .sub-text{
+    padding:28px 30px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .sub-text h3{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:18px;
+    text-transform:uppercase;
+  }
+  .sub-text p{
+    font-size:14px;
+    color:#3E4243;
+    margin-top:10px;
+  }
+  .sub-text p strong{ color:var(--ink); }
+
+  .sub:nth-child(even) .sub-media{ order:2; }
+  .sub:nth-child(even) .sub-text{ order:1; }
+
+  .placeholder-note{
+    padding:24px 20px;
+    font-size:14px;
+    color:var(--muted);
+    font-style:italic;
+  }
+
+  /* ============ FOOTER ============ */
+  .foot{
+    background:var(--ink);
+    color:#8B9092;
+    text-align:center;
+    padding:32px 0;
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.04em;
+  }
+
+  @media (max-width: 720px){
+    .sub{ grid-template-columns:1fr; }
+    .sub:nth-child(even) .sub-media{ order:1; }
+    .sub:nth-child(even) .sub-text{ order:2; }
+    .stats-grid{ grid-template-columns:1fr; gap:28px; }
+  }
+</style>
 </head>
+<body>
 
-<body class="bg-light text-primary font-body">
-
-<header class="sticky top-0 z-50 bg-light/95 backdrop-blur-sm border-b border-gray-200">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-    <a href="index.html" class="font-display font-bold text-2xl text-primary">Home</a>
-  </div>
-</header>
-
-<section class="relative overflow-hidden bg-gradient-hero py-20 md:py-28">
-  <div class="absolute inset-0 opacity-20">
-    <div class="absolute top-10 right-10 w-72 h-72 bg-accent rounded-full blur-3xl"></div>
-    <div class="absolute bottom-10 left-10 w-72 h-72 bg-secondary rounded-full blur-3xl"></div>
-  </div>
-  <div class="relative max-w-6xl mx-auto px-6 text-center">
-    <div class="animate-fade-in-up">
-      <p class="text-secondary font-medium text-sm md:text-base mb-3 tracking-widest uppercase">Featured Project</p>
-      <h1 class="font-display text-4xl md:text-6xl font-bold text-light mb-4 leading-tight">
-        PlaneBrain Avionics System
-      </h1>
-      <p class="text-light/80 text-lg md:text-xl max-w-3xl mx-auto">
-        A modular flight control platform for fixed-wing UAVs, integrating sensors, electronics, and autonomous algorithms for stability and autonomy.
-      </p>
+  <nav class="nav">
+    <div class="wrap">
+      <a href="index.html">&larr; Home</a>
     </div>
-  </div>
-</section>
+  </nav>
 
-<main class="max-w-5xl mx-auto px-6 py-16 space-y-20">
-
-  <section>
-    <div class="mb-12">
-      <p class="text-accent font-medium text-sm uppercase tracking-widest mb-2">Hardware Development</p>
-      <h2 class="font-display text-4xl font-bold text-primary mb-4">Electronics & PCB Design</h2>
-      <div class="h-1 w-20 bg-gradient-accent rounded-full"></div>
-    </div>
-
-    <!-- Physical Build first — leads with the fact it flew -->
-    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
-        <div class="h-80 md:h-auto overflow-hidden bg-gray-100">
-          <img src="images/planebrain/build.png" alt="Physical Build" class="w-full h-full object-cover">
-        </div>
-        <div class="p-8 md:p-10 flex flex-col justify-center">
-          <h3 class="font-display text-2xl font-bold text-primary mb-4">Physical Build & First Flight</h3>
-          <p class="text-muted text-lg leading-relaxed">
-            Built and integrated the avionics dev board stack onto a flying-wing airframe, routing wiring for robustness and ensuring vibration resistance suitable for airborne operation. The system successfully flew, validating both the hardware and control software end-to-end. Thermal management was considered throughout for operation in hot climates, such as that of Hong Kong.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Schematic — KiCad done, now moving to Altium for the PCB -->
-    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
-        <div class="h-80 md:h-auto overflow-hidden bg-gray-100 order-2 md:order-1">
-          <img src="images/planebrain/kicad.png" alt="KiCad Schematic" class="w-full h-full object-cover">
-        </div>
-        <div class="p-8 md:p-10 flex flex-col justify-center order-1 md:order-2">
-          <h3 class="font-display text-2xl font-bold text-primary mb-4">Schematic & PCB Design</h3>
-          <p class="text-muted text-lg leading-relaxed">
-            Designed the avionics schematics in <span class="font-semibold text-primary">KiCad</span>, covering power regulation, sensor integration, and communication buses. Currently migrating to <span class="font-semibold text-primary">Altium Designer</span> to produce a custom PCB, consolidating the dev board stack into a single integrated design with a focus on signal integrity, clean power distribution, and minimized noise coupling.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Assembly & Testing -->
-    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
-        <div class="h-80 md:h-auto overflow-hidden bg-gray-100">
-          <img src="images/planebrain/assembly.png" alt="Assembly & Testing" class="w-full h-full object-cover">
-        </div>
-        <div class="p-8 md:p-10 flex flex-col justify-center">
-          <h3 class="font-display text-2xl font-bold text-primary mb-4">Assembly & Testing</h3>
-          <p class="text-muted text-lg leading-relaxed">
-            Hand-assembled prototype boards and validated functionality through multimeter probing, oscilloscope checks, and subsystem-level testing of sensors and communication buses. Each component was characterized before full system integration and flight.
-          </p>
-        </div>
-      </div>
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div class="eyebrow">Featured work</div>
+      <h1>PlaneBrain</h1>
+      <p class="sub">A modular flight control platform for fixed-wing UAVs, integrating sensors, electronics, and autonomous algorithms for stability and autonomy.</p>
     </div>
   </section>
 
-  <section>
-    <div class="mb-12">
-      <p class="text-accent font-medium text-sm uppercase tracking-widest mb-2">Software Development</p>
-      <h2 class="font-display text-4xl font-bold text-primary mb-4">Control Algorithms & Flight Software</h2>
-      <div class="h-1 w-20 bg-gradient-accent rounded-full"></div>
-    </div>
+  <main>
+    <div class="wrap">
 
-    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
-        <div class="h-80 md:h-auto overflow-hidden bg-gray-100">
-          <img src="images/planebrain/attitude_hold.png" alt="Attitude Hold" class="w-full h-full object-cover">
+      <!-- ===================== PLANEBRAIN V2 ===================== -->
+      <section class="project">
+        <div class="eyebrow">In progress</div>
+        <h2>PlaneBrain (V2)</h2>
+        <p class="blurb">Maybe will remake this with a custom PCB in future.</p>
+
+        <details class="further-details">
+          <summary>Further details <span class="toggle-icon">+</span></summary>
+          <div class="placeholder-note">In progress &mdash; details coming soon.</div>
+        </details>
+      </section>
+
+      <!-- ===================== PLANEBRAIN V1 ===================== -->
+      <section class="project">
+        <div class="eyebrow">Built &amp; flown</div>
+        <h2>PlaneBrain (V1)</h2>
+        <p class="blurb">Raspberry Pi / ESP32 mixed full-stack control system for UAV control.</p>
+
+        <div class="stats">
+          <div class="stats-label">System overview</div>
+          <div class="stats-grid">
+            <div class="stat"><p class="num">50Hz</p><p class="label">Servo control frequency(downsampled bc servos are analog)</p></div>
+            <div class="stat"><p class="num">IMU/Magnemometer</p><p class="label">Madgwick filter sensor fusion</p></div>
+            <div class="stat"><p class="num">1kHz</p><p class="label">ESP32 realtime control loop</p></div>
+          </div>
         </div>
-        <div class="p-8 md:p-10 flex flex-col justify-center">
-          <h3 class="font-display text-2xl font-bold text-primary mb-4">Basic Attitude Hold Algorithm</h3>
-          <p class="text-muted text-lg leading-relaxed">
-            Developed a stabilization algorithm for the flying-wing UAV to counter Dutch roll, using <span class="font-semibold text-primary">IMU feedback</span> and closed-loop control to improve directional and roll stability. The algorithm prioritizes robustness over computational complexity, and was validated in flight.
-          </p>
+
+        <div class="gallery-label">Final build</div>
+        <div class="gallery">
+          <img src="images/planebrain/build.png" alt="PlaneBrain physical build">
+          <img src="images/planebrain/kicad.png" alt="PlaneBrain KiCad schematic">
+          <img src="images/planebrain/flight_controller.png" alt="PlaneBrain flight controller">
         </div>
-      </div>
+
+        <details class="further-details">
+          <summary>Further details <span class="toggle-icon">+</span></summary>
+          <div class="sub-list">
+
+            <div class="sub">
+              <div class="sub-media"><img src="images/planebrain/build.png" alt="Physical build and first flight"></div>
+              <div class="sub-text">
+                <h3>Physical Build &amp; First Flight</h3>
+                <p>Built and integrated the avionics dev board stack onto a flying-wing airframe, routing wiring for robustness and ensuring vibration resistance suitable for airborne operation. The system successfully flew, validating both the hardware and control software end-to-end. Thermal management was considered throughout for operation in hot climates, such as that of Hong Kong.</p>
+              </div>
+            </div>
+
+            <div class="sub">
+              <div class="sub-media"><img src="images/planebrain/kicad.png" alt="KiCad schematic"></div>
+              <div class="sub-text">
+                <h3>Schematic Design</h3>
+                <p>Designed the avionics schematics in <strong>KiCad</strong>, covering power regulation, sensor integration, and communication buses across the dev board stack.</p>
+              </div>
+            </div>
+
+            <div class="sub">
+              <div class="sub-media"><img src="images/planebrain/attitude_hold.png" alt="Attitude hold algorithm"></div>
+              <div class="sub-text">
+                <h3>Basic Attitude Hold Algorithm</h3>
+                <p>Developed a stabilization algorithm for the flying-wing UAV to counter Dutch roll, using <strong>IMU feedback</strong> and closed-loop control to improve directional and roll stability. The algorithm prioritizes robustness over computational complexity, and was validated in flight.</p>
+              </div>
+            </div>
+
+            <div class="sub">
+              <div class="sub-media"><img src="images/planebrain/flight_controller.png" alt="In-progress flight controller"></div>
+              <div class="sub-text">
+                <h3>In-Progress Flight Controller</h3>
+                <p>Currently developing a full-featured flight control system including <strong>sensor fusion</strong>, state estimation, control loops, and telemetry handling for autonomous operation. The system is designed to be modular and extensible for future improvements.</p>
+              </div>
+            </div>
+
+          </div>
+        </details>
+      </section>
+
     </div>
+  </main>
 
-    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
-        <div class="h-80 md:h-auto overflow-hidden bg-gray-100 order-2 md:order-1">
-          <img src="images/planebrain/flight_controller.png" alt="Flight Controller" class="w-full h-full object-cover">
-        </div>
-        <div class="p-8 md:p-10 flex flex-col justify-center order-1 md:order-2">
-          <h3 class="font-display text-2xl font-bold text-primary mb-4">In-Progress Flight Controller</h3>
-          <p class="text-muted text-lg leading-relaxed">
-            Currently developing a full-featured flight control system including <span class="font-semibold text-primary">sensor fusion</span>, state estimation, control loops, and telemetry handling for autonomous operation. The system is designed to be modular and extensible for future improvements.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="bg-gradient-hero text-light rounded-2xl p-12 md:p-16">
-    <h2 class="font-display text-3xl font-bold mb-12 text-center">System Overview</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="text-center">
-        <p class="text-3xl font-bold text-secondary mb-2">Modular</p>
-        <p class="text-light/80">Expandable Architecture</p>
-      </div>
-      <div class="text-center">
-        <p class="text-3xl font-bold text-secondary mb-2">IMU-Based</p>
-        <p class="text-light/80">Sensor Fusion</p>
-      </div>
-      <div class="text-center">
-        <p class="text-3xl font-bold text-secondary mb-2">Real-Time</p>
-        <p class="text-light/80">Control Loops</p>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer class="bg-primary text-center py-8 px-6 border-t border-light/10 text-light/60 mt-20">
-  <p class="font-light">© 2026 Ryan Kai Sum Wong. All rights reserved.</p>
-</footer>
+  <footer class="foot">
+    &copy; 2026 Ryan Kai Sum Wong. All rights reserved.
+  </footer>
 
 </body>
 </html>

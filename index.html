@@ -1,440 +1,401 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Ryan Wong - Mechanical Engineer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              'display': ['Syne', 'sans-serif'],
-              'body': ['Inter', 'sans-serif'],
-            },
-            colors: {
-              primary: '#0F172A',      // Deep navy
-              accent: '#3B82F6',       // Vibrant blue
-              secondary: '#60A5FA',    // Lighter blue
-              muted: '#94A3B8',        // Muted slate
-              light: '#F1F5F9',        // Near white
-              success: '#10B981',      // Emerald
-            },
-            backgroundImage: {
-              'gradient-hero': 'linear-gradient(135deg, #0F172A 0%, #1E293B 100%)',
-              'gradient-accent': 'linear-gradient(135deg, #3B82F6 0%, #60A5FA 100%)',
-            }
-          }
-        }
-      }
-    </script>
-    <style>
-      * {
-        scroll-behavior: smooth;
-      }
-      
-      body {
-        font-family: 'Inter', sans-serif;
-      }
-      
-      h1, h2, h3, h4, h5, h6 {
-        font-family: 'Syne', sans-serif;
-        letter-spacing: -0.02em;
-      }
-      
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      
-      @keyframes slideInLeft {
-        from {
-          opacity: 0;
-          transform: translateX(-20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-      
-      @keyframes glow {
-        0%, 100% {
-          box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
-        }
-        50% {
-          box-shadow: 0 0 30px rgba(59, 130, 246, 0.8);
-        }
-      }
-      
-      .animate-fade-in-up {
-        animation: fadeInUp 0.6s ease-out;
-      }
-      
-      .animate-slide-in-left {
-        animation: slideInLeft 0.6s ease-out;
-      }
-      
-      .hero-glow {
-        animation: glow 3s ease-in-out infinite;
-      }
-      
-      .project-card {
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      
-      .project-card:hover {
-        transform: translateY(-8px);
-      }
-      
-      .nav-link {
-        position: relative;
-        transition: color 0.3s ease;
-      }
-      
-      .nav-link::after {
-        content: '';
-        position: absolute;
-        bottom: -4px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: linear-gradient(90deg, #3B82F6, #60A5FA);
-        transition: width 0.3s ease;
-      }
-      
-      .nav-link:hover::after {
-        width: 100%;
-      }
-    </style>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ryan Wong's Mechanical Engineering Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12151A;
+    --white:#FFFFFF;
+    --steel:#EDEFEF;
+    --steel-dark:#E1E4E3;
+    --line:#D5D8D7;
+    --blue:#163F5A;
+    --blue-light:#4C93B8;
+    --yellow:#E3A73B;
+    --muted:#6E7274;
+    --display:'Space Grotesk', sans-serif;
+    --body:'IBM Plex Sans', sans-serif;
+    --mono:'IBM Plex Mono', monospace;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{ font-family:var(--body); line-height:1.5; color:var(--ink); }
+  a{ color:inherit; }
+
+  .wrap{ max-width:1160px; margin:0 auto; padding:0 32px; }
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{ content:""; width:18px; height:1px; display:inline-block; }
+
+  /* ============ HERO — dark block ============ */
+  .hero{ background:var(--ink); color:var(--white); position:relative; }
+  .hero-inner{ padding:110px 0 96px 0; }
+  
+  .top-nav {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+  }
+  .top-nav a {
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--white);
+    background: transparent;
+    border: none;
+    padding: 8px 16px;
+    transition: color 0.25s ease;
+  }
+  .top-nav a:hover {
+    color: var(--yellow);
+  }
+
+  .hero .eyebrow{ color:var(--yellow); }
+  .hero .eyebrow::before{ background:var(--yellow); }
+
+  .hero h1{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:clamp(52px, 9vw, 104px);
+    letter-spacing:-0.01em;
+    line-height:0.95;
+    margin-top:18px;
+    text-transform:uppercase;
+  }
+
+  .hero .role{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:clamp(19px, 2.2vw, 26px);
+    color:var(--blue-light);
+    margin-top:10px;
+  }
+
+  .hero .about-line{
+    font-size:18px;
+    max-width:560px;
+    margin-top:26px;
+    color:#DDE0DE;
+    border-left:3px solid var(--yellow);
+    padding-left:16px;
+  }
+
+  /* ============ PROJECTS — white block ============ */
+  .projects{ background:var(--white); padding:72px 0 80px 0; }
+
+  .projects .eyebrow{ color:var(--blue); }
+  .projects .eyebrow::before{ background:var(--blue); }
+
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-bottom:36px;
+    gap:24px;
+    flex-wrap:wrap;
+  }
+
+  .projects h2{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:clamp(28px,4vw,38px);
+    margin-top:10px;
+    text-transform:uppercase;
+  }
+
+  .count{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--muted);
+  }
+
+  .grid{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:28px;
+  }
+
+  .card{
+    flex:1 1 330px;
+    max-width:350px;
+    background:var(--steel);
+    border:1px solid var(--line);
+    border-top:3px solid var(--yellow);
+    display:block;
+    text-decoration:none;
+    color:inherit;
+    transition:transform .25s ease, border-color .25s ease;
+  }
+  .card:hover{ transform:translateY(-4px); border-color:var(--blue); }
+
+  .card-media{
+    aspect-ratio:4/3;
+    background:var(--steel-dark);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+  }
+  .card-media img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  .card-media .fig{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.08em;
+    color:var(--muted);
+    text-transform:uppercase;
+  }
+
+  .card-body{ padding:22px; }
+
+  .card-body h3{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:19px;
+    text-transform:uppercase;
+  }
+
+  .card-body p{
+    font-size:14px;
+    color:#3E4243;
+    margin-top:10px;
+  }
+
+  .skills{ display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+  .skills span{
+    font-family:var(--mono);
+    font-weight:600;
+    font-size:11px;
+    color:var(--blue);
+    background:rgba(22,63,90,0.09);
+    padding:4px 8px;
+  }
+
+  /* ============ CONTACT — blue block ============ */
+  .contact{ background:var(--blue); color:var(--white); padding:72px 0 0 0; }
+
+  .contact .eyebrow{ color:var(--yellow); }
+  .contact .eyebrow::before{ background:var(--yellow); }
+
+  .contact h2{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:clamp(28px,4vw,38px);
+    text-transform:uppercase;
+    margin-top:10px;
+  }
+
+  .grid2{
+    display:grid;
+    grid-template-columns:1fr 1.4fr;
+    gap:36px;
+    align-items:start;
+    padding:24px 0 56px 0;
+  }
+
+  .contact-col-left {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .lede{ max-width:440px; margin-top:14px; color:#C4D3DA; font-size:15px; }
+
+  .contact-links{ margin-top:26px; display:flex; flex-direction:column; gap:10px; }
+  .contact-links a{
+    font-family:var(--mono);
+    font-size:14px;
+    text-decoration:none;
+    color:var(--white);
+    border-bottom:1px solid rgba(255,255,255,0.25);
+    width:fit-content;
+    padding-bottom:2px;
+  }
+  .contact-links a:hover{ color:var(--yellow); border-color:var(--yellow); }
+
+  .resume-box{
+    background:var(--white);
+    color:var(--ink);
+    padding:20px;
+  }
+  .resume-box .k{
+    font-family:var(--mono);
+    font-size:10px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:12px;
+  }
+  .resume-preview{
+    width:100%;
+    height:560px;
+    border:1px solid var(--line);
+    background:var(--steel);
+  }
+  .resume-btn{
+    margin-top:16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    font-family:var(--mono);
+    font-size:13px;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    text-decoration:none;
+    color:var(--white);
+    background:var(--blue);
+    padding:12px 18px;
+    width:100%;
+  }
+  .resume-btn:hover{ background:var(--ink); }
+
+  .foot-block{
+    border-top:1px solid rgba(255,255,255,0.14);
+    padding:18px 0;
+    display:flex;
+    justify-content:space-between;
+    font-family:var(--mono);
+    font-size:11px;
+    color:#9BB4C1;
+  }
+
+  @media (max-width: 720px){
+    .title-block{ grid-template-columns:repeat(2,1fr); }
+    .title-block .cell:nth-child(2){ border-right:none; }
+    .grid2{ grid-template-columns:1fr; }
+    .foot-block{ flex-direction:column; gap:6px; }
+  }
+</style>
 </head>
+<body>
 
-<body class="bg-light text-primary">
-
-  <!-- Header / Navigation -->
-  <header class="sticky top-0 z-50 bg-light/95 backdrop-blur-sm border-b border-gray-200">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-      <!-- <a href="#" class="font-display font-bold text-2xl text-primary">home</a> -->
-      <nav class="flex gap-8">
-        <a href="#projects" class="nav-link text-sm font-medium text-muted hover:text-primary">Projects</a>
-        <a href="#about" class="nav-link text-sm font-medium text-muted hover:text-primary">About</a>
-        <a href="#resume" class="nav-link text-sm font-medium text-muted hover:text-primary">Resume</a>
-        <a href="#contact" class="nav-link text-sm font-medium text-muted hover:text-primary">Contact</a>
-      </nav>
+  <section class="hero">
+    <div class="top-nav">
+      <a href="aboutme.html">About Me</a>
     </div>
-  </header>
-
-  <!-- Profile Section -->
-  <section class="relative overflow-hidden bg-gradient-hero py-28 md:py-40">
-    <div class="absolute inset-0 opacity-20">
-      <div class="absolute top-20 right-10 w-72 h-72 bg-accent rounded-full blur-3xl"></div>
-      <div class="absolute bottom-20 left-10 w-72 h-72 bg-secondary rounded-full blur-3xl"></div>
+    <div class="wrap hero-inner">
+      <div class="eyebrow">Mechanical Engineering — University of Waterloo</div>
+      <h1>Ryan Wong</h1>
+      <div class="role">Robotics &amp; hardware systems</div>
+      <p class="about-line">Engineering that works(eventually).</p>
     </div>
-    
-    <div class="relative max-w-6xl mx-auto px-6 text-center">
-      <div class="animate-fade-in-up">
-        <p class="text-secondary font-medium text-sm md:text-base mb-4 tracking-widest uppercase">Mechanical Engineer</p>
-        <h1 class="font-display text-5xl md:text-7xl font-bold text-light mb-6 leading-tight">
-          Hey, I'm Ryan
-        </h1>
-        <p class="text-light/80 text-lg md:text-xl max-w-2xl mx-auto mb-8 font-light">
-          I'm a Mechanical Engineering student at University of Waterloo. I'm passionate about aerospace, medical robotics, and solving complex real-life problems through good design.
-        </p>
-        <div class="flex gap-4 justify-center flex-wrap">
-          <a href="#projects" class="px-8 py-3 bg-accent text-light font-semibold rounded-lg hover:bg-secondary transition-all hover:shadow-lg hover:scale-105">
-            Explore Work
-          </a>
-          <a href="#contact" class="px-8 py-3 border border-light text-light font-semibold rounded-lg hover:bg-light/10 transition-all">
-            Get in Touch
-          </a>
+  </section>
+
+  <section class="projects">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Selected work</div>
+          <h2>Projects</h2>
         </div>
+        <div class="count">projects — CAD, embedded systems, controls</div>
+      </div>
+
+      <div class="grid">
+
+        <a href="drone.html" class="card">
+          <div class="card-media"><img src="images/index/dronepreview.png" alt="FPV UAV Test Platforms"></div>
+          <div class="card-body">
+            <h3>FPV UAV Test Platforms</h3>
+            <p>Various UAVs optimized for efficient flights at medium-to-high cruise speeds.</p>
+            <div class="skills"><span>AERODYNAMICS</span><span>FLIGHT TEST</span><span>CAD</span></div>
+          </div>
+        </a>
+
+        <a href="vaccum.html" class="card">
+          <div class="card-media"><img src="images/index/swerve.png" alt="Swerve Vacuum Robot"></div>
+          <div class="card-body">
+            <h3>Swerve Vacuum Robot</h3>
+            <p>Autonomous custom robot built for agile, omnidirectional navigation and floor cleaning.</p>
+            <div class="skills"><span>ROS2</span><span>SLAM</span><span>A*</span></div>
+          </div>
+        </a>
+
+        <a href="exo.html" class="card">
+          <div class="card-media"><img src="images/index/exo.png" alt="Soft Exoskeleton"></div>
+          <div class="card-body">
+            <h3>Soft Exoskeleton</h3>
+            <p>Mechanical Lead project at Waterloo Biotron. (Page coming soon)</p>
+            <div class="skills"><span>SOLIDWORKS</span><span>FEA</span><span>TEAM LEAD</span></div>
+          </div>
+        </a>
+
+        <a href="planebrain.html" class="card">
+          <div class="card-media"><img src="images/index/planebrain.png" alt="Planebrain"></div>
+          <div class="card-body">
+            <h3>Planebrain</h3>
+            <p>All-in-one flight computer autonomy and telemetry platform powered by Raspberry Pi, Arduino, and ESP32.</p>
+            <div class="skills"><span>ESP32</span><span>C/C++</span><span>TELEMETRY</span></div>
+          </div>
+        </a>
+
+        <a href="VEX.html" class="card">
+          <div class="card-media"><img src="images/index/vex.png" alt="VEX Robotics"></div>
+          <div class="card-body">
+            <h3>VEX Robotics</h3>
+            <p>Various robots built as Founder and Captain over three competitive seasons.</p>
+            <div class="skills"><span>CAD</span><span>TEAM LEAD</span><span>MECHANISMS</span></div>
+          </div>
+        </a>
+
+        <a href="launcher.html" class="card">
+          <div class="card-media"><img src="images/index/launcher.png" alt="Pneumatic Launchers"></div>
+          <div class="card-body">
+            <h3>Pneumatic Launchers</h3>
+            <p>Optimizing projectile launching speeds for boba and putty. For science.</p>
+            <div class="skills"><span>FLUID DYNAMICS</span><span>TESTING</span><span>CAD</span></div>
+          </div>
+        </a>
+
       </div>
     </div>
   </section>
 
- <!-- Projects Section -->
-<section id="projects" class="py-24 px-6 md:px-8 bg-white">
-  <div class="max-w-6xl mx-auto">
-    <div class="mb-16">
-      <p class="text-accent font-medium text-sm uppercase tracking-widest mb-2">Featured Work</p>
-      <h2 class="font-display text-4xl md:text-5xl font-bold text-primary mb-4">
-        Projects & Creations
-      </h2>
-      <div class="h-1 w-20 bg-gradient-accent rounded-full"></div>
-    </div>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- Project Card 1 -->
-      <a href="drone.html" class="project-card group bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-accent hover:shadow-xl">
-        <div class="relative h-56 overflow-hidden bg-gray-100">
-          <img src="images/index/dronepreview.png" alt="Drone Preview" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-          <div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-        </div>
-        <div class="p-6">
-          <h3 class="font-display text-xl font-bold text-primary mb-2">FPV UAV Test Platforms</h3>
-          <p class="text-muted text-sm mb-4 line-clamp-2">Various UAV's optimized for efficient flights at medium-to-high cruise speeds.</p>
-          <div class="flex items-center text-accent font-medium text-sm group-hover:gap-2 transition-all">
-            Explore <span class="ml-1 group-hover:translate-x-1 transition-transform">→</span>
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="eyebrow">Get in touch</div>
+      <h2>Contact &amp; Resume</h2>
+      <div class="grid2">
+        <div class="contact-col-left">
+          <p class="lede">Open to co-op and internship roles in robotics, hardware, and controls. Reach out directly, or grab the resume for the full breakdown.</p>
+
+          <div class="contact-links">
+            <a href="mailto:rkswong@uwaterloo.ca">rkswong@uwaterloo.ca</a>
+            <a href="https://www.linkedin.com/in/ryan-kai-sum-wong/">linkedin.com/in/ryan-kai-sum-wong</a>
+            <a href="https://github.com/wongksryan">github.com/wongksryan</a>
           </div>
         </div>
-      </a>
-
-      <!-- Project Card 2 -->
-      <a href="vaccum.html" class="project-card group bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-accent hover:shadow-xl">
-        <div class="relative h-56 overflow-hidden bg-gray-100">
-          <img src="images/index/swerve.png" alt="Swerve Drive Preview" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-          <div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-        </div>
-        <div class="p-6">
-          <h3 class="font-display text-xl font-bold text-primary mb-2">Swerve Vacuum Robot</h3>
-          <p class="text-muted text-sm mb-4 line-clamp-2">Autonomous custom robot built for agile, omnidirectional navigation and floor cleaning.</p>
-          <div class="flex items-center text-accent font-medium text-sm group-hover:gap-2 transition-all">
-            Explore <span class="ml-1 group-hover:translate-x-1 transition-transform">→</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Project Card 3 -->
-      <a href="exo.html" class="project-card group bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-accent hover:shadow-xl">
-        <div class="relative h-56 overflow-hidden bg-gray-100">
-          <img src="images/index/exo.png" alt="Exoskeleton Preview" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-          <div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-        </div>
-        <div class="p-6">
-          <h3 class="font-display text-xl font-bold text-primary mb-2">Soft Exoskeleton</h3>
-          <p class="text-muted text-sm mb-4 line-clamp-2">Mechanical Lead project at Waterloo Biotron. (Page coming soon)</p>
-          <div class="flex items-center text-accent font-medium text-sm group-hover:gap-2 transition-all">
-            Explore <span class="ml-1 group-hover:translate-x-1 transition-transform">→</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Project Card 4 -->
-      <a href="planebrain.html" class="project-card group bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-accent hover:shadow-xl">
-        <div class="relative h-56 overflow-hidden bg-gray-100">
-          <img src="images/index/planebrain.png" alt="Planebrain Preview" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-          <div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-        </div>
-        <div class="p-6">
-          <h3 class="font-display text-xl font-bold text-primary mb-2">Planebrain</h3>
-          <p class="text-muted text-sm mb-4 line-clamp-2">All-in-one flight computer autonomy and telemetry platform powered by Raspberry Pi, Arduino, and ESP32.</p>
-          <div class="flex items-center text-accent font-medium text-sm group-hover:gap-2 transition-all">
-            Explore <span class="ml-1 group-hover:translate-x-1 transition-transform">→</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Project Card 5 -->
-      <a href="VEX.html" class="project-card group bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-accent hover:shadow-xl">
-        <div class="relative h-56 overflow-hidden bg-gray-100">
-          <img src="images/index/vex.png" alt="VEX Robotics Preview" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-          <div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-        </div>
-        <div class="p-6">
-          <h3 class="font-display text-xl font-bold text-primary mb-2">VEX Robotics</h3>
-          <p class="text-muted text-sm mb-4 line-clamp-2">Various robots built as Founder and Captain over three competitive seasons.</p>
-          <div class="flex items-center text-accent font-medium text-sm group-hover:gap-2 transition-all">
-            Explore <span class="ml-1 group-hover:translate-x-1 transition-transform">→</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Project Card 6 -->
-      <a href="launcher.html" class="project-card group bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-accent hover:shadow-xl">
-        <div class="relative h-56 overflow-hidden bg-gray-100">
-          <img src="images/index/launcher.png" alt="Pneumatic Launchers Preview" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-          <div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-        </div>
-        <div class="p-6">
-          <h3 class="font-display text-xl font-bold text-primary mb-2">Pneumatic Launchers</h3>
-          <p class="text-muted text-sm mb-4 line-clamp-2">Optimizing projectile launching speeds for boba and putty. For science.</p>
-          <div class="flex items-center text-accent font-medium text-sm group-hover:gap-2 transition-all">
-            Explore <span class="ml-1 group-hover:translate-x-1 transition-transform">→</span>
-          </div>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
-
-<!-- About Section -->
-<section id="about" class="py-24 px-6 md:px-8 bg-primary text-light">
-  <div class="max-w-6xl mx-auto">
-    <div class="mb-16">
-      <p class="text-secondary font-medium text-sm uppercase tracking-widest mb-2">Personal Information</p>
-      <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
-        More About Me
-      </h2>
-      <div class="h-1 w-20 bg-gradient-accent rounded-full"></div>
-    </div>
-    
-    <div class="grid grid-cols-1 md:grid-cols-5 gap-12 items-center">
-      <!-- Profile Image -->
-      <div class="md:col-span-2">
-        <div class="relative group">
-          <div class="absolute inset-0 bg-gradient-accent rounded-2xl blur-2xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
-          <img src="images/index/profile.png" alt="Ryan Wong"
-               class="relative w-full h-auto object-cover rounded-2xl shadow-2xl border border-light/10">
+        <div class="resume-box">
+          <span class="k">Resume preview</span>
+          <a href="images/index/RyanKaiSumResume.pdf" download class="resume-btn">↓ Download resume</a>
+          <iframe class="resume-preview" src="images/index/RyanKaiSumResume.pdf" title="Resume preview"></iframe>
         </div>
       </div>
-
-      <!-- Text Content -->
-      <div class="md:col-span-3 space-y-6">
-        <div>
-          <h3 class="font-display text-2xl font-bold mb-3">Mechanical Engineer & Problem Solver</h3>
-          <p class="text-light/80 text-lg leading-relaxed">
-            I'm <span class="font-semibold">Ryan (Kai Sum) Wong</span>, a Mechanical Engineering student at the University of Waterloo. Beyond traditional engineering, I'm genuinely curious about how everything works and how to apply that knowledge creatively.
-          </p>
-        </div>
-
-        <div>
-          <h4 class="font-display text-lg font-bold mb-3 text-accent">What Drives Me</h4>
-          <p class="text-light/80 text-lg leading-relaxed">
-            I love learning the fundamentals and pushing boundaries. Whether it's understanding adiabatic expansion to design a putty launcher or building autonomous systems, I approach every problem with curiosity.
-          </p>
-        </div>
-
-        <div>
-          <h4 class="font-display text-lg font-bold mb-3 text-accent">My Focus Areas</h4>
-          <p class="text-light/80 text-lg leading-relaxed">
-            My passions lie in <span class="font-semibold">Aerospace</span> and <span class="font-semibold">Medical Technology</span>. I'm also a big fan of seals! (the animal) 
-          </p>
-        </div>
-
-        <div class="pt-4 flex flex-wrap gap-3">
-          <span class="px-4 py-2 bg-accent/20 text-secondary rounded-full text-sm font-medium border border-accent/30">Mechanical Engineering</span>
-          <span class="px-4 py-2 bg-accent/20 text-secondary rounded-full text-sm font-medium border border-accent/30">Robotics</span>
-          <span class="px-4 py-2 bg-accent/20 text-secondary rounded-full text-sm font-medium border border-accent/30">Aerospace</span>
-          <span class="px-4 py-2 bg-accent/20 text-secondary rounded-full text-sm font-medium border border-accent/30">CAD Design</span>
-        </div>
+      <div class="foot-block">
+        <span>Ryan's Portfolio - Index</span>
+        <span>Version 2 - 2026</span>
       </div>
     </div>
-  </div>
-</section>
-
-
-<!-- Resume Section -->
-<section id="resume" class="py-24 px-6 md:px-8 bg-light">
-  <div class="max-w-4xl mx-auto">
-    <div class="mb-12">
-      <p class="text-accent font-medium text-sm uppercase tracking-widest mb-2">Experience</p>
-      <h2 class="font-display text-4xl md:text-5xl font-bold text-primary mb-4">
-        My Resume
-      </h2>
-      <div class="h-1 w-20 bg-gradient-accent rounded-full"></div>
-    </div>
-
-    <div class="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
-      <!-- PDF Viewer -->
-      <div class="w-full h-[700px] border-b border-gray-200">
-        <iframe 
-          src="images/index/RyanKaiSumResume.pdf"
-          class="w-full h-full"
-          title="Ryan Wong Resume">
-        </iframe>
-      </div>
-
-      <!-- Download Button -->
-      <div class="p-8 flex justify-center">
-        <a href="images/index/RyanKaiSumResume.pdf" download
-           class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-accent text-light font-semibold rounded-lg
-                  hover:shadow-lg hover:scale-105 transition-all duration-300">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-          </svg>
-          Download Resume
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-<!-- Contact Section -->
-<section id="contact" class="py-24 px-6 md:px-8 bg-gradient-hero text-light">
-  <div class="max-w-4xl mx-auto text-center">
-    <p class="text-secondary font-medium text-sm uppercase tracking-widest mb-4">Let's Connect</p>
-    <h2 class="font-display text-4xl md:text-5xl font-bold mb-6">
-      Get In Touch
-    </h2>
-    <p class="text-light/80 text-lg md:text-xl max-w-2xl mx-auto mb-12">
-      Have a project in mind or want to collaborate? I'd love to hear from you.
-    </p>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
-      <!-- Personal Email -->
-      <a href="mailto:wongksryan@gmail.com" 
-         class="group p-6 bg-light/10 border border-light/20 rounded-xl hover:bg-accent hover:border-accent transition-all duration-300 backdrop-blur-sm">
-        <div class="flex items-center gap-3">
-          <svg class="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-          </svg>
-          <div class="text-left">
-            <p class="text-sm text-light/60">Personal Email</p>
-            <p class="font-semibold">wongksryan@gmail.com</p>
-          </div>
-        </div>
-      </a>
-
-      <!-- University Email -->
-      <a href="mailto:rkswong@uwaterloo.ca" 
-         class="group p-6 bg-light/10 border border-light/20 rounded-xl hover:bg-success hover:border-success transition-all duration-300 backdrop-blur-sm">
-        <div class="flex items-center gap-3">
-          <svg class="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-          </svg>
-          <div class="text-left">
-            <p class="text-sm text-light/60">University Email</p>
-            <p class="font-semibold">rkswong@uwaterloo.ca</p>
-          </div>
-        </div>
-      </a>
-
-      <!-- LinkedIn -->
-      <a href="https://www.linkedin.com/in/ryan-kai-sum-wong-80b8332b2/" target="_blank"
-         class="group p-6 bg-light/10 border border-light/20 rounded-xl hover:bg-[#0A66C2] hover:border-[#0A66C2] transition-all duration-300 backdrop-blur-sm">
-        <div class="flex items-center gap-3">
-          <svg class="w-5 h-5 text-secondary" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.722-2.004 1.418-.103.249-.129.597-.129.946v5.441h-3.554s.05-8.836 0-9.759h3.554v1.381c.43-.664 1.199-1.61 2.925-1.61 2.135 0 3.731 1.395 3.731 4.397v5.591zM5.337 8.855c-1.144 0-1.915-.762-1.915-1.715 0-.955.77-1.715 1.914-1.715.1 0 .207.012.314.035 1.149 0 1.924.76 1.924 1.715 0 .953-.775 1.715-1.923 1.715zm1.6 11.597h-3.54V9.993h3.54v9.459zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-          </svg>
-          <div class="text-left">
-            <p class="text-sm text-light/60">Connect on</p>
-            <p class="font-semibold">LinkedIn</p>
-          </div>
-        </div>
-      </a>
-
-      <!-- GitHub -->
-      <a href="https://github.com/wongksryan" 
-         class="group p-6 bg-light/10 border border-light/20 rounded-xl hover:bg-gray-800 hover:border-gray-800 transition-all duration-300 backdrop-blur-sm">
-        <div class="flex items-center gap-3">
-          <svg class="w-5 h-5 text-secondary" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-          </svg>
-          <div class="text-left">
-            <p class="text-sm text-light/60">View Code on</p>
-            <p class="font-semibold">GitHub</p>
-          </div>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer class="bg-primary text-center py-8 px-6 border-t border-light/10 text-light/60 mt-20">
-  <p class="font-light">© 2026 Ryan Kai Sum Wong. All rights reserved.</p>
-</footer>
+  </section>
 
 </body>
 </html>

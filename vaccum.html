@@ -1,233 +1,389 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Swerve Drive Robotics Platform</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            'display': ['Syne', 'sans-serif'],
-            'body': ['Inter', 'sans-serif'],
-          },
-          colors: {
-            primary: '#0F172A',      // Deep navy
-            accent: '#10B981',       // Green
-            secondary: '#6EE7B7',    // Light green
-            muted: '#94A3B8',        // Muted slate
-            light: '#F1F5F9',        // Near white
-            success: '#10B981',      // Emerald
-          },
-          backgroundImage: {
-            'gradient-hero': 'linear-gradient(135deg, #064E3B 0%, #059669 100%)',
-            'gradient-accent': 'linear-gradient(135deg, #10B981 0%, #6EE7B7 100%)',
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    * {
-      scroll-behavior: smooth;
-    }
-    
-    h1, h2, h3, h4, h5, h6 {
-      font-family: 'Syne', sans-serif;
-      letter-spacing: -0.02em;
-    }
-    
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    .animate-fade-in-up {
-      animation: fadeInUp 0.6s ease-out;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swerve Drive Platform — Ryan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12151A;
+    --white:#FFFFFF;
+    --steel:#EDEFEF;
+    --steel-dark:#E1E4E3;
+    --line:#D5D8D7;
+    --blue:#163F5A;
+    --blue-light:#4C93B8;
+    --yellow:#E3A73B;
+    --muted:#6E7274;
+    --display:'Space Grotesk', sans-serif;
+    --body:'IBM Plex Sans', sans-serif;
+    --mono:'IBM Plex Mono', monospace;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{ font-family:var(--body); line-height:1.5; color:var(--ink); background:var(--white); }
+  a{ color:inherit; }
+  img{ display:block; }
+
+  .wrap{ max-width:1160px; margin:0 auto; padding:0 32px; }
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{ content:""; width:18px; height:1px; display:inline-block; }
+
+  /* ============ NAV ============ */
+  .nav{
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:var(--white);
+    border-bottom:1px solid var(--line);
+  }
+  .nav .wrap{
+    padding:18px 32px;
+    display:flex;
+    align-items:center;
+  }
+  .nav a{
+    font-family:var(--mono);
+    font-size:13px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    text-decoration:none;
+    color:var(--ink);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .nav a:hover{ color:var(--blue); }
+
+  /* ============ HERO — dark block ============ */
+  .hero{ background:var(--ink); color:var(--white); }
+  .hero-inner{ padding:80px 0 64px 0; }
+  .hero .eyebrow{ color:var(--yellow); }
+  .hero .eyebrow::before{ background:var(--yellow); }
+
+  .hero h1{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:clamp(38px, 6vw, 64px);
+    letter-spacing:-0.01em;
+    line-height:1.02;
+    margin-top:16px;
+    text-transform:uppercase;
+    max-width:760px;
+  }
+
+  .hero .sub{
+    font-size:17px;
+    max-width:600px;
+    margin-top:20px;
+    color:#DDE0DE;
+  }
+
+  /* ============ PROJECT SECTIONS ============ */
+  .project{
+    padding:72px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .project:last-of-type{ border-bottom:none; }
+
+  .project .eyebrow{ color:var(--blue); }
+  .project .eyebrow::before{ background:var(--blue); }
+
+  .project h2{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:clamp(26px,3.6vw,36px);
+    margin-top:10px;
+    text-transform:uppercase;
+  }
+
+  .blurb{
+    font-size:16px;
+    max-width:600px;
+    margin-top:18px;
+    color:#3E4243;
+    border-left:3px solid var(--yellow);
+    padding-left:16px;
+  }
+
+  /* ---- key specifications ---- */
+  .stats{
+    background:var(--ink);
+    color:var(--white);
+    margin-top:32px;
+    padding:40px 32px;
+  }
+  .stats-label{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--yellow);
+    text-align:center;
+    margin-bottom:28px;
+  }
+  .stats-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+  }
+  .stat{ text-align:center; }
+  .stat .num{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:clamp(26px, 4vw, 36px);
+    color:var(--yellow);
+    line-height:1;
+  }
+  .stat .label{
+    font-family:var(--mono);
+    font-size:12px;
+    color:#B9BDBE;
+    margin-top:10px;
+  }
+
+  /* ---- gallery (moved to top) ---- */
+  .gallery-label{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-top:36px;
+    margin-bottom:14px;
+  }
+
+  .gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));
+    gap:14px;
+  }
+  .gallery img{
+    width:100%;
+    aspect-ratio:4/3;
+    object-fit:cover;
+    border:1px solid var(--line);
+    border-top:3px solid var(--yellow);
+  }
+
+  /* ---- further details disclosure ---- */
+  .further-details{
+    margin-top:28px;
+    border:1px solid var(--line);
+  }
+
+  .further-details summary{
+    list-style:none;
+    cursor:pointer;
+    padding:16px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    font-family:var(--mono);
+    font-size:13px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--ink);
+    background:var(--steel);
+  }
+  .further-details summary::-webkit-details-marker{ display:none; }
+
+  .further-details summary .toggle-icon{
+    font-family:var(--display);
+    font-size:18px;
+    line-height:1;
+    color:var(--blue);
+    transition:transform .25s ease;
+  }
+  .further-details[open] summary .toggle-icon{ transform:rotate(45deg); }
+
+  .further-details[open] summary{ border-bottom:1px solid var(--line); }
+
+  .sub-list{ padding:8px 0; }
+
+  .sub{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0;
+    border-bottom:1px solid var(--line);
+  }
+  .sub:last-child{ border-bottom:none; }
+
+  .sub-media{
+    aspect-ratio:4/3;
+    overflow:hidden;
+    background:var(--steel-dark);
+  }
+  .sub-media img{ width:100%; height:100%; object-fit:cover; }
+
+  .sub-text{
+    padding:28px 30px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .sub-text h3{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:18px;
+    text-transform:uppercase;
+  }
+  .sub-text p{
+    font-size:14px;
+    color:#3E4243;
+    margin-top:10px;
+  }
+  .sub-text p strong{ color:var(--ink); }
+
+  .sub:nth-child(even) .sub-media{ order:2; }
+  .sub:nth-child(even) .sub-text{ order:1; }
+
+  .placeholder-note{
+    padding:24px 20px;
+    font-size:14px;
+    color:var(--muted);
+    font-style:italic;
+  }
+
+  /* ============ FOOTER ============ */
+  .foot{
+    background:var(--ink);
+    color:#8B9092;
+    text-align:center;
+    padding:32px 0;
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.04em;
+  }
+
+  @media (max-width: 720px){
+    .sub{ grid-template-columns:1fr; }
+    .sub:nth-child(even) .sub-media{ order:1; }
+    .sub:nth-child(even) .sub-text{ order:2; }
+    .stats-grid{ grid-template-columns:1fr; gap:28px; }
+  }
+</style>
 </head>
+<body>
 
-<body class="bg-light text-primary font-body">
-
-<!-- Header / Navigation -->
-<header class="sticky top-0 z-50 bg-light/95 backdrop-blur-sm border-b border-gray-200">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-    <a href="index.html" class="font-display font-bold text-2xl text-primary">Home</a>
-  </div>
-</header>
-
-<!-- Hero Section -->
-<section class="relative overflow-hidden bg-gradient-hero py-20 md:py-28">
-  <div class="absolute inset-0 opacity-20">
-    <div class="absolute top-10 right-10 w-72 h-72 bg-accent rounded-full blur-3xl"></div>
-    <div class="absolute bottom-10 left-10 w-72 h-72 bg-secondary rounded-full blur-3xl"></div>
-  </div>
-  
-  <div class="relative max-w-6xl mx-auto px-6 text-center">
-    <div class="animate-fade-in-up">
-      <p class="text-secondary font-medium text-sm md:text-base mb-3 tracking-widest uppercase">Featured Project</p>
-      <h1 class="font-display text-4xl md:text-6xl font-bold text-light mb-4 leading-tight">
-        Swerve Drive Robotics Platform
-      </h1>
-      <p class="text-light/80 text-lg md:text-xl max-w-3xl mx-auto">
-        A modular autonomous platform demonstrating mechanical design, structural analysis, and integrated hardware/software systems for omnidirectional motion.
-      </p>
+  <nav class="nav">
+    <div class="wrap">
+      <a href="index.html">&larr; Home</a>
     </div>
-  </div>
-</section>
+  </nav>
 
-<!-- Main Content -->
-<main class="max-w-5xl mx-auto px-6 py-16 space-y-20">
-
-  <!-- CAD & Structural Analysis Section -->
-  <section>
-    <div class="mb-12">
-      <p class="text-accent font-medium text-sm uppercase tracking-widest mb-2">Design Phase</p>
-      <h2 class="font-display text-4xl font-bold text-primary mb-4">CAD & Structural Analysis</h2>
-      <div class="h-1 w-20 bg-gradient-accent rounded-full"></div>
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div class="eyebrow">Featured work</div>
+      <h1>Swerve Drive Platform</h1>
+      <p class="sub">A modular omnidirectional robotics platform combining custom drivetrain mechanics, structural analysis, and integrated electronics.</p>
     </div>
+  </section>
 
-    <!-- Frame CAD -->
-    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
-        <div class="h-80 md:h-auto overflow-hidden bg-gray-100">
-          <img src="images/vaccum/swerve_frame_cad.png" alt="Frame CAD" class="w-full h-full object-cover">
-        </div>
-        <div class="p-8 md:p-10 flex flex-col justify-center">
-          <h3 class="font-display text-2xl font-bold text-primary mb-4">Frame CAD Design</h3>
-          <p class="text-muted text-lg leading-relaxed">
-            The swerve module frame was designed in SolidWorks around a custom drivetrain architecture incorporating bevel gears, spur gears, and belt drives to achieve a <span class="font-semibold text-primary">5.07 m/s</span> no-load speed. The design prioritizes stiffness, modularity, and compact packaging while preserving accessibility for future mechanical upgrades.
-          </p>
-        </div>
-      </div>
-    </div>
+  <main>
+    <div class="wrap">
 
-    <!-- FEA Analysis -->
-    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
-        <div class="h-80 md:h-auto overflow-hidden bg-gray-100 order-2 md:order-1">
-          <img src="images/vaccum/swerve_analysis.png" alt="FEA Analysis" class="w-full h-full object-cover">
-        </div>
-        <div class="p-8 md:p-10 flex flex-col justify-center order-1 md:order-2">
-          <h3 class="font-display text-2xl font-bold text-primary mb-4">Finite Element Analysis</h3>
-          <p class="text-muted text-lg leading-relaxed">
-            FEA was used to validate load paths and ensure the frame could withstand operational forces. SolidWorks Simulation identified major structural issues early, while higher-accuracy simulations in <span class="font-semibold text-primary">ANSYS</span> evaluated precise stress distributions and impact loading during crash scenarios.
-          </p>
-        </div>
-      </div>
-    </div>
+      <!-- ===================== SWERVE V2 ===================== -->
+      <section class="project">
+        <div class="eyebrow">In progress</div>
+        <h2>Swerve Drive Platform (V2)</h2>
+        <p class="blurb">A sized-down, actually manufacturable version of V1.</p>
 
-    <!-- Final Assembly -->
-    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-      <div class="p-8 md:p-10">
-        <h3 class="font-display text-2xl font-bold text-primary mb-4">Completed Frame Assembly</h3>
-        <p class="text-muted text-lg leading-relaxed mb-8">
-          The final frame integrates all modules with optimized stiffness and minimal weight. Design supports future upgrades and ensures protection of electronics during collisions or high-load maneuvers.
-        </p>
-        
-        <div class="grid grid-cols-1 gap-6">
-          <img src="images/vaccum/swerve_frame_final1.png" alt="Assembly view 1" class="rounded-lg shadow-md h-96 object-cover w-full">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <img src="images/vaccum/swerve_frame_final2.png" alt="Assembly view 2" class="rounded-lg shadow-md h-64 object-cover w-full">
-            <img src="images/vaccum/swerve_frame_final3.png" alt="Assembly view 3" class="rounded-lg shadow-md h-64 object-cover w-full">
+        <div class="stats">
+          <div class="stats-label">Key specifications</div>
+          <div class="stats-grid">
+            <div class="stat"><p class="num">1 kg</p><p class="label">Weight</p></div>
+            <div class="stat"><p class="num">54%</p><p class="label">Manufacturing cost reduction</p></div>
+            <div class="stat"><p class="num">3.2 m/s</p><p class="label">Top Speed (No-Load)</p></div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Hardware & Software Section -->
-  <section>
-    <div class="mb-12">
-      <p class="text-accent font-medium text-sm uppercase tracking-widest mb-2">Implementation</p>
-      <h2 class="font-display text-4xl font-bold text-primary mb-4">Hardware & Software Integration</h2>
-      <div class="h-1 w-20 bg-gradient-accent rounded-full"></div>
-    </div>
+        <details class="further-details">
+          <summary>Further details <span class="toggle-icon">+</span></summary>
+          <div class="placeholder-note">In progress &mdash; details coming soon.</div>
+        </details>
+      </section>
 
-    <!-- Electronics -->
-    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
-        <div class="h-80 md:h-auto overflow-hidden bg-gray-100">
-          <img src="images/vaccum/swerve_electronics.png" alt="Electronics" class="w-full h-full object-cover">
-        </div>
-        <div class="p-8 md:p-10 flex flex-col justify-center">
-          <h3 class="font-display text-2xl font-bold text-primary mb-4">Electronics & Control</h3>
-          <p class="text-muted text-lg leading-relaxed">
-            Designed modular control electronics in <span class="font-semibold text-primary">KiCad</span>, including motor drivers, sensors, and microcontrollers. Wiring layout supports easy upgrades and ensures reliability for high-speed omnidirectional motion.
-          </p>
-        </div>
-      </div>
-    </div>
+      <!-- ===================== SWERVE V1 ===================== -->
+      <section class="project">
+        <div class="eyebrow">V1</div>
+        <h2>Swerve Drive Platform (V1)</h2>
+        <p class="blurb">Souped-up autonomous vacuum robot using a swerve drive platform, with an aluminium chassis.</p>
 
-    <!-- ROS2 -->
-    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
-        <div class="h-80 md:h-auto overflow-hidden bg-gray-100 order-2 md:order-1">
-          <img src="images/vaccum/swerve_ros2.png" alt="ROS2 Architecture" class="w-full h-full object-cover">
-        </div>
-        <div class="p-8 md:p-10 flex flex-col justify-center order-1 md:order-2">
-          <h3 class="font-display text-2xl font-bold text-primary mb-4">ROS2 Control Architecture</h3>
-          <p class="text-muted text-lg leading-relaxed">
-            Implemented high-level control on a <span class="font-semibold text-primary">Raspberry Pi</span> using ROS2, handling motion profiling, swerve kinematics, and subsystem communication. Low-level motor control ran on <span class="font-semibold text-primary">ESP32</span> to achieve stable omnidirectional motion at speeds up to 5 m/s.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Integrated System -->
-    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-      <div class="p-8 md:p-10">
-        <h3 class="font-display text-2xl font-bold text-primary mb-4">Integrated System</h3>
-        <p class="text-muted text-lg leading-relaxed mb-8">
-          Final assembly combines all electronics, ROS2 software, and frame modules into a compact, high-speed, and robust swerve-drive platform ready for testing and further development.
-        </p>
-        
-        <div class="grid grid-cols-1 gap-6">
-          <img src="images/swerve_final1.jpg" alt="Final system 1" class="rounded-lg shadow-md h-96 object-cover w-full">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <img src="images/swerve_final2.jpg" alt="Final system 2" class="rounded-lg shadow-md h-64 object-cover w-full">
-            <img src="images/swerve_final3.jpg" alt="Final system 3" class="rounded-lg shadow-md h-64 object-cover w-full">
+        <div class="stats">
+          <div class="stats-label">Key specifications</div>
+          <div class="stats-grid">
+            <div class="stat"><p class="num">5.07 m/s</p><p class="label">Max Speed (No-Load)</p></div>
+            <div class="stat"><p class="num">ROS2</p><p class="label">Control Framework</p></div>
+            <div class="stat"><p class="num">Modular</p><p class="label">Architecture Design</p></div>
           </div>
         </div>
-      </div>
+
+        <div class="gallery-label">Completed frame CAD</div>
+        <div class="gallery">
+          <img src="images/vaccum/swerve_frame_final1.png" alt="Completed frame CAD 1">
+          <img src="images/vaccum/swerve_frame_final2.png" alt="Completed frame CAD 2">
+          <img src="images/vaccum/swerve_frame_final3.png" alt="Completed frame CAD 3">
+        </div>
+
+        <details class="further-details">
+          <summary>Further details <span class="toggle-icon">+</span></summary>
+          <div class="sub-list">
+
+            <div class="sub">
+              <div class="sub-media"><img src="images/vaccum/swerve_frame_cad.png" alt="Frame CAD design"></div>
+              <div class="sub-text">
+                <h3>Frame CAD Design</h3>
+                <p>The swerve module frame was designed in SolidWorks around a custom drivetrain architecture incorporating bevel gears, spur gears, and belt drives to achieve a <strong>5.07 m/s</strong> no-load speed. The design prioritizes stiffness, modularity, and compact packaging while preserving accessibility for future mechanical upgrades.</p>
+              </div>
+            </div>
+
+            <div class="sub">
+              <div class="sub-media"><img src="images/vaccum/swerve_analysis.png" alt="Finite element analysis"></div>
+              <div class="sub-text">
+                <h3>Finite Element Analysis</h3>
+                <p>FEA was used to validate load paths and ensure the frame could withstand operational forces. SolidWorks Simulation identified major structural issues early, while higher-accuracy simulations in <strong>ANSYS</strong> evaluated precise stress distributions and impact loading during crash scenarios.</p>
+              </div>
+            </div>
+
+            <div class="sub">
+              <div class="sub-media"><img src="images/vaccum/swerve_electronics.png" alt="Electronics and control"></div>
+              <div class="sub-text">
+                <h3>Electronics &amp; Control</h3>
+                <p>Designed modular control electronics in <strong>KiCad</strong>, including motor drivers, sensors, and microcontrollers. Wiring layout supports easy upgrades and ensures reliability for high-speed omnidirectional motion.</p>
+              </div>
+            </div>
+
+            <div class="sub">
+              <div class="sub-media"><img src="images/vaccum/swerve_ros2.png" alt="ROS2 control architecture"></div>
+              <div class="sub-text">
+                <h3>ROS2 Control Architecture</h3>
+                <p>Implemented high-level control on a <strong>Raspberry Pi</strong> using ROS2, handling motion profiling, swerve kinematics, and subsystem communication. Low-level motor control ran on <strong>ESP32</strong> to achieve stable omnidirectional motion at speeds up to 5 m/s.</p>
+              </div>
+            </div>
+
+          </div>
+        </details>
+      </section>
+
     </div>
-  </section>
+  </main>
 
-  <!-- Key Metrics -->
-  <section class="bg-gradient-hero text-light rounded-2xl p-12 md:p-16">
-    <h2 class="font-display text-3xl font-bold mb-12 text-center">Key Specifications</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="text-center">
-        <p class="text-4xl font-bold text-accent mb-2">5.07 m/s</p>
-        <p class="text-light/80">Max Speed (No-Load)</p>
-      </div>
-      <div class="text-center">
-        <p class="text-4xl font-bold text-accent mb-2">ROS2</p>
-        <p class="text-light/80">Control Framework</p>
-      </div>
-      <div class="text-center">
-        <p class="text-4xl font-bold text-accent mb-2">Modular</p>
-        <p class="text-light/80">Architecture Design</p>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<!-- Footer -->
-<footer class="bg-primary text-center py-8 px-6 border-t border-light/10 text-light/60 mt-20">
-  <p class="font-light">© 2026 Ryan Kai Sum Wong. All rights reserved.</p>
-</footer>
+  <footer class="foot">
+    &copy; 2026 Ryan Kai Sum Wong. All rights reserved.
+  </footer>
 
 </body>
 </html>

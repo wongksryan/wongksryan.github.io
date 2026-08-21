@@ -1,234 +1,428 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pneumatic Launchers</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            'display': ['Syne', 'sans-serif'],
-            'body': ['Inter', 'sans-serif'],
-          },
-          colors: {
-            primary: '#0F172A',
-            accent: '#A855F7',       // Purple
-            secondary: '#D8B4FE',    // Light purple
-            muted: '#94A3B8',
-            light: '#F1F5F9',
-            success: '#10B981',
-          },
-          backgroundImage: {
-            'gradient-hero': 'linear-gradient(135deg, #5B21B6 0%, #7C3AED 100%)',
-            'gradient-accent': 'linear-gradient(135deg, #A855F7 0%, #D8B4FE 100%)',
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    * {
-      scroll-behavior: smooth;
-    }
-    
-    h1, h2, h3, h4, h5, h6 {
-      font-family: 'Syne', sans-serif;
-      letter-spacing: -0.02em;
-    }
-    
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    .animate-fade-in-up {
-      animation: fadeInUp 0.6s ease-out;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pneumatic Launchers — Ryan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12151A;
+    --white:#FFFFFF;
+    --steel:#EDEFEF;
+    --steel-dark:#E1E4E3;
+    --line:#D5D8D7;
+    --blue:#163F5A;
+    --blue-light:#4C93B8;
+    --yellow:#E3A73B;
+    --muted:#6E7274;
+    --display:'Space Grotesk', sans-serif;
+    --body:'IBM Plex Sans', sans-serif;
+    --mono:'IBM Plex Mono', monospace;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{ font-family:var(--body); line-height:1.5; color:var(--ink); background:var(--white); }
+  a{ color:inherit; }
+  img, video{ display:block; }
+
+  .wrap{ max-width:1160px; margin:0 auto; padding:0 32px; }
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{ content:""; width:18px; height:1px; display:inline-block; }
+
+  /* ============ NAV ============ */
+  .nav{
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:var(--white);
+    border-bottom:1px solid var(--line);
+  }
+  .nav .wrap{
+    padding:18px 32px;
+    display:flex;
+    align-items:center;
+  }
+  .nav a{
+    font-family:var(--mono);
+    font-size:13px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    text-decoration:none;
+    color:var(--ink);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .nav a:hover{ color:var(--blue); }
+
+  /* ============ HERO — dark block ============ */
+  .hero{ background:var(--ink); color:var(--white); }
+  .hero-inner{ padding:80px 0 64px 0; }
+  .hero .eyebrow{ color:var(--yellow); }
+  .hero .eyebrow::before{ background:var(--yellow); }
+
+  .hero h1{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:clamp(38px, 6vw, 64px);
+    letter-spacing:-0.01em;
+    line-height:1.02;
+    margin-top:16px;
+    text-transform:uppercase;
+    max-width:760px;
+  }
+
+  .hero .sub{
+    font-size:17px;
+    max-width:600px;
+    margin-top:20px;
+    color:#DDE0DE;
+  }
+
+  /* ============ PROJECT SECTIONS ============ */
+  .project{
+    padding:72px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .project:last-of-type{ border-bottom:none; }
+
+  .project .eyebrow{ color:var(--blue); }
+  .project .eyebrow::before{ background:var(--blue); }
+
+  .project h2{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:clamp(26px,3.6vw,36px);
+    margin-top:10px;
+    text-transform:uppercase;
+  }
+
+  .blurb{
+    font-size:16px;
+    max-width:600px;
+    margin-top:18px;
+    color:#3E4243;
+    border-left:3px solid var(--yellow);
+    padding-left:16px;
+  }
+
+  /* ---- key specifications ---- */
+  .stats{
+    background:var(--ink);
+    color:var(--white);
+    margin-top:32px;
+    padding:40px 32px;
+  }
+  .stats-label{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--yellow);
+    text-align:center;
+    margin-bottom:28px;
+  }
+  .stats-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+  }
+  .stat{ text-align:center; }
+  .stat .num{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:clamp(26px, 4vw, 36px);
+    color:var(--yellow);
+    line-height:1;
+  }
+  .stat .label{
+    font-family:var(--mono);
+    font-size:12px;
+    color:#B9BDBE;
+    margin-top:10px;
+  }
+
+  /* ---- gallery (photos / videos, moved to top) ---- */
+  .gallery-label{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-top:36px;
+    margin-bottom:14px;
+  }
+
+  .gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));
+    gap:14px;
+  }
+  .gallery img,
+  .gallery video{
+    width:100%;
+    aspect-ratio:4/3;
+    object-fit:cover;
+    border:1px solid var(--line);
+    border-top:3px solid var(--yellow);
+    background:var(--steel-dark);
+  }
+
+  /* ---- further details disclosure ---- */
+  .further-details{
+    margin-top:28px;
+    border:1px solid var(--line);
+  }
+
+  .further-details summary{
+    list-style:none;
+    cursor:pointer;
+    padding:16px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    font-family:var(--mono);
+    font-size:13px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--ink);
+    background:var(--steel);
+  }
+  .further-details summary::-webkit-details-marker{ display:none; }
+
+  .further-details summary .toggle-icon{
+    font-family:var(--display);
+    font-size:18px;
+    line-height:1;
+    color:var(--blue);
+    transition:transform .25s ease;
+  }
+  .further-details[open] summary .toggle-icon{ transform:rotate(45deg); }
+
+  .further-details[open] summary{ border-bottom:1px solid var(--line); }
+
+  .sub-list{ padding:8px 0; }
+
+  .sub{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0;
+    border-bottom:1px solid var(--line);
+  }
+  .sub:last-child{ border-bottom:none; }
+
+  .sub-media{
+    aspect-ratio:4/3;
+    overflow:hidden;
+    background:var(--steel-dark);
+  }
+  .sub-media img{ width:100%; height:100%; object-fit:cover; }
+
+  .sub-text{
+    padding:28px 30px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .sub-text h3{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:18px;
+    text-transform:uppercase;
+  }
+  .sub-text p{
+    font-size:14px;
+    color:#3E4243;
+    margin-top:10px;
+  }
+  .sub-text p strong{ color:var(--ink); }
+
+  .sub:nth-child(even) .sub-media{ order:2; }
+  .sub:nth-child(even) .sub-text{ order:1; }
+
+  .report-btn{
+    margin-top:16px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    text-decoration:none;
+    color:var(--white);
+    background:var(--blue);
+    padding:10px 16px;
+    width:fit-content;
+  }
+  .report-btn:hover{ background:var(--ink); }
+
+  /* ============ FOOTER ============ */
+  .foot{
+    background:var(--ink);
+    color:#8B9092;
+    text-align:center;
+    padding:32px 0;
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.04em;
+  }
+
+  @media (max-width: 720px){
+    .sub{ grid-template-columns:1fr; }
+    .sub:nth-child(even) .sub-media{ order:1; }
+    .sub:nth-child(even) .sub-text{ order:2; }
+    .stats-grid{ grid-template-columns:1fr; gap:28px; }
+  }
+</style>
 </head>
+<body>
 
-<body class="bg-light text-primary font-body">
-
-<!-- Header / Navigation -->
-<header class="sticky top-0 z-50 bg-light/95 backdrop-blur-sm border-b border-gray-200">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-    <a href="index.html" class="font-display font-bold text-2xl text-primary">Home</a>
-  </div>
-</header>
-
-<!-- Hero Section -->
-<section class="relative overflow-hidden bg-gradient-hero py-20 md:py-28">
-  <div class="absolute inset-0 opacity-20">
-    <div class="absolute top-10 right-10 w-72 h-72 bg-accent rounded-full blur-3xl"></div>
-    <div class="absolute bottom-10 left-10 w-72 h-72 bg-secondary rounded-full blur-3xl"></div>
-  </div>
-  
-  <div class="relative max-w-6xl mx-auto px-6 text-center">
-    <div class="animate-fade-in-up">
-      <p class="text-secondary font-medium text-sm md:text-base mb-3 tracking-widest uppercase">Featured Project</p>
-      <h1 class="font-display text-4xl md:text-6xl font-bold text-light mb-4 leading-tight">
-        Pneumatic Launchers
-      </h1>
-      <p class="text-light/80 text-lg md:text-xl max-w-3xl mx-auto">
-        Exploring the physics and engineering of high-velocity pneumatic systems. All demonstrations conducted legally in Hong Kong.
-      </p>
+  <nav class="nav">
+    <div class="wrap">
+      <a href="index.html">&larr; Home</a>
     </div>
-  </div>
-</section>
+  </nav>
 
-<!-- Main Content -->
-<main class="max-w-5xl mx-auto px-6 py-16 space-y-20">
-
-  <!-- Boba Launcher Section -->
-  <section>
-    <div class="mb-12">
-      <p class="text-accent font-medium text-sm uppercase tracking-widest mb-2">Theoretical Design</p>
-      <h2 class="font-display text-4xl font-bold text-primary mb-4">Boba Launcher — Version 2</h2>
-      <div class="h-1 w-20 bg-gradient-accent rounded-full"></div>
-    </div>
-
-    <!-- CAD Design -->
-    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
-        <div class="h-80 md:h-auto overflow-hidden bg-gray-100">
-          <img src="images/launcher/boba_cad.png" alt="Boba CAD" class="w-full h-full object-cover">
-        </div>
-        <div class="p-8 md:p-10 flex flex-col justify-center">
-          <h3 class="font-display text-2xl font-bold text-primary mb-4">CAD Design</h3>
-          <p class="text-muted text-lg leading-relaxed">
-            Developed a detailed SolidWorks model exploring pressure chamber geometry, sealing strategies, and projectile guidance under a <span class="font-semibold text-primary">70 psi maximum operating pressure</span> constraint while achieving a theoretical launch velocity of <span class="font-semibold text-primary">50 m/s</span>.
-          </p>
-          <p class="text-muted text-lg leading-relaxed mt-4">
-            The design uses only real off-the-shelf, pressure-rated PVC standards and commercially available solenoid valves, rather than custom components. This constraint strongly influenced geometry, layout, and structural decisions. The project remains a theoretical design.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- ANSYS Analysis -->
-    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
-        <div class="h-80 md:h-auto overflow-hidden bg-gray-100 order-2 md:order-1">
-          <img src="images/launcher/boba_ansys.png" alt="ANSYS Simulation" class="w-full h-full object-cover">
-        </div>
-        <div class="p-8 md:p-10 flex flex-col justify-center order-1 md:order-2">
-          <h3 class="font-display text-2xl font-bold text-primary mb-4">ANSYS Simulation</h3>
-          <p class="text-muted text-lg leading-relaxed">
-            Structural integrity was evaluated using static load analysis in <span class="font-semibold text-primary">ANSYS Mechanical</span> to verify stress distributions under theoretical internal pressure loads. Internal flow behavior was studied using <span class="font-semibold text-primary">ANSYS Fluent</span> to estimate theoretical performance and velocity trends.
-          </p>
-          <p class="text-muted text-lg leading-relaxed mt-4">
-            These simulations served as comparative design tools to understand system behavior and tradeoffs rather than optimizing for construction.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Model Gallery -->
-    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg p-8 md:p-10">
-      <h3 class="font-display text-2xl font-bold text-primary mb-8">Design Models</h3>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <img src="images/launcher/boba_model1.png" alt="Model 1" class="rounded-lg shadow-md h-64 object-cover w-full hover:shadow-lg transition-shadow">
-        <img src="images/launcher/boba_model2.png" alt="Model 2" class="rounded-lg shadow-md h-64 object-cover w-full hover:shadow-lg transition-shadow">
-        <img src="images/launcher/boba_model3.png" alt="Model 3" class="rounded-lg shadow-md h-64 object-cover w-full hover:shadow-lg transition-shadow">
-      </div>
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div class="eyebrow">Featured work</div>
+      <h1>Pneumatic Launchers</h1>
+      <p class="sub">Exploring the physics and engineering of high-velocity pneumatic systems. All demonstrations conducted legally in Hong Kong.</p>
     </div>
   </section>
 
-  <!-- Putty Launcher Section -->
-  <section>
-    <div class="mb-12">
-      <p class="text-accent font-medium text-sm uppercase tracking-widest mb-2">Practical Implementation</p>
-      <h2 class="font-display text-4xl font-bold text-primary mb-4">Putty Launcher — Version 1</h2>
-      <div class="h-1 w-20 bg-gradient-accent rounded-full"></div>
+  <main>
+    <div class="wrap">
+
+      <!-- ===================== BOBA LAUNCHER V2 ===================== -->
+      <section class="project">
+        <div class="eyebrow">Simulation / CAD study only</div>
+        <h2>Boba Launcher (V2)</h2>
+        <p class="blurb">An improved theoretical launcher meant to launch boba using sabot rounds. Not built due to legal reasons.</p>
+
+        <div class="stats">
+          <div class="stats-label">Key specifications</div>
+          <div class="stats-grid">
+            <div class="stat"><p class="num">50 m/s</p><p class="label">Theoretical launch velocity</p></div>
+            <div class="stat"><p class="num">70 psi</p><p class="label">Chamber pressure</p></div>
+            <div class="stat"><p class="num">4</p><p class="label">Shots before reload</p></div>
+          </div>
+        </div>
+
+        <div class="gallery-label">Final model</div>
+        <div class="gallery">
+          <img src="images/launcher/boba_model1.png" alt="Boba launcher model 1">
+          <img src="images/launcher/boba_model2.png" alt="Boba launcher model 2">
+          <img src="images/launcher/boba_model3.png" alt="Boba launcher model 3">
+        </div>
+
+        <details class="further-details">
+          <summary>Further details <span class="toggle-icon">+</span></summary>
+          <div class="sub-list">
+
+            <div class="sub">
+              <div class="sub-media"><img src="images/launcher/boba_cad.png" alt="Boba launcher CAD"></div>
+              <div class="sub-text">
+                <h3>CAD Design</h3>
+                <p>Developed a detailed SolidWorks model exploring pressure chamber geometry, sealing strategies, and projectile guidance under a <strong>70 psi maximum operating pressure</strong> constraint while achieving a theoretical launch velocity of <strong>50 m/s</strong>.</p>
+                <p>The design uses only real off-the-shelf, pressure-rated PVC standards and commercially available solenoid valves, rather than custom components. This constraint strongly influenced geometry, layout, and structural decisions. The project remains a theoretical design.</p>
+              </div>
+            </div>
+
+            <div class="sub">
+              <div class="sub-media"><img src="images/launcher/boba_ansys.png" alt="ANSYS simulation"></div>
+              <div class="sub-text">
+                <h3>ANSYS Simulation</h3>
+                <p>Structural integrity was evaluated using static load analysis in <strong>ANSYS Mechanical</strong> to verify stress distributions under theoretical internal pressure loads. Internal flow behavior was studied using <strong>ANSYS Fluent</strong> to estimate theoretical performance and velocity trends.</p>
+                <p>These simulations served as comparative design tools to understand system behavior and tradeoffs rather than optimizing for construction.</p>
+              </div>
+            </div>
+
+          </div>
+        </details>
+      </section>
+
+      <!-- ===================== PUTTY LAUNCHER V1 ===================== -->
+      <section class="project">
+        <div class="eyebrow">Actually built</div>
+        <h2>Putty Launcher (V1)</h2>
+        <p class="blurb">A simple launcher integrated into a laser velocimeter test rig for pressure&ndash;launch velocity testing.</p>
+
+        <div class="stats">
+          <div class="stats-label">Key specifications</div>
+          <div class="stats-grid">
+            <div class="stat"><p class="num">15 g</p><p class="label">Putty projectile</p></div>
+            <div class="stat"><p class="num">44.3 m/s</p><p class="label">Maximum recorded velocity</p></div>
+            <div class="stat"><p class="num">50 psi</p><p class="label">Max chamber pressure</p></div>
+          </div>
+        </div>
+
+        <div class="gallery-label">Launch demonstrations</div>
+        <div class="gallery">
+          <video controls>
+            <source src="videos/launcher/launch1.mp4" type="video/mp4">
+          </video>
+          <video controls>
+            <source src="videos/launcher/launch2.mp4" type="video/mp4">
+          </video>
+          <video controls>
+            <source src="videos/launcher/launch3.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <details class="further-details">
+          <summary>Further details <span class="toggle-icon">+</span></summary>
+          <div class="sub-list">
+
+            <div class="sub">
+              <div class="sub-media"><img src="images/launcher/math.png" alt="Adiabatic calculations"></div>
+              <div class="sub-text">
+                <h3>Adiabatic Calculations</h3>
+                <p>This project launched a <strong>15 g putty projectile</strong> at approximately <strong>40&ndash;50 m/s</strong> using a maximum operating pressure of <strong>50 psi</strong>.</p>
+                <p>Theoretical performance modeling was based on adiabatic expansion of a diatomic gas, justified by experimental pressure measurements indicating characteristic expansion times of 75&ndash;150 ms. This allowed closed-form energy and pressure relationships to be derived.</p>
+                <a href="reports/launcher_report.pdf" class="report-btn">View full report (PDF)</a>
+              </div>
+            </div>
+
+            <div class="sub">
+              <div class="sub-media"><img src="images/launcher/putty_test.png" alt="CAD, testing, and prototypes"></div>
+              <div class="sub-text">
+                <h3>CAD + Testing + Prototypes</h3>
+                <p>Modeled the full assembly in CAD and performed basic validation of mechanical loading assumptions. Iterated on barrel geometry, chamber volume, and layout to improve consistency and repeatability with readily available components. Additionally performed static pressure tests for safety assurance.</p>
+              </div>
+            </div>
+
+            <div class="sub">
+              <div class="sub-media"><img src="images/launcher/putty_final.png" alt="Final product showcase"></div>
+              <div class="sub-text">
+                <h3>Final Product Showcase</h3>
+                <p>The final system demonstrated consistent performance across repeated tests. Design iteration focused on improving valve response consistency, sealing reliability, and projectile&ndash;barrel interface behavior. Testing was conducted on secured private property in Hong Kong in accordance with local legal constraints.</p>
+              </div>
+            </div>
+
+          </div>
+        </details>
+      </section>
+
     </div>
+  </main>
 
-    <!-- Adiabatic Math -->
-    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
-        <div class="h-80 md:h-auto overflow-hidden bg-gray-100">
-          <img src="images/launcher/math.png" alt="Adiabatic Calculations" class="w-full h-full object-cover">
-        </div>
-        <div class="p-8 md:p-10 flex flex-col justify-center">
-          <h3 class="font-display text-2xl font-bold text-primary mb-4">Adiabatic Calculations</h3>
-          <p class="text-muted text-lg leading-relaxed">
-            This project launched a <span class="font-semibold text-primary">15 g putty projectile</span> at approximately <span class="font-semibold text-primary">40–50 m/s</span> using a maximum operating pressure of <span class="font-semibold text-primary">50 psi</span>.
-          </p>
-          <p class="text-muted text-lg leading-relaxed mt-4">
-            Theoretical performance modeling was based on adiabatic expansion of a diatomic gas, justified by experimental pressure measurements indicating characteristic expansion times of 75–150 ms. This allowed closed-form energy and pressure relationships to be derived.
-          </p>
-          <a href="reports/launcher_report.pdf"
-             class="inline-block mt-6 px-6 py-3 bg-gradient-accent text-light font-semibold rounded-lg
-                    hover:shadow-lg hover:scale-105 transition-all duration-300">
-            View Full Report (PDF)
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- CAD + Testing -->
-    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
-        <div class="h-80 md:h-auto overflow-hidden bg-gray-100 order-2 md:order-1">
-          <img src="images/launcher/putty_test.png" alt="Testing" class="w-full h-full object-cover">
-        </div>
-        <div class="p-8 md:p-10 flex flex-col justify-center order-1 md:order-2">
-          <h3 class="font-display text-2xl font-bold text-primary mb-4">CAD + Testing + Prototypes</h3>
-          <p class="text-muted text-lg leading-relaxed">
-            Modeled the full assembly in CAD and performed basic validation of mechanical loading assumptions. Iterated on barrel geometry, chamber volume, and layout to improve consistency and repeatability with readily available components. Additionally performed static pressure tests for safety assurance.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Final Product -->
-    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
-        <div class="h-80 md:h-auto overflow-hidden bg-gray-100">
-          <img src="images/launcher/putty_final.png" alt="Final Product" class="w-full h-full object-cover">
-        </div>
-        <div class="p-8 md:p-10 flex flex-col justify-center">
-          <h3 class="font-display text-2xl font-bold text-primary mb-4">Final Product Showcase</h3>
-          <p class="text-muted text-lg leading-relaxed">
-            The final system demonstrated consistent performance across repeated tests. Design iteration focused on improving valve response consistency, sealing reliability, and projectile–barrel interface behavior. Testing was conducted on secured private property in Hong Kong in accordance with local legal constraints.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Video Demonstrations -->
-    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg p-8 md:p-10">
-      <h3 class="font-display text-2xl font-bold text-primary mb-2">Launch Demonstrations</h3>
-      <p class="text-muted text-lg mb-8">Conducted legally in Hong Kong</p>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <video controls class="rounded-lg shadow-md h-80 bg-gray-100">
-          <source src="videos/launcher/launch1.mp4" type="video/mp4">
-        </video>
-        <video controls class="rounded-lg shadow-md h-80 bg-gray-100">
-          <source src="videos/launcher/launch2.mp4" type="video/mp4">
-        </video>
-        <video controls class="rounded-lg shadow-md h-80 bg-gray-100">
-          <source src="videos/launcher/launch3.mp4" type="video/mp4">
-        </video>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<!-- Footer -->
-<footer class="bg-primary text-center py-8 px-6 border-t border-light/10 text-light/60 mt-20">
-  <p class="font-light">© 2026 Ryan Kai Sum Wong. All rights reserved.</p>
-</footer>
+  <footer class="foot">
+    &copy; 2026 Ryan Kai Sum Wong. All rights reserved.
+  </footer>
 
 </body>
 </html>

@@ -1,334 +1,518 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Soft Exoskeleton</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            'display': ['Syne', 'sans-serif'],
-            'body': ['Inter', 'sans-serif'],
-          },
-          colors: {
-            primary: '#0F172A',
-            accent: '#06B6D4',       // Light blue / cyan
-            secondary: '#67E8F9',    // Light cyan
-            muted: '#94A3B8',
-            light: '#F1F5F9',
-            success: '#10B981',
-          },
-          backgroundImage: {
-            'gradient-hero': 'linear-gradient(135deg, #0C4A6E 0%, #0891B2 100%)',
-            'gradient-accent': 'linear-gradient(135deg, #06B6D4 0%, #67E8F9 100%)',
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    * {
-      scroll-behavior: smooth;
-    }
-    
-    h1, h2, h3, h4, h5, h6 {
-      font-family: 'Syne', sans-serif;
-      letter-spacing: -0.02em;
-    }
-    
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    .animate-fade-in-up {
-      animation: fadeInUp 0.6s ease-out;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exoskeleton Work — Ryan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12151A;
+    --white:#FFFFFF;
+    --steel:#EDEFEF;
+    --steel-dark:#E1E4E3;
+    --line:#D5D8D7;
+    --blue:#163F5A;
+    --blue-light:#4C93B8;
+    --yellow:#E3A73B;
+    --muted:#6E7274;
+    --display:'Space Grotesk', sans-serif;
+    --body:'IBM Plex Sans', sans-serif;
+    --mono:'IBM Plex Mono', monospace;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{ font-family:var(--body); line-height:1.5; color:var(--ink); background:var(--white); }
+  a{ color:inherit; }
+  img{ display:block; }
+
+  .wrap{ max-width:1160px; margin:0 auto; padding:0 32px; }
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{ content:""; width:18px; height:1px; display:inline-block; }
+
+  /* ============ NAV ============ */
+  .nav{
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:var(--white);
+    border-bottom:1px solid var(--line);
+  }
+  .nav .wrap{
+    padding:18px 32px;
+    display:flex;
+    align-items:center;
+  }
+  .nav a{
+    font-family:var(--mono);
+    font-size:13px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    text-decoration:none;
+    color:var(--ink);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .nav a:hover{ color:var(--blue); }
+
+  /* ============ HERO — dark block ============ */
+  .hero{ background:var(--ink); color:var(--white); }
+  .hero-inner{ padding:80px 0 64px 0; }
+  .hero .eyebrow{ color:var(--yellow); }
+  .hero .eyebrow::before{ background:var(--yellow); }
+
+  .hero h1{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:clamp(38px, 6vw, 64px);
+    letter-spacing:-0.01em;
+    line-height:1.02;
+    margin-top:16px;
+    text-transform:uppercase;
+    max-width:760px;
+  }
+
+  .hero .sub{
+    font-size:17px;
+    max-width:600px;
+    margin-top:20px;
+    color:#DDE0DE;
+  }
+
+  /* ============ YEAR SECTIONS ============ */
+  .project{
+    padding:72px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .project:last-of-type{ border-bottom:none; }
+
+  .project .eyebrow{ color:var(--blue); }
+  .project .eyebrow::before{ background:var(--blue); }
+
+  .project h2{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:clamp(26px,3.6vw,36px);
+    margin-top:10px;
+    text-transform:uppercase;
+  }
+
+  .blurb{
+    font-size:16px;
+    max-width:600px;
+    margin-top:18px;
+    color:#3E4243;
+    border-left:3px solid var(--yellow);
+    padding-left:16px;
+  }
+
+  /* ---- nested sub-project block ---- */
+  .subproject{
+    border:1px solid var(--line);
+    border-top:3px solid var(--yellow);
+    margin-top:32px;
+    padding:30px 30px 34px 30px;
+  }
+
+  .subproject h3{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:22px;
+    text-transform:uppercase;
+  }
+
+  .subproject .blurb{ margin-top:14px; }
+
+  /* ---- design requirements ---- */
+  .req-label{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-top:30px;
+    margin-bottom:12px;
+  }
+
+  .req-placeholder{
+    font-size:14px;
+    font-style:italic;
+    color:var(--muted);
+    background:var(--steel);
+    border:1px solid var(--line);
+    padding:14px 16px;
+  }
+
+  /* ---- key stats (design requirements w/ real numbers) ---- */
+  .stats{
+    background:var(--ink);
+    color:var(--white);
+    padding:32px 28px;
+  }
+  .stats-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:20px;
+  }
+  .stat{ text-align:center; }
+  .stat .num{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:clamp(24px, 3.4vw, 32px);
+    color:var(--yellow);
+    line-height:1;
+  }
+  .stat .label{
+    font-family:var(--mono);
+    font-size:11px;
+    color:#B9BDBE;
+    margin-top:8px;
+  }
+
+  /* ---- gallery ---- */
+  .gallery-label{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-top:30px;
+    margin-bottom:12px;
+  }
+
+  .gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(180px, 1fr));
+    gap:12px;
+  }
+  .gallery img{
+    width:100%;
+    aspect-ratio:4/3;
+    object-fit:cover;
+    border:1px solid var(--line);
+    border-top:3px solid var(--yellow);
+  }
+
+  /* ---- further details disclosure ---- */
+  .further-details{
+    margin-top:22px;
+    border:1px solid var(--line);
+  }
+
+  .further-details summary{
+    list-style:none;
+    cursor:pointer;
+    padding:16px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    font-family:var(--mono);
+    font-size:13px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--ink);
+    background:var(--steel);
+  }
+  .further-details summary::-webkit-details-marker{ display:none; }
+
+  .further-details summary .toggle-icon{
+    font-family:var(--display);
+    font-size:18px;
+    line-height:1;
+    color:var(--blue);
+    transition:transform .25s ease;
+  }
+  .further-details[open] summary .toggle-icon{ transform:rotate(45deg); }
+
+  .further-details[open] summary{ border-bottom:1px solid var(--line); }
+
+  .sub-list{ padding:8px 0; }
+
+  .sub{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0;
+    border-bottom:1px solid var(--line);
+  }
+  .sub:last-child{ border-bottom:none; }
+
+  .sub-media{
+    aspect-ratio:4/3;
+    overflow:hidden;
+    background:var(--steel-dark);
+  }
+  .sub-media img{ width:100%; height:100%; object-fit:cover; }
+
+  .sub-text{
+    padding:24px 26px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .sub-text h4{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:16px;
+    text-transform:uppercase;
+  }
+  .sub-text p{
+    font-size:13.5px;
+    color:#3E4243;
+    margin-top:8px;
+  }
+  .sub-text p strong{ color:var(--ink); }
+
+  .sub:nth-child(even) .sub-media{ order:2; }
+  .sub:nth-child(even) .sub-text{ order:1; }
+
+  .gallery-only{ padding:20px; }
+
+  /* ============ FOOTER ============ */
+  .foot{
+    background:var(--ink);
+    color:#8B9092;
+    text-align:center;
+    padding:32px 0;
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.04em;
+  }
+
+  @media (max-width: 720px){
+    .sub{ grid-template-columns:1fr; }
+    .sub:nth-child(even) .sub-media{ order:1; }
+    .sub:nth-child(even) .sub-text{ order:2; }
+    .stats-grid{ grid-template-columns:1fr; gap:20px; }
+  }
+</style>
 </head>
+<body>
 
-<body class="bg-light text-primary font-body">
-
-<!-- Header / Navigation -->
-<header class="sticky top-0 z-50 bg-light/95 backdrop-blur-sm border-b border-gray-200">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-    <a href="index.html" class="font-display font-bold text-2xl text-primary">Home</a>
-  </div>
-</header>
-
-<!-- Hero Section -->
-<section class="relative overflow-hidden bg-gradient-hero py-20 md:py-28">
-  <div class="absolute inset-0 opacity-20">
-    <div class="absolute top-10 right-10 w-72 h-72 bg-accent rounded-full blur-3xl"></div>
-    <div class="absolute bottom-10 left-10 w-72 h-72 bg-secondary rounded-full blur-3xl"></div>
-  </div>
-  
-  <div class="relative max-w-6xl mx-auto px-6 text-center">
-    <div class="animate-fade-in-up">
-      <p class="text-secondary font-medium text-sm md:text-base mb-3 tracking-widest uppercase">Featured Project</p>
-      <h1 class="font-display text-4xl md:text-6xl font-bold text-light mb-4 leading-tight">
-        Soft Exoskeleton
-      </h1>
-      <p class="text-light/80 text-lg md:text-xl max-w-3xl mx-auto">
-        A competitive robotics project developing an advanced wearable system for assistive mobility. Details limited to prevent pre-competition information leaks.
-      </p>
+  <nav class="nav">
+    <div class="wrap">
+      <a href="index.html">&larr; Home</a>
     </div>
-  </div>
-</section>
+  </nav>
 
-<!-- Main Content -->
-<main class="max-w-5xl mx-auto px-6 py-16 space-y-20">
-
-  <!-- CAD & Analysis Section -->
-  <section>
-    <div class="mb-12">
-      <p class="text-accent font-medium text-sm uppercase tracking-widest mb-2">Design Development</p>
-      <h2 class="font-display text-4xl font-bold text-primary mb-4">CAD & Structural Analysis</h2>
-      <div class="h-1 w-20 bg-gradient-accent rounded-full"></div>
-    </div>
-
-    <!-- Planning -->
-    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
-        <div class="h-80 md:h-auto overflow-hidden bg-gray-100">
-          <img src="images/exo/planning.png" alt="Planning & Measurements" class="w-full h-full object-cover">
-        </div>
-        <div class="p-8 md:p-10 flex flex-col justify-center">
-          <h3 class="font-display text-2xl font-bold text-primary mb-4">Planning & Measurements</h3>
-          <p class="text-muted text-lg leading-relaxed">
-            Defined biomechanical constraints, applied anthropometric datasets, and mapped mechanical interfaces to ensure ergonomic fit across a wide range of body sizes. This foundational phase established design parameters for all downstream iterations.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Hip CAD V1 -->
-    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
-        <div class="h-80 md:h-auto overflow-hidden bg-gray-100 order-2 md:order-1">
-          <img src="images/exo/cad_v1.png" alt="CAD V1" class="w-full h-full object-cover">
-        </div>
-        <div class="p-8 md:p-10 flex flex-col justify-center order-1 md:order-2">
-          <h3 class="font-display text-2xl font-bold text-primary mb-4">CAD Version 1</h3>
-          <p class="text-muted text-lg leading-relaxed">
-            Early exploratory model used to validate overall architecture, kinematics, and packaging of a <span class="font-semibold text-primary">2-DOF hip mechanism</span>. Design was intentionally unoptimized, with limited consideration for mass, stress distribution, or manufacturability—focused on functional validation.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Part Analysis and Refinement -->
-    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
-        <div class="h-80 md:h-auto overflow-hidden bg-gray-100">
-          <img src="images/exo/analysis.png" alt="FEA Analysis" class="w-full h-full object-cover">
-        </div>
-        <div class="p-8 md:p-10 flex flex-col justify-center">
-          <h3 class="font-display text-2xl font-bold text-primary mb-4">ANSYS & FEA Simulation</h3>
-          <p class="text-muted text-lg leading-relaxed">
-            Conducted structural simulations in <span class="font-semibold text-primary">ANSYS and SolidWorks</span> to validate load paths and identify stress concentrations. Results directly informed major geometry changes and design decisions between early and refined iterations, ensuring safe and efficient operation.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Hip CAD V2 -->
-    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
-        <div class="h-80 md:h-auto overflow-hidden bg-gray-100 order-2 md:order-1">
-          <img src="images/exo/cad_v2.png" alt="CAD V2" class="w-full h-full object-cover">
-        </div>
-        <div class="p-8 md:p-10 flex flex-col justify-center order-1 md:order-2">
-          <h3 class="font-display text-2xl font-bold text-primary mb-4">CAD Version 2 (Optimized)</h3>
-          <p class="text-muted text-lg leading-relaxed">
-            Heavily refined design with significant optimization to mass, structural efficiency, and load paths. Geometry was redesigned around real manufacturing constraints, resulting in a configuration that is now fully machinable while maintaining functional and ergonomic requirements.
-          </p>
-        </div>
-      </div>
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div class="eyebrow">Featured work</div>
+      <h1>Exoskeleton Work</h1>
+      <p class="sub">A competitive robotics project developing an advanced wearable system for assistive mobility. Details limited to prevent pre-competition information leaks.</p>
     </div>
   </section>
 
-  <!-- Hip CAD V3 -->
-    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
-        <div class="h-80 md:h-auto overflow-hidden bg-gray-100 order-2 md:order-1">
-          <img src="images/exo/cad_v3.png" alt="CAD V3" class="w-full h-full object-cover">
+  <main>
+    <div class="wrap">
+
+      <!-- ===================== YEAR 2 ===================== -->
+      <section class="project">
+        <div class="eyebrow">UWaterloo BioMechatronics Design Team</div>
+        <h2>Year 2</h2>
+        <p class="blurb">Back for more!!</p>
+
+        <div class="subproject">
+          <h3>Hard Exoskeleton</h3>
+          <p class="blurb">Hard exoskeleton.</p>
+          <div class="req-label">Design requirements</div>
+          <div class="req-placeholder">Placeholder for now.</div>
         </div>
-        <div class="p-8 md:p-10 flex flex-col justify-center order-1 md:order-2">
-          <h3 class="font-display text-2xl font-bold text-primary mb-4">CAD Version 3 (Design for Manufacturing)</h3>
-          <p class="text-muted text-lg leading-relaxed">
-            Finalized design with significant optimization toward minimizing manufacturing costs and time.
-          </p>
+
+        <div class="subproject">
+          <h3>Soft Exoskeleton</h3>
+          <p class="blurb">Finishing up last year.</p>
+          <div class="req-label">Design requirements</div>
+          <div class="req-placeholder">Placeholder for now.</div>
         </div>
-      </div>
+      </section>
+
+      <!-- ===================== YEAR 1 ===================== -->
+      <section class="project">
+        <div class="eyebrow">UWaterloo BioMechatronics Design Team</div>
+        <h2>Year 1</h2>
+        <p class="blurb">First-time lead!?!?</p>
+
+        <div class="subproject">
+          <h3>Soft Exoskeleton</h3>
+          <p class="blurb">Main project for this term.</p>
+
+          <div class="req-label">Design requirements</div>
+          <div class="stats">
+            <div class="stats-grid">
+              <div class="stat"><p class="num">30 Nm</p><p class="label">Torque per joint</p></div>
+              <div class="stat"><p class="num">5 kg</p><p class="label">Hip-area chassis weight</p></div>
+              <div class="stat"><p class="num">23%</p><p class="label">Weight savings from prototype</p></div>
+            </div>
+          </div>
+
+          <div class="gallery-label">Term 1 gallery</div>
+          <div class="gallery">
+            <img src="images/exo/term1_1.png" alt="Term 1 photo 1">
+            <img src="images/exo/term1_2.png" alt="Term 1 photo 2">
+            <img src="images/exo/term1_3.png" alt="Term 1 photo 3">
+          </div>
+
+          <!-- CAD & Structural Analysis -->
+          <details class="further-details">
+            <summary>CAD &amp; Structural Analysis <span class="toggle-icon">+</span></summary>
+            <div class="sub-list">
+
+              <div class="sub">
+                <div class="sub-media"><img src="images/exo/planning.png" alt="Planning and measurements"></div>
+                <div class="sub-text">
+                  <h4>Planning &amp; Measurements</h4>
+                  <p>Defined biomechanical constraints, applied anthropometric datasets, and mapped mechanical interfaces to ensure ergonomic fit across a wide range of body sizes. This foundational phase established design parameters for all downstream iterations.</p>
+                </div>
+              </div>
+
+              <div class="sub">
+                <div class="sub-media"><img src="images/exo/cad_v1.png" alt="CAD version 1"></div>
+                <div class="sub-text">
+                  <h4>CAD Version 1</h4>
+                  <p>Early exploratory model used to validate overall architecture, kinematics, and packaging of a <strong>2-DOF hip mechanism</strong>. Design was intentionally unoptimized, with limited consideration for mass, stress distribution, or manufacturability &mdash; focused on functional validation.</p>
+                </div>
+              </div>
+
+              <div class="sub">
+                <div class="sub-media"><img src="images/exo/analysis.png" alt="ANSYS and FEA simulation"></div>
+                <div class="sub-text">
+                  <h4>ANSYS &amp; FEA Simulation</h4>
+                  <p>Conducted structural simulations in <strong>ANSYS and SolidWorks</strong> to validate load paths and identify stress concentrations. Results directly informed major geometry changes and design decisions between early and refined iterations, ensuring safe and efficient operation.</p>
+                </div>
+              </div>
+
+              <div class="sub">
+                <div class="sub-media"><img src="images/exo/cad_v2.png" alt="CAD version 2, optimized"></div>
+                <div class="sub-text">
+                  <h4>CAD Version 2 (Optimized)</h4>
+                  <p>Heavily refined design with significant optimization to mass, structural efficiency, and load paths. Geometry was redesigned around real manufacturing constraints, resulting in a configuration that is now fully machinable while maintaining functional and ergonomic requirements.</p>
+                </div>
+              </div>
+
+              <div class="sub">
+                <div class="sub-media"><img src="images/exo/cad_v3.png" alt="CAD version 3, design for manufacturing"></div>
+                <div class="sub-text">
+                  <h4>CAD Version 3 (Design for Manufacturing)</h4>
+                  <p>Finalized design with significant optimization toward minimizing manufacturing costs and time.</p>
+                </div>
+              </div>
+
+              <div class="sub">
+                <div class="sub-media"><img src="images/exo/cad_full.png" alt="Full CAD model"></div>
+                <div class="sub-text">
+                  <h4>Full CAD Model</h4>
+                  <p>Finalized full body soft exo design; carbon fibre rods to minimize leg weight (as the leg sees mostly bending forces rather than high compression), whereas the hip was made of aluminium as the hip sees a wide variety of forces and stresses. This model was used for safety simulations in ANSYS and also for software, by creating a URDF for Gazebo simulations and a USD for Isaac Sim.</p>
+                </div>
+              </div>
+
+            </div>
+          </details>
+
+          <!-- Manufacturing -->
+          <details class="further-details">
+            <summary>Manufacturing (In Progress) <span class="toggle-icon">+</span></summary>
+            <div class="sub-list">
+
+              <div class="sub">
+                <div class="sub-media"><img src="images/exo/cnc.png" alt="CNC machining"></div>
+                <div class="sub-text">
+                  <h4>CNC Machining</h4>
+                  <p>Manufacturing planning underway; components are being designed around achievable tolerances and practical fixturing constraints for precision fabrication.</p>
+                </div>
+              </div>
+
+              <div class="sub">
+                <div class="sub-media"><img src="images/exo/waterjet.png" alt="Waterjet cutting"></div>
+                <div class="sub-text">
+                  <h4>Waterjet Cutting</h4>
+                  <p>Alternate version of the CNC'd cycloidal gearbox to be cut via waterjet; cost analysis has yet to be finalized for a decision but all blueprints and drawings have been created.</p>
+                </div>
+              </div>
+
+              <div class="sub">
+                <div class="sub-media"><img src="images/exo/lathe.png" alt="Lathe work"></div>
+                <div class="sub-text">
+                  <h4>Lathe Work</h4>
+                  <p>Future fabrication will include simple turned components such as spacers and shafts once final dimensions are locked in and design freeze is achieved.</p>
+                </div>
+              </div>
+
+              <div class="sub">
+                <div class="sub-media"><img src="images/exo/mill.png" alt="Manual milling"></div>
+                <div class="sub-text">
+                  <h4>Manual Milling</h4>
+                  <p>Prototyping strategies are being evaluated; fabrication will proceed once the design reaches full design freeze and manufacturing readiness review.</p>
+                </div>
+              </div>
+
+              <div class="sub">
+                <div class="sub-media"><img src="images/exo/final.png" alt="Final assembly"></div>
+                <div class="sub-text">
+                  <h4>Final Assembly</h4>
+                  <p>System integration and validation will begin after fabrication of the finalized mechanical components. All subsystems will be tested to ensure performance meets design specifications.</p>
+                </div>
+              </div>
+
+            </div>
+          </details>
+
+          <!-- Leadership & Management -->
+          <details class="further-details">
+            <summary>Leadership &amp; Management <span class="toggle-icon">+</span></summary>
+            <div class="sub-list">
+
+              <div class="sub">
+                <div class="sub-media"><img src="images/exo/management1.png" alt="Manufacturing and CAD oversight"></div>
+                <div class="sub-text">
+                  <h4>Manufacturing &amp; CAD Oversight</h4>
+                  <p>Established CAD standards, reviewed designs, and supervised technical direction across mechanical subteams. Ensured consistency in modeling practices and design quality across the organization.</p>
+                </div>
+              </div>
+
+              <div class="sub">
+                <div class="sub-media"><img src="images/exo/management2.png" alt="Team leadership"></div>
+                <div class="sub-text">
+                  <h4>Team Leadership</h4>
+                  <p>Led interdisciplinary coordination, managed milestones, and provided technical mentorship across a <strong>20+ member team</strong>. Fostered a collaborative environment focused on technical excellence and continuous improvement.</p>
+                </div>
+              </div>
+
+            </div>
+          </details>
+
+          <!-- Team Highlights -->
+          <details class="further-details">
+            <summary>Team Highlights <span class="toggle-icon">+</span></summary>
+            <div class="gallery-only">
+              <div class="gallery">
+                <img src="images/exo/team_small_left.png" alt="Team photo left">
+                <img src="images/exo/team_big.png" alt="Team photo center">
+                <img src="images/exo/team_small_right.png" alt="Team photo right">
+              </div>
+            </div>
+          </details>
+
+        </div>
+      </section>
+
     </div>
-  </section>
+  </main>
 
-    <!-- Full CAD(Hip + Leg) -->
-    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
-        <div class="h-80 md:h-auto overflow-hidden bg-gray-100 order-2 md:order-1">
-          <img src="images/exo/cad_full.png" alt="Full CAD" class="w-full h-full object-cover">
-        </div>
-        <div class="p-8 md:p-10 flex flex-col justify-center order-1 md:order-2">
-          <h3 class="font-display text-2xl font-bold text-primary mb-4">Full CAD Model</h3>
-          <p class="text-muted text-lg leading-relaxed">
-            Finalized full body soft exo design; Carbon fibre rods to minimize leg weight(as the leg sees mostly bending forces rather than high compression), whereas the hip was made of aluminium as the hip sees a wide variety of forces and stresses. This model was used for safety simulations on ANSYS and also for software, by creating a URDF for Gazebo simulations and USD for Isaacsim.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Manufacturing Section -->
-  <section>
-    <div class="mb-12">
-      <p class="text-accent font-medium text-sm uppercase tracking-widest mb-2">Fabrication Phase</p>
-      <h2 class="font-display text-4xl font-bold text-primary mb-4">Manufacturing (In Progress)</h2>
-      <div class="h-1 w-20 bg-gradient-accent rounded-full"></div>
-    </div>
-
-    <!-- CNC -->
-    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
-        <div class="h-80 md:h-auto overflow-hidden bg-gray-100">
-          <img src="images/exo/cnc.png" alt="CNC Machining" class="w-full h-full object-cover">
-        </div>
-        <div class="p-8 md:p-10 flex flex-col justify-center">
-          <h3 class="font-display text-2xl font-bold text-primary mb-4">CNC Machining</h3>
-          <p class="text-muted text-lg leading-relaxed">
-            Manufacturing planning underway; components are being designed around achievable tolerances and practical fixturing constraints for precision fabrication.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Waterjet -->
-    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
-        <div class="h-80 md:h-auto overflow-hidden bg-gray-100">
-          <img src="images/exo/waterjet.png" alt="Waterjet Cutting" class="w-full h-full object-cover">
-        </div>
-        <div class="p-8 md:p-10 flex flex-col justify-center">
-          <h3 class="font-display text-2xl font-bold text-primary mb-4">Waterjet Cutting</h3>
-          <p class="text-muted text-lg leading-relaxed">
-           Alternate version of the CNC'd cycloidal gearbox to be cut via waterjet; cost analysis has yet to be finalized for a decision but all blueprints and drawings have been created.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Lathe -->
-    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
-        <div class="h-80 md:h-auto overflow-hidden bg-gray-100 order-2 md:order-1">
-          <img src="images/exo/lathe.png" alt="Lathe Work" class="w-full h-full object-cover">
-        </div>
-        <div class="p-8 md:p-10 flex flex-col justify-center order-1 md:order-2">
-          <h3 class="font-display text-2xl font-bold text-primary mb-4">Lathe Work</h3>
-          <p class="text-muted text-lg leading-relaxed">
-            Future fabrication will include simple turned components such as spacers and shafts once final dimensions are locked in and design freeze is achieved.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Milling -->
-    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
-        <div class="h-80 md:h-auto overflow-hidden bg-gray-100">
-          <img src="images/exo/mill.png" alt="Manual Milling" class="w-full h-full object-cover">
-        </div>
-        <div class="p-8 md:p-10 flex flex-col justify-center">
-          <h3 class="font-display text-2xl font-bold text-primary mb-4">Manual Milling</h3>
-          <p class="text-muted text-lg leading-relaxed">
-            Prototyping strategies are being evaluated; fabrication will proceed once the design reaches full design freeze and manufacturing readiness review.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Final Assembly -->
-    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
-        <div class="h-80 md:h-auto overflow-hidden bg-gray-100 order-2 md:order-1">
-          <img src="images/exo/final.png" alt="Final Assembly" class="w-full h-full object-cover">
-        </div>
-        <div class="p-8 md:p-10 flex flex-col justify-center order-1 md:order-2">
-          <h3 class="font-display text-2xl font-bold text-primary mb-4">Final Assembly</h3>
-          <p class="text-muted text-lg leading-relaxed">
-            System integration and validation will begin after fabrication of the finalized mechanical components. All subsystems will be tested to ensure performance meets design specifications.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Leadership Section -->
-  <section>
-    <div class="mb-12">
-      <p class="text-accent font-medium text-sm uppercase tracking-widest mb-2">Team Leadership</p>
-      <h2 class="font-display text-4xl font-bold text-primary mb-4">Leadership & Management</h2>
-      <div class="h-1 w-20 bg-gradient-accent rounded-full"></div>
-    </div>
-
-    <!-- CAD Management -->
-    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
-        <div class="h-80 md:h-auto overflow-hidden bg-gray-100">
-          <img src="images/exo/management1.png" alt="CAD Management" class="w-full h-full object-cover">
-        </div>
-        <div class="p-8 md:p-10 flex flex-col justify-center">
-          <h3 class="font-display text-2xl font-bold text-primary mb-4">Manufacturing & CAD Oversight</h3>
-          <p class="text-muted text-lg leading-relaxed">
-            Established CAD standards, reviewed designs, and supervised technical direction across mechanical subteams. Ensured consistency in modeling practices and design quality across the organization.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Team Management -->
-    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg mb-8 hover:shadow-xl transition-shadow">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
-        <div class="h-80 md:h-auto overflow-hidden bg-gray-100 order-2 md:order-1">
-          <img src="images/exo/management2.png" alt="Team Leadership" class="w-full h-full object-cover">
-        </div>
-        <div class="p-8 md:p-10 flex flex-col justify-center order-1 md:order-2">
-          <h3 class="font-display text-2xl font-bold text-primary mb-4">Team Leadership</h3>
-          <p class="text-muted text-lg leading-relaxed">
-            Led interdisciplinary coordination, managed milestones, and provided technical mentorship across a <span class="font-semibold text-primary">20+ member team</span>. Fostered a collaborative environment focused on technical excellence and continuous improvement.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Team Photos -->
-    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg p-8 md:p-10">
-      <h3 class="font-display text-2xl font-bold text-primary mb-8">Team Highlights</h3>
-      <div class="grid grid-cols-3 gap-6 items-center">
-        <img src="images/exo/team_small_left.png" alt="Team photo left" class="rounded-lg shadow-md h-48 object-cover hover:shadow-lg transition-shadow">
-        <img src="images/exo/team_big.png" alt="Team photo center" class="rounded-lg shadow-md h-64 object-cover hover:shadow-lg transition-shadow scale-105">
-        <img src="images/exo/team_small_right.png" alt="Team photo right" class="rounded-lg shadow-md h-48 object-cover hover:shadow-lg transition-shadow">
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<!-- Footer -->
-<footer class="bg-primary text-center py-8 px-6 border-t border-light/10 text-light/60 mt-20">
-  <p class="font-light">© 2026 Ryan Kai Sum Wong. All rights reserved.</p>
-</footer>
+  <footer class="foot">
+    &copy; 2026 Ryan Kai Sum Wong. All rights reserved.
+  </footer>
 
 </body>
 </html>
