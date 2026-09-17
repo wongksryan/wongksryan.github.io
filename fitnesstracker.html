@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PlaneBrain — Ryan</title>
+<title>Fitness Tracker — Ryan</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -91,12 +91,8 @@
     color:#DDE0DE;
   }
 
-  /* ============ PROJECT SECTIONS ============ */
-  .project{
-    padding:72px 0;
-    border-bottom:1px solid var(--line);
-  }
-  .project:last-of-type{ border-bottom:none; }
+  /* ============ PROJECT SECTION ============ */
+  .project{ padding:72px 0; }
 
   .project .eyebrow{ color:var(--blue); }
   .project .eyebrow::before{ background:var(--blue); }
@@ -118,43 +114,7 @@
     padding-left:16px;
   }
 
-  /* ---- key specifications ---- */
-  .stats{
-    background:var(--ink);
-    color:var(--white);
-    margin-top:32px;
-    padding:40px 32px;
-  }
-  .stats-label{
-    font-family:var(--mono);
-    font-size:11px;
-    letter-spacing:0.1em;
-    text-transform:uppercase;
-    color:var(--yellow);
-    text-align:center;
-    margin-bottom:28px;
-  }
-  .stats-grid{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:24px;
-  }
-  .stat{ text-align:center; }
-  .stat .num{
-    font-family:var(--display);
-    font-weight:700;
-    font-size:clamp(26px, 4vw, 36px);
-    color:var(--yellow);
-    line-height:1;
-  }
-  .stat .label{
-    font-family:var(--mono);
-    font-size:12px;
-    color:#B9BDBE;
-    margin-top:10px;
-  }
-
-  /* ---- gallery (moved to top) ---- */
+  /* ---- gallery ---- */
   .gallery-label{
     font-family:var(--mono);
     font-size:11px;
@@ -250,31 +210,6 @@
   .sub:nth-child(even) .sub-media{ order:2; }
   .sub:nth-child(even) .sub-text{ order:1; }
 
-  .placeholder-note{
-    padding:24px 20px;
-    font-size:14px;
-    color:var(--muted);
-    font-style:italic;
-  }
-
-  /* ============ FOOTER ============ */
-  .foot{
-    background:var(--ink);
-    color:#8B9092;
-    text-align:center;
-    padding:32px 0;
-    font-family:var(--mono);
-    font-size:12px;
-    letter-spacing:0.04em;
-  }
-
-  @media (max-width: 720px){
-    .sub{ grid-template-columns:1fr; }
-    .sub:nth-child(even) .sub-media{ order:1; }
-    .sub:nth-child(even) .sub-text{ order:2; }
-    .stats-grid{ grid-template-columns:1fr; gap:28px; }
-  }
-
   /* ---- lightbox ---- */
   .gallery img, .sub-media img{ cursor:zoom-in; }
 
@@ -311,6 +246,23 @@
     cursor:pointer;
   }
   .lightbox-close:hover{ background:rgba(255,255,255,0.1); }
+
+  /* ============ FOOTER ============ */
+  .foot{
+    background:var(--ink);
+    color:#8B9092;
+    text-align:center;
+    padding:32px 0;
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.04em;
+  }
+
+  @media (max-width: 720px){
+    .sub{ grid-template-columns:1fr; }
+    .sub:nth-child(even) .sub-media{ order:1; }
+    .sub:nth-child(even) .sub-text{ order:2; }
+  }
 </style>
 </head>
 <body>
@@ -324,46 +276,24 @@
   <section class="hero">
     <div class="wrap hero-inner">
       <div class="eyebrow">Featured work</div>
-      <h1>PlaneBrain</h1>
-      <p class="sub">A modular flight control platform for fixed-wing UAVs, integrating sensors, electronics, and autonomous algorithms for stability and autonomy.</p>
+      <h1>Fitness Tracker</h1>
+      <p class="sub">A joint tracking system pairing computer vision pose estimation with a wearable ESP32 and IMU strap, built to cross-check one against the other.</p>
     </div>
   </section>
 
   <main>
     <div class="wrap">
 
-      <!-- ===================== PLANEBRAIN V2 ===================== -->
       <section class="project">
-        <div class="eyebrow">In progress</div>
-        <h2>PlaneBrain (V2)</h2>
-        <p class="blurb">Maybe will remake this with a custom PCB in future.</p>
+        <div class="eyebrow">Hackathon project &middot; sub-48 hour build</div>
+        <h2>CV + IMU Joint Tracker</h2>
+        <p class="blurb">Computer vision handled joint detection from video, while an ESP32 and MPU6050 mounted in a belt-style strap on the joint itself provided a second, physical source of truth to check the vision system against. The ESP32 sent IMU data over Wi-Fi.</p>
 
-        <details class="further-details">
-          <summary>Further details <span class="toggle-icon">+</span></summary>
-          <div class="placeholder-note">In progress &mdash; details coming soon.</div>
-        </details>
-      </section>
-
-      <!-- ===================== PLANEBRAIN V1 ===================== -->
-      <section class="project">
-        <div class="eyebrow">Built &amp; flown</div>
-        <h2>PlaneBrain (V1)</h2>
-        <p class="blurb">Raspberry Pi / ESP32 mixed full-stack control system for UAV control.</p>
-
-        <div class="stats">
-          <div class="stats-label">System overview</div>
-          <div class="stats-grid">
-            <div class="stat"><p class="num">Modular</p><p class="label">Expandable architecture</p></div>
-            <div class="stat"><p class="num">IMU-Based</p><p class="label">Sensor fusion</p></div>
-            <div class="stat"><p class="num">Real-Time</p><p class="label">Control loops</p></div>
-          </div>
-        </div>
-
-        <div class="gallery-label">Final build</div>
+        <div class="gallery-label">Gallery</div>
         <div class="gallery">
-          <img src="images/planebrain/build.png" alt="PlaneBrain physical build">
-          <img src="images/planebrain/kicad.png" alt="PlaneBrain KiCad schematic">
-          <img src="images/planebrain/flight_controller.png" alt="PlaneBrain flight controller">
+          <img src="images/fitness/fitness_1.png" alt="Fitness tracker photo 1">
+          <img src="images/fitness/fitness_2.png" alt="Fitness tracker photo 2">
+          <img src="images/fitness/fitness_3.jpg" alt="Fitness tracker photo 3">
         </div>
 
         <details class="further-details">
@@ -371,30 +301,29 @@
           <div class="sub-list">
 
             <div class="sub">
-              <div class="sub-media"><img src="images/planebrain/build.png" alt="Physical build and first flight"></div>
+              <div class="sub-media"><img src="images/fitness/fitness_cad.png" alt="CAD design of enclosure"></div>
               <div class="sub-text">
-                <h3>Physical Build &amp; First Flight</h3>
-                <p>Built and integrated the avionics dev board stack onto a flying-wing airframe, routing wiring for robustness and ensuring vibration resistance suitable for airborne operation. The system successfully flew, validating both the hardware and control software end-to-end. Thermal management was considered throughout for operation in hot climates, such as that of Hong Kong.</p>
+                <h3>CAD Design</h3>
+                <p>Designed an ideal enclosure to house the ESP32 and MPU6050 as a compact strap-mounted attachment. The goal was a low-profile housing that could sit directly on a joint, stayed put during movement, and kept the IMU properly oriented for consistent readings.</p>
               </div>
             </div>
 
             <div class="sub">
-              <div class="sub-media"><img src="images/planebrain/kicad.png" alt="KiCad schematic"></div>
+              <div class="sub-media"><img src="images/fitness/fitness_prototype.png" alt="Physical prototyping and tuning"></div>
               <div class="sub-text">
-                <h3>Schematic Design</h3>
-                <p>Designed the avionics schematics in <strong>KiCad</strong>, covering power regulation, sensor integration, and communication buses across the dev board stack.</p>
+                <h3>Physical Prototyping &amp; Tuning</h3>
+                <p>Built a working MVP of the IMU strap and tuned it until the MPU6050 gave clean, stable orientation data on the ESP32. Mounting had to be secure enough to track real joint motion without excessive drift or noise from the strap shifting during movement.</p>
               </div>
             </div>
 
             <div class="sub">
-              <div class="sub-media"><img src="images/planebrain/attitude_hold.png" alt="Attitude hold algorithm"></div>
+              <div class="sub-media"><img src="images/fitness/fitness_testing.png" alt="Computer vision testing"></div>
               <div class="sub-text">
-                <h3>Basic Attitude Hold Algorithm</h3>
-                <p>Developed a stabilization algorithm for the flying-wing UAV to counter Dutch roll, using <strong>IMU feedback</strong> and closed-loop control to improve directional and roll stability. The algorithm prioritizes robustness over computational complexity, and was validated in flight.</p>
+                <h3>Testing</h3>
+                <p>With the whole build done in under 48 hours, the computer vision side relied on an existing pretrained pose estimation model rather than training one from scratch. Testing focused on running that model against the IMU strap's readings to see how closely the two tracked the same joint movement in practice.</p>
               </div>
             </div>
 
-          
           </div>
         </details>
       </section>
@@ -405,7 +334,6 @@
   <footer class="foot">
     &copy; 2026 Ryan Kai Sum Wong. All rights reserved.
   </footer>
-
 
   <script>
     const lightbox = document.createElement("div");
@@ -427,5 +355,6 @@
       if(e.key === "Escape") lightbox.classList.remove("active");
     });
   </script>
+
 </body>
 </html>
